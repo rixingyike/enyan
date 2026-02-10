@@ -1,0 +1,76 @@
+{
+  "lexicon_name": "圣经和合本简体中文语音纠错词典",
+  "version": "1.0",
+  "language": "zh-CN",
+  "categories": [
+    {
+      "category": "core_specialized_names",
+      "name": "核心专有译名（人名/地名）",
+      "description": "圣经特定的人名和地名，AI 常因现代发音习惯读错",
+      "items": [
+        { "term": "撒母耳", "correct": "sā mǔ ěr", "wrong": "sǎ mǔ ěr", "note": "圣经译名中的‘撒’统一读一声" },
+        { "term": "撒迦利亚", "correct": "sā jiā lì yǎ", "wrong": "sǎ jiā lì yǎ", "note": "同上，首字读一声" },
+        { "term": "帖撒罗尼迦", "correct": "tiē sā luó ní jiā", "wrong": "tiē sǎ luó ní jiā", "note": "地名，‘撒’读一声" },
+        { "term": "基路伯", "correct": "jī lù bó", "wrong": "jī lù bǎi", "note": "天使名，‘伯’读bó" },
+        { "term": "腓利", "correct": "féi lì", "wrong": "fěi lì", "note": "人名，‘腓’读二声" },
+        { "term": "腓利门", "correct": "féi lì mén", "wrong": "fěi lì mén", "note": "同上" },
+        { "term": "腓立比", "correct": "féi lì bǐ", "wrong": "fěi lì bǐ", "note": "地名，‘腓’读二声" },
+        { "term": "腓尼基", "correct": "féi ní jī", "wrong": "fěi ní jī", "note": "地名，‘腓’读二声" },
+        { "term": "迦南", "correct": "jiā nán", "wrong": "jiā nán", "note": "重音应在二声，避免AI读轻声" },
+        { "term": "希西家", "correct": "xī xī jiā", "wrong": "xī xī gū", "note": "AI有时会误读古文字音" },
+        { "term": "示每", "correct": "shì měi", "wrong": "shí měi", "note": "人名，‘示’读四声" },
+        { "term": "俄巴底亚", "correct": "é bā dǐ yà", "wrong": "è bā dǐ yà", "note": "‘俄’读二声，AI常读四声" },
+        { "term": "喇合", "correct": "lǎ hé", "wrong": "lá hé", "note": "人名，‘喇’读三声" },
+        { "term": "以弗所", "correct": "yǐ fú suǒ", "wrong": "yǐ fó suǒ", "note": "‘弗’读二声" },
+        { "term": "歌罗西", "correct": "gē luó xī", "wrong": "gē luó qǐ", "note": "‘西’字常见" },
+        { "term": "哈巴谷", "correct": "hā bā gǔ", "wrong": "hā bā gǔ", "note": "AI易读成kǔ" },
+        { "term": "西番雅", "correct": "xī fān yǎ", "wrong": "xī pān yǎ", "note": "‘番’读fān" },
+        { "term": "哈该", "correct": "hā gāi", "wrong": "hā hài", "note": "人名，末字读gāi" },
+        { "term": "玛拉基", "correct": "mǎ lā jī", "wrong": "mǎ là jī", "note": "‘拉’读一声" },
+        { "term": "尼希米", "correct": "ní xī mǐ", "wrong": "ní xī mǐ", "note": "首字二声" }
+      ]
+    },
+    {
+      "category": "rare_bible_characters",
+      "name": "圣经生僻/罕见字",
+      "description": "现代汉语极少使用的字符，AI 极易读半边或无法识别",
+      "items": [
+        { "term": "洗濯", "correct": "xǐ zhuó", "wrong": "xǐ dí", "note": "濯在此读zhuó，不读dí" },
+        { "term": "燔祭", "correct": "fán jì", "wrong": "pān jì", "note": "燔意为火烧，读fán" },
+        { "term": "禚", "correct": "zhuó", "wrong": "gāo", "note": "历代志家谱生僻字" },
+        { "term": "赉", "correct": "lài", "wrong": "bèi", "note": "赐予，读lài" },
+        { "term": "曷", "correct": "hé", "wrong": "xié", "note": "疑问词/译名开头，读hé" },
+        { "term": "俾", "correct": "bǐ", "wrong": "pì", "note": "使动词，读bǐ" },
+        { "term": "耦", "correct": "ǒu", "wrong": "ǒu", "note": "两人耕种，读ǒu" },
+        { "term": "纩", "correct": "kuàng", "wrong": "kuàng", "note": "棉絮，读kuàng" },
+        { "term": "鞶", "correct": "pán", "wrong": "bān", "note": "皮带，读pán" },
+        { "term": "绂", "correct": "fú", "wrong": "bá", "note": "官服饰带，读fú" },
+        { "term": "罥", "correct": "juàn", "wrong": "juān", "note": "挂住，读juàn" },
+        { "term": "绨", "correct": "tí", "wrong": "dì", "note": "丝织品，读tí" },
+        { "term": "缯", "correct": "zēng", "wrong": "zèng", "note": "丝织品总称，读zēng" },
+        { "term": "縠", "correct": "hú", "wrong": "jiǎo", "note": "绉纱，读hú" },
+        { "term": "晡", "correct": "bū", "wrong": "pǔ", "note": "申时，读bū" },
+        { "term": "籼", "correct": "xiān", "wrong": "shān", "note": "水稻品种，读xiān" },
+        { "term": "箧", "correct": "qiè", "wrong": "xiá", "note": "小箱子，读qiè" }
+      ]
+    },
+    {
+      "category": "polyphonic_bible_traps",
+      "name": "多音字/语境陷阱",
+      "description": "在圣经特定短语下，必须使用特定发音的多音字",
+      "items": [
+        { "term": "什一", "correct": "shí yī", "wrong": "shén yī", "note": "‘什’指十分之一，不可读‘什么’" },
+        { "term": "曾孙", "correct": "zēng sūn", "wrong": "céng sūn", "note": "辈分关系固定读zēng" },
+        { "term": "曾祖", "correct": "zēng zǔ", "wrong": "céng zǔ", "note": "同上" },
+        { "term": "参孙", "correct": "shān sūn", "wrong": "cān sūn", "note": "士师名，固定读shān" },
+        { "term": "千乘", "correct": "qiān shèng", "wrong": "qiān chéng", "note": "量词，指车辆，读shèng" },
+        { "term": "万乘", "correct": "wàn shèng", "wrong": "wàn chéng", "note": "同上" },
+        { "term": "末后", "correct": "mò hòu", "wrong": "me hòu", "note": "AI有时会误判为轻声" },
+        { "term": "圣哉", "correct": "shèng zāi", "wrong": "shèng zāi", "note": "语气词，重音需准确" },
+        { "term": "供养", "correct": "gòng yàng", "wrong": "gōng yǎng", "note": "赡养老人/上帝，读四声" },
+        { "term": "剥皮", "correct": "bāo pí", "wrong": "bō pí", "note": "圣经口语化场景通常读bāo" },
+        { "term": "铺张", "correct": "pū zhāng", "wrong": "pù zhāng", "note": "指展开诸天，读一声pū" }
+      ]
+    }
+  ]
+}

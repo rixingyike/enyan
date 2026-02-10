@@ -1,0 +1,65 @@
+{
+  "lexicon_name": "和合本聖經繁體中文（台灣）語音糾錯辭典",
+  "version": "1.0",
+  "language": "zh-TW",
+  "categories": [
+    {
+      "category": "core_specialized_names",
+      "name": "核心專有譯名（人名/地名）",
+      "description": "聖經特定的譯名，AI 容易按現代口語或簡體習慣讀錯",
+      "items": [
+        { "term": "撒母耳", "correct_pinyin": "sā mǔ ěr", "zhuyin": "ㄙㄚ ㄇㄨˇ ㄦˇ", "wrong": "sǎ mǔ ěr", "note": "聖經譯名中的「撒」統一讀一聲" },
+        { "term": "撒迦利亞", "correct_pinyin": "sā jiā lì yǎ", "zhuyin": "ㄙㄚ ㄐㄧㄚ ㄌㄧˋ ㄧㄚˇ", "wrong": "sǎ jiā lì yǎ", "note": "同上，首字讀一聲" },
+        { "term": "帖撒羅尼迦", "correct_pinyin": "tiē sā luó ní jiā", "zhuyin": "ㄊㄧㄝ ㄙㄚ ㄌㄨㄛˊ ㄋㄧˊ ㄐㄧㄚ", "wrong": "tiē sǎ luó ní jiā", "note": "地名，「撒」讀一聲" },
+        { "term": "基路伯", "correct_pinyin": "jī lù bó", "zhuyin": "ㄐㄧ ㄌㄨˋ ㄅㄛˊ", "wrong": "jī lù bǎi", "note": "天使名，「伯」讀 bó" },
+        { "term": "腓利", "correct_pinyin": "féi lì", "zhuyin": "ㄈㄟˊ ㄌㄧˋ", "wrong": "fěi lì", "note": "人名，「腓」讀二聲" },
+        { "term": "腓立比", "correct_pinyin": "féi lì bǐ", "zhuyin": "ㄈㄟˊ ㄌㄧˋ ㄅㄧˇ", "wrong": "fěi lì bǐ", "note": "地名，「腓」讀二聲" },
+        { "term": "迦南", "correct_pinyin": "jiā nán", "zhuyin": "ㄐㄧㄚ ㄋㄢˊ", "wrong": "jiā nán", "note": "重音應在二聲，避免 AI 讀輕聲" },
+        { "term": "希西家", "correct_pinyin": "xī xī jiā", "zhuyin": "ㄒㄧ ㄒㄧ ㄐㄧㄚ", "wrong": "xī xī gū", "note": "「家」在譯名中穩定讀 jiā" },
+        { "term": "示每", "correct_pinyin": "shì měi", "zhuyin": "ㄕˋ ㄇㄟˇ", "wrong": "shí měi", "note": "人名，「示」讀四聲" },
+        { "term": "俄巴底亞", "correct_pinyin": "é bā dǐ yà", "zhuyin": "ㄜˊ ㄅㄚ ㄉㄧˇ ㄧㄚˋ", "wrong": "è bā dǐ yà", "note": "「俄」讀二聲" },
+        { "term": "喇合", "correct_pinyin": "lǎ hé", "zhuyin": "ㄌㄚˇ ㄏㄜˊ", "wrong": "lá hé", "note": "人名，「喇」讀三聲" },
+        { "term": "以弗所", "correct_pinyin": "yǐ fú suǒ", "zhuyin": "ㄧˇ ㄈㄨˊ ㄙㄨㄛˇ", "wrong": "yǐ fó suǒ", "note": "「弗」讀二聲 fú" },
+        { "term": "西番雅", "correct_pinyin": "xī fān yǎ", "zhuyin": "ㄒㄧ ㄈㄢ ㄧㄚˇ", "wrong": "xī pān yǎ", "note": "「番」讀 fān" },
+        { "term": "哈該", "correct_pinyin": "hā gāi", "zhuyin": "ㄏㄚ ㄍㄞ", "wrong": "hā hài", "note": "人名，末字讀 gāi" },
+        { "term": "瑪拉基", "correct_pinyin": "mǎ lā jī", "zhuyin": "ㄇㄚˇ ㄌㄚ ㄐㄧ", "wrong": "mǎ là jī", "note": "「拉」讀一聲" }
+      ]
+    },
+    {
+      "category": "rare_bible_characters",
+      "name": "聖經生僻/罕見字",
+      "description": "現代正體中文較少使用的字符，AI 容易讀錯音或無法識別",
+      "items": [
+        { "term": "洗濯", "correct_pinyin": "xǐ zhuó", "zhuyin": "ㄒㄧˇ ㄓㄨㄛˊ", "wrong": "xǐ dí", "note": "濯在此讀 zhuó，不讀 dí" },
+        { "term": "燔祭", "correct_pinyin": "fán jì", "zhuyin": "ㄈㄢˊ ㄐㄧˋ", "wrong": "pān jì", "note": "燔意為火燒，讀 fán" },
+        { "term": "禚", "correct_pinyin": "zhuó", "zhuyin": "ㄓㄨㄛˊ", "wrong": "gāo", "note": "歷代志家譜生僻字" },
+        { "term": "賚", "correct_pinyin": "lài", "zhuyin": "ㄌㄞˋ", "wrong": "bèi", "note": "賜予，讀 lài" },
+        { "term": "曷", "correct_pinyin": "hé", "zhuyin": "ㄏㄜˊ", "wrong": "xié", "note": "疑問詞，讀 hé" },
+        { "term": "俾", "correct_pinyin": "bǐ", "zhuyin": "ㄅㄧˇ", "wrong": "pì", "note": "使動詞，讀 bǐ" },
+        { "term": "耦", "correct_pinyin": "ǒu", "zhuyin": "ㄡˇ", "wrong": "ǒu", "note": "二人並耕" },
+        { "term": "纩", "correct_pinyin": "kuàng", "zhuyin": "ㄎㄨㄤˋ", "wrong": "kuàng", "note": "棉絮，讀 kuàng" },
+        { "term": "鞶", "correct_pinyin": "pán", "zhuyin": "ㄆㄢˊ", "wrong": "bān", "note": "大帶/皮帶，讀 pán" },
+        { "term": "绂", "correct_pinyin": "fú", "zhuyin": "ㄈㄨˊ", "wrong": "bá", "note": "官服飾帶，讀 fú" },
+        { "term": "罥", "correct_pinyin": "juàn", "zhuyin": "ㄐㄩㄢˋ", "wrong": "juān", "note": "掛住，讀 juàn" },
+        { "term": "晡", "correct_pinyin": "bū", "zhuyin": "ㄅㄨ", "wrong": "pǔ", "note": "申時，讀 bū" },
+        { "term": "箧", "correct_pinyin": "qiè", "zhuyin": "ㄑㄧㄝˋ", "wrong": "xiá", "note": "小箱子，讀 qiè" }
+      ]
+    },
+    {
+      "category": "polyphonic_bible_traps",
+      "name": "多音字/語境陷阱",
+      "description": "台灣國語語境下，聖經特定短語需固定的發音",
+      "items": [
+        { "term": "什一", "correct_pinyin": "shí yī", "zhuyin": "ㄕˊ ㄧ", "wrong": "shén yī", "note": "「什」指十分之一，不可讀「什麼」" },
+        { "term": "曾孫", "correct_pinyin": "zēng sūn", "zhuyin": "ㄗㄥ ㄙㄨㄣ", "wrong": "céng sūn", "note": "輩分關係固定讀 zēng" },
+        { "term": "曾祖", "correct_pinyin": "zēng zǔ", "zhuyin": "ㄗㄥ ㄗㄨˇ", "wrong": "céng zǔ", "note": "同上" },
+        { "term": "參孫", "correct_pinyin": "shān sūn", "zhuyin": "ㄕㄢ ㄙㄨㄣ", "wrong": "cān sūn", "note": "士師名，台灣傳統讀 shān" },
+        { "term": "千乘", "correct_pinyin": "qiān shèng", "zhuyin": "ㄑㄧㄢ ㄕㄥˋ", "wrong": "qiān chéng", "note": "量詞，指車輛，讀 shèng" },
+        { "term": "末後", "correct_pinyin": "mò hòu", "zhuyin": "ㄇㄛˋ ㄏㄡˋ", "wrong": "me hòu", "note": "避免 AI 誤讀輕聲" },
+        { "term": "供養", "correct_pinyin": "gòng yàng", "zhuyin": "ㄍㄨㄥˋ ㄧㄤˋ", "wrong": "gōng yǎng", "note": "奉養之意，讀四聲" },
+        { "term": "舖張", "correct_pinyin": "pū zhāng", "zhuyin": "ㄆㄨ ㄓㄤ", "wrong": "pù zhāng", "note": "指展開，讀一聲 pū" },
+        { "term": "儘管", "correct_pinyin": "jǐn guǎn", "zhuyin": "ㄐㄧㄣˇ ㄍㄨㄢˇ", "wrong": "jìn guǎn", "note": "讀三聲 jǐn" }
+      ]
+    }
+  ]
+}

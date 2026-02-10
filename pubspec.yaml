@@ -1,0 +1,71 @@
+name: gracewords
+description: 恩言大字圣经 (Grace Words Big Text) - A specialized Bible reader for seniors.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Architecture
+  flutter_bloc: ^8.1.6
+  get_it: ^7.7.0
+  injectable: ^2.4.2
+  equatable: ^2.0.5
+  
+  # Data
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+  shared_preferences: ^2.2.3
+  
+  # Network
+  dio: ^5.4.3+1
+  background_downloader: ^1.2.4
+  http: ^1.2.0
+  archive: ^3.4.0
+
+  # Audio
+  just_audio: ^0.9.40
+  audio_service: ^0.18.15
+  
+  # TTS
+
+  # piper_tts removed
+  
+  # UI
+  cupertino_icons: ^1.0.8
+  sqflite_common_ffi: ^2.3.7+1
+  path_provider: ^2.1.5
+  wav: ^1.5.0
+  scrollable_positioned_list: ^0.3.8
+  rust_lib_gracewords:
+    path: rust_builder
+  flutter_rust_bridge: 2.11.1
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.9
+  injectable_generator: ^2.6.4
+  flutter_launcher_icons: ^0.14.4
+  integration_test:
+    sdk: flutter
+  mockito: ^5.6.3
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/bible_chs.db
+
+    - assets/audio/
+    - assets/data/bible_audio_urls.txt
+    - assets/bible_lexicon_chs.json
+    - assets/bible_lexicon_cht.json
+

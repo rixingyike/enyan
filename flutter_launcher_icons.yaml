@@ -1,0 +1,11 @@
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/icons/app_icon.jpg"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/icons/app_icon.jpg"
+  macos:
+    generate: true
+    image_path: "assets/icons/app_icon.jpg"
