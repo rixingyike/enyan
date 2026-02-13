@@ -46,7 +46,11 @@ class _HomePageState extends State<HomePage> {
                 length: 2,
                 child: Scaffold(
                   appBar: AppBar(
-                    title: const Text('大字有声圣经'),
+                    title: Text('大字有声圣经',
+                        style: TextStyle(
+                            fontFamily: settings.currentIsSimplified
+                                ? 'LxgwWenKai'
+                                : 'LxgwWenkaiTC')),
                     centerTitle: true,
                     actions: [
                       IconButton(
@@ -60,10 +64,20 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                     ],
-                    bottom: const TabBar(
-                      labelStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      unselectedLabelStyle: TextStyle(fontSize: 16),
+                    bottom: TabBar(
+                      labelStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: settings.currentIsSimplified
+                            ? 'LxgwWenKai'
+                            : 'LxgwWenkaiTC',
+                      ),
+                      unselectedLabelStyle: TextStyle(
+                        fontSize: 16,
+                        fontFamily: settings.currentIsSimplified
+                            ? 'LxgwWenKai'
+                            : 'LxgwWenkaiTC',
+                      ),
                       indicatorColor: Colors.brown,
                       labelColor: Colors.brown,
                       tabs: [
@@ -108,10 +122,11 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
           child: Text(
             entry.key,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.brown,
+              fontFamily: isSimplified ? 'LxgwWenKai' : 'LxgwWenkaiTC',
             ),
           ),
         ),
@@ -164,9 +179,10 @@ class _HomePageState extends State<HomePage> {
                       // Big First Char Logic
                       RichText(
                         text: TextSpan(
-                          style: const TextStyle(
-                            color: Color(0xFF5D4037),
+                          style: TextStyle(
+                            color: const Color(0xFF5D4037),
                             fontWeight: FontWeight.bold,
+                            fontFamily: isSimplified ? 'LxgwWenKai' : 'LxgwWenkaiTC',
                           ),
                           children: [
                             TextSpan(
@@ -185,9 +201,10 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 4),
                       Text(
                         fullName,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
+                          fontFamily: isSimplified ? 'LxgwWenKai' : 'LxgwWenkaiTC',
                         ),
                         textAlign: TextAlign.center,
                         maxLines: 1,

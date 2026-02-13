@@ -4,7 +4,7 @@
 cd "$(dirname "$0")/.."
 
 echo "🎵 Starting 6k Opus conversion..."
-python3 scripts/batch_convert_opus.py \
-    --source data/bible_assets/audio_full \
-    --output data/bible_assets/6k \
-    --mode 6k
+python3 scripts/convert_audio_opus_low.py \
+    --source data/hehemp3 \
+    --output data/opus_6k
+

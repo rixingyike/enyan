@@ -25,11 +25,12 @@ dependencies:
   dio: ^5.4.3+1
   background_downloader: ^1.2.4
   http: ^1.2.0
-  archive: ^3.4.0
+  archive: ^3.6.1
 
   # Audio
-  just_audio: ^0.9.40
-  audio_service: ^0.18.15
+  media_kit: ^1.2.6
+  media_kit_libs_video: ^1.0.7
+  file_picker: ^8.1.7
   
   # TTS
 
@@ -39,7 +40,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   sqflite_common_ffi: ^2.3.7+1
   path_provider: ^2.1.5
-  wav: ^1.5.0
   scrollable_positioned_list: ^0.3.8
   rust_lib_gracewords:
     path: rust_builder
@@ -62,10 +62,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/bible_chs.db
+    - assets/chs/bible_chs.db
+    - assets/chs/LxgwWenKai_chs.ttf
+    - assets/icons/app_icon.jpg
+    - assets/audio_timestamps.json
+    - assets/jinshimanong.png
 
-    - assets/audio/
-    - assets/data/bible_audio_urls.txt
-    - assets/bible_lexicon_chs.json
-    - assets/bible_lexicon_cht.json
+  fonts:
+    - family: LxgwWenKai
+      fonts:
+        - asset: assets/chs/LxgwWenKai_chs.ttf
 

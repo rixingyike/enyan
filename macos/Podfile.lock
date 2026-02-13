@@ -1,12 +1,8 @@
 PODS:
-  - audio_service (0.0.1):
-    - Flutter
-    - FlutterMacOS
-  - audio_session (0.0.1):
+  - file_picker (0.0.1):
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
-  - just_audio (0.0.1):
-    - Flutter
+  - media_kit_libs_macos_video (1.0.4):
     - FlutterMacOS
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -21,24 +17,21 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
-  - audio_service (from `Flutter/ephemeral/.symlinks/plugins/audio_service/darwin`)
-  - audio_session (from `Flutter/ephemeral/.symlinks/plugins/audio_session/macos`)
+  - file_picker (from `Flutter/ephemeral/.symlinks/plugins/file_picker/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
-  - just_audio (from `Flutter/ephemeral/.symlinks/plugins/just_audio/darwin`)
+  - media_kit_libs_macos_video (from `Flutter/ephemeral/.symlinks/plugins/media_kit_libs_macos_video/macos`)
   - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
   - rust_lib_gracewords (from `Flutter/ephemeral/.symlinks/plugins/rust_lib_gracewords/macos`)
   - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite_darwin (from `Flutter/ephemeral/.symlinks/plugins/sqflite_darwin/darwin`)
 
 EXTERNAL SOURCES:
-  audio_service:
-    :path: Flutter/ephemeral/.symlinks/plugins/audio_service/darwin
-  audio_session:
-    :path: Flutter/ephemeral/.symlinks/plugins/audio_session/macos
+  file_picker:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_picker/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
-  just_audio:
-    :path: Flutter/ephemeral/.symlinks/plugins/just_audio/darwin
+  media_kit_libs_macos_video:
+    :path: Flutter/ephemeral/.symlinks/plugins/media_kit_libs_macos_video/macos
   path_provider_foundation:
     :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
   rust_lib_gracewords:
@@ -49,15 +42,14 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/sqflite_darwin/darwin
 
 SPEC CHECKSUMS:
-  audio_service: cab6c1a0eaf01b5a35b567e11fa67d3cc1956910
-  audio_session: 728ae3823d914f809c485d390274861a24b0904e
+  file_picker: e716a70a9fe5fd9e09ebc922d7541464289443af
   FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
-  just_audio: a42c63806f16995daf5b219ae1d679deb76e6a79
+  media_kit_libs_macos_video: b3e2bbec2eef97c285f2b1baa7963c67c753fb82
   path_provider_foundation: 0b743cbb62d8e47eab856f09262bb8c1ddcfe6ba
   rust_lib_gracewords: 70dcedb19f52ec3e2286735d16a0f7a00be8b25b
   shared_preferences_foundation: 5086985c1d43c5ba4d5e69a4e8083a389e2909e6
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
 
-PODFILE CHECKSUM: 1e95c36afbfd1cb6423ceca4de7a8e1b256fb6ac
+PODFILE CHECKSUM: 3aec5c209707be70c3c0e36346483368fa4d9629
 
 COCOAPODS: 1.16.2

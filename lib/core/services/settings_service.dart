@@ -11,6 +11,7 @@ class SettingsService {
   static const String _keyLastChapterId = 'last_chapter_id';
   static const String _keyLastScrollPosition = 'last_scroll_position';
   static const String _keyIsSimplified = 'is_simplified';
+  static const String _keyRustVoiceId = 'rust_voice_id';
 
   final ValueNotifier<bool> isSimplified = ValueNotifier(true);
 
@@ -23,11 +24,14 @@ class SettingsService {
     isSimplified.value = val;
     // Audio Mode
     isHumanVoice.value = _prefs.getBool(_keyIsHumanVoice) ?? false;
+    voiceQuality.value = _prefs.getString(_keyVoiceQuality) ?? 'auto';
     // TTS Engine
     ttsEngine.value = _prefs.getString(_keyTtsEngine) ?? 'system';
     // TTS Server URL
     ttsServerUrl.value =
         _prefs.getString(_keyTtsServerUrl) ?? 'http://localhost:8080/api/tts';
+    // Rust Voice
+    rustVoiceId.value = _prefs.getString(_keyRustVoiceId);
 
     // Ensure DB is set correctly on init
     _dbHelper.switchDatabase(val);
@@ -48,6 +52,20 @@ class SettingsService {
     await _prefs.setBool(_keyIsHumanVoice, value);
   }
 
+  // Voice Quality: 'auto' | 'high' | 'basic'
+  static const String _keyVoiceQuality = 'voice_quality';
+  final ValueNotifier<String> voiceQuality = ValueNotifier('high');
+
+  Future<void> setVoiceQuality(String value) async {
+    voiceQuality.value = value;
+    await _prefs.setString(_keyVoiceQuality, value);
+    // Automatically enable human voice mode when a quality is selected
+    if (value == 'high' || value == 'basic') {
+      isHumanVoice.value = true;
+      await _prefs.setBool(_keyIsHumanVoice, true);
+    }
+  }
+
   // TTS Engine: 'system' | 'sherpa'
   static const String _keyTtsEngine = 'tts_engine';
   final ValueNotifier<String> ttsEngine = ValueNotifier('piper');
@@ -65,6 +83,18 @@ class SettingsService {
   Future<void> setTtsServerUrl(String value) async {
     ttsServerUrl.value = value;
     await _prefs.setString(_keyTtsServerUrl, value);
+  }
+
+  // Rust Voice Select
+  final ValueNotifier<String?> rustVoiceId = ValueNotifier(null);
+
+  Future<void> setRustVoiceId(String? value) async {
+    rustVoiceId.value = value;
+    if (value != null) {
+      await _prefs.setString(_keyRustVoiceId, value);
+    } else {
+      await _prefs.remove(_keyRustVoiceId);
+    }
   }
 
   // Piper Model Status

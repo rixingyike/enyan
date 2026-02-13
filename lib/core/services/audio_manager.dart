@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:gracewords/core/data/audio_repository.dart';
 import 'package:injectable/injectable.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:path_provider/path_provider.dart';
 
 enum AudioPlayerState { stopped, playing, paused, buffering, completed }
@@ -11,7 +11,7 @@ enum AudioPlayerState { stopped, playing, paused, buffering, completed }
 @lazySingleton
 class AudioManager {
   final AudioRepository _repository;
-  final AudioPlayer _player = AudioPlayer();
+  final Player _player = Player();
   final Dio _dio = Dio();
 
   // State Notifiers
@@ -24,32 +24,45 @@ class AudioManager {
   final ValueNotifier<Map<String, double>> downloadProgressNotifier =
       ValueNotifier({});
 
+  // Cache current playing media
+  int? _currentBookId;
+  int? _currentChapterId;
+
   AudioManager(this._repository) {
     _init();
   }
 
   void _init() {
-    _player.playerStateStream.listen((state) {
-      if (state.processingState == ProcessingState.completed) {
-        playerStateNotifier.value = AudioPlayerState.completed;
-      } else if (state.playing) {
+    _player.stream.playing.listen((playing) {
+      if (playing) {
         playerStateNotifier.value = AudioPlayerState.playing;
-      } else if (state.processingState == ProcessingState.buffering) {
-        playerStateNotifier.value = AudioPlayerState.buffering;
       } else {
-        playerStateNotifier.value =
-            state.processingState == ProcessingState.idle
-                ? AudioPlayerState.stopped
-                : AudioPlayerState.paused;
+        playerStateNotifier.value = AudioPlayerState.paused;
       }
     });
 
-    _player.positionStream.listen((pos) {
+    _player.stream.buffering.listen((buffering) {
+      if (buffering) {
+        playerStateNotifier.value = AudioPlayerState.buffering;
+      }
+    });
+
+    _player.stream.completed.listen((completed) {
+      if (completed) {
+        playerStateNotifier.value = AudioPlayerState.completed;
+      }
+    });
+
+    _player.stream.position.listen((pos) {
       positionNotifier.value = pos;
     });
 
-    _player.durationStream.listen((dur) {
-      if (dur != null) durationNotifier.value = dur;
+    _player.stream.duration.listen((dur) {
+      durationNotifier.value = dur;
+    });
+
+    _player.stream.playing.listen((playing) {
+      debugPrint("🎛️ [Audio] Playing: $playing");
     });
   }
 
@@ -75,11 +88,10 @@ class AudioManager {
     try {
       final dir = await getApplicationDocumentsDirectory();
       final savePath = '${dir.path}/audio/$bookId/$chapterId.mp3';
+      debugPrint("⬇️ [Audio] Starting download for $key to $savePath");
 
-      // Ensure directory exists
       await Directory('${dir.path}/audio/$bookId').create(recursive: true);
 
-      // Start download
       await _dio.download(
         url,
         savePath,
@@ -93,13 +105,12 @@ class AudioManager {
         },
       );
 
-      // Download complete
       final newMap = Map<String, double>.from(downloadProgressNotifier.value);
       newMap.remove(key);
       downloadProgressNotifier.value = newMap;
-      debugPrint("Download complete: $savePath");
+      debugPrint("✅ [Audio] Download complete: $savePath");
     } catch (e) {
-      debugPrint("Download error: $e");
+      debugPrint("❌ [Audio] Download error for $key: $e");
       final newMap = Map<String, double>.from(downloadProgressNotifier.value);
       newMap.remove(key);
       downloadProgressNotifier.value = newMap;
@@ -109,21 +120,43 @@ class AudioManager {
   Future<void> playChapter(int bookId, int chapterId,
       {Duration? startPosition}) async {
     try {
-      final file = await _repository.getLocalAudioFile(bookId, chapterId);
-      if (!file.existsSync()) {
-        debugPrint("File not found: ${file.path}");
-        // Optionally try to stream or auto-download?
-        // For now, assume logic checks existence before calling play
+      // 1. If already playing the same chapter, just seek
+      if (_currentBookId == bookId && _currentChapterId == chapterId) {
+        debugPrint("🎵 [Audio] Already playing $bookId:$chapterId. Seeking to $startPosition...");
+        if (startPosition != null) {
+          await _player.play(); // Ensure it's not paused so seek works reliably
+          await _player.seek(startPosition);
+        } else {
+          await _player.play();
+        }
         return;
       }
 
-      await _player.setFilePath(file.path);
+      // 2. Otherwise load new file
+      final file = await _repository.getLocalAudioFile(bookId, chapterId);
+      final fileAbsPath = file.absolute.path;
+      
+      debugPrint("🎵 [Audio] Opening: Book $bookId, Chap $chapterId");
+      if (!file.existsSync()) {
+        debugPrint("❌ [Audio] ERROR: File NOT found at $fileAbsPath");
+        return;
+      }
+
+      await _player.open(Media(fileAbsPath), play: false);
+      _currentBookId = bookId;
+      _currentChapterId = chapterId;
+      
+      // Wait a tiny bit for the player to be ready for seek
       if (startPosition != null) {
+        debugPrint("🎯 [Audio] New file, delay-seeking to: ${startPosition.inSeconds}s");
+        await Future.delayed(const Duration(milliseconds: 100));
         await _player.seek(startPosition);
       }
+      
       await _player.play();
+      debugPrint("▶️ [Audio] Playback started");
     } catch (e) {
-      debugPrint("Play error: $e");
+      debugPrint("❌ [Audio] Play error: $e");
     }
   }
 
@@ -137,6 +170,8 @@ class AudioManager {
 
   Future<void> stop() async {
     await _player.stop();
+    _currentBookId = null;
+    _currentChapterId = null;
     playerStateNotifier.value = AudioPlayerState.stopped;
   }
 
@@ -145,7 +180,7 @@ class AudioManager {
   }
 
   Future<void> setSpeed(double speed) async {
-    await _player.setSpeed(speed);
+    await _player.setRate(speed);
   }
 
   void dispose() {

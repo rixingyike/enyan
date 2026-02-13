@@ -9,7 +9,9 @@ import 'package:gracewords/features/bible_reading/presentation/bloc/bible_event.
 import 'package:gracewords/features/bible_reading/presentation/bloc/bible_state.dart';
 import 'package:gracewords/core/constants/bible_constants.dart';
 import 'package:gracewords/core/services/settings_service.dart';
+import 'package:gracewords/core/services/weight_service.dart';
 import 'package:gracewords/features/bible_reading/presentation/widgets/tts_control_panel.dart';
+import 'package:gracewords/core/services/font_service.dart';
 
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -41,9 +43,7 @@ class _ChapterPageState extends State<ChapterPage> {
       ItemPositionsListener.create();
 
   // Mapping
-  final List<Map<String, dynamic>> _verseMappings = [];
   int _currentHighlightIndex = -1;
-  int _ttsHeadOffset = 0;
 
   @override
   void initState() {
@@ -52,57 +52,38 @@ class _ChapterPageState extends State<ChapterPage> {
 
     // TTS Listeners
     _ttsService.currentPositionNotifier.addListener(_onTtsProgress);
-    _ttsService.stateNotifier.addListener(_onTtsStateChange);
+    _ttsService.stateNotifier.addListener(_onTtsStateChangeManual);
 
     // Audio Manager Listeners
     _audioManager.playerStateNotifier.addListener(_onAudioStateChange);
+    _audioManager.positionNotifier.addListener(_onAudioPositionChanged);
+  }
+
+  void _onTtsStateChangeManual() {
+    final state = _ttsService.stateNotifier.value;
+    if (state == TtsState.paused || state == TtsState.stopped) {
+      _isTtsPlaying = false;
+    }
   }
 
   @override
   void dispose() {
     _ttsService.currentPositionNotifier.removeListener(_onTtsProgress);
-    _ttsService.stateNotifier.removeListener(_onTtsStateChange);
+    _ttsService.stateNotifier.removeListener(_onTtsStateChangeManual);
     _audioManager.playerStateNotifier.removeListener(_onAudioStateChange);
+    _audioManager.positionNotifier.removeListener(_onAudioPositionChanged);
     super.dispose();
   }
 
+  bool _isTtsPlaying = false;
+
   void _onTtsProgress() {
-    if (_settings.isHumanVoice.value)
-      return; // Ignore TTS progress if in Human mode
-
-    final currentPos = _ttsService.currentPositionNotifier.value;
-    final globalPos = currentPos + _ttsHeadOffset;
-
-    // Find verse
-    int foundIndex = -1;
-    for (int i = 0; i < _verseMappings.length; i++) {
-      final map = _verseMappings[i];
-      if (globalPos >= map['start'] && globalPos < map['end']) {
-        foundIndex = map['index'];
-        break;
-      }
-    }
-
-    if (foundIndex != -1 && foundIndex != _currentHighlightIndex) {
-      setState(() {
-        _currentHighlightIndex = foundIndex;
-      });
-      _scrollToIndex(foundIndex);
-    }
+    // Deprecated
   }
 
-  void _onTtsStateChange() {
-    if (_settings.isHumanVoice.value) return;
-
-    final state = _ttsService.stateNotifier.value;
-    if (state == TtsState.stopped) {
-      setState(() {
-        _currentHighlightIndex = -1;
-      });
-    } else if (state == TtsState.completed) {
-      _navigateToChapter(widget.initialChapter + 1, autoPlay: true);
-    }
-  }
+  List<dynamic> _verses = []; // Cached verses
+  List<List<double>> _activeChapterTimestamps = []; // Precise timestamps
+  bool _isSeeking = false; // Flag to ignore position updates during seek
 
   void _onAudioStateChange() {
     if (!_settings.isHumanVoice.value) return;
@@ -110,8 +91,42 @@ class _ChapterPageState extends State<ChapterPage> {
     final state = _audioManager.playerStateNotifier.value;
     if (state == AudioPlayerState.completed) {
       _navigateToChapter(widget.initialChapter + 1, autoPlay: true);
-    } else if (state == AudioPlayerState.stopped) {
-      // Maybe clear highlight if we supported it
+    }
+  }
+
+  void _onAudioPositionChanged() {
+    if (!_settings.isHumanVoice.value || _isSeeking) return;
+    
+    final current = _audioManager.positionNotifier.value;
+    final total = _audioManager.durationNotifier.value;
+    if (total.inMilliseconds == 0) return;
+
+    int index = -1;
+
+    // Precise Timestamps Only
+    if (_activeChapterTimestamps.isNotEmpty) {
+        final currentSec = current.inMilliseconds / 1000.0;
+        for (int i = 0; i < _activeChapterTimestamps.length; i++) {
+            final start = _activeChapterTimestamps[i][0];
+            final end = _activeChapterTimestamps[i][1];
+            
+            // Skip dummy [0,0] at the start if it exists
+            if (i == 0 && start == 0 && end == 0) continue;
+
+            if (currentSec >= start && currentSec <= end) {
+                // If timestamps have a dummy at 0, then i=1 corresponds to verses[0] (Verse 1)
+                // So index = i - 1
+                index = (_activeChapterTimestamps[0][0] == 0 && _activeChapterTimestamps[0][1] == 0) ? i - 1 : i;
+                break;
+            }
+        }
+    }
+
+    if (index != -1 && index != _currentHighlightIndex) {
+        setState(() {
+            _currentHighlightIndex = index;
+        });
+        _scrollToIndex(index);
     }
   }
 
@@ -126,30 +141,53 @@ class _ChapterPageState extends State<ChapterPage> {
     }
   }
 
-  void _saveProgress() {
-    getIt<SettingsService>()
-        .saveReadingProgress(widget.book.id, widget.initialChapter, 0.0);
-  }
+  Future<void> _playFromVerse(int index, List<dynamic> verses) async {
+    debugPrint("👆 [ChapterPage] Jumping to verse index: $index");
+    _saveProgress();
+    
+    setState(() {
+      _showTtsPanel = true;
+      _currentHighlightIndex = index;
+    });
 
-  // Prepares Mappings. Returns full text buffer.
-  String _prepareMappings(List<dynamic> verses) {
-    StringBuffer buffer = StringBuffer();
-    _verseMappings.clear();
-
-    int currentOffset = 0;
-    for (int i = 0; i < verses.length; i++) {
-      final content = verses[i].content;
-      final textPart = "$content\n";
-      buffer.write(textPart);
-
-      _verseMappings.add({
-        'index': i,
-        'start': currentOffset,
-        'end': currentOffset + textPart.length,
-      });
-      currentOffset += textPart.length;
+    if (_settings.isHumanVoice.value) {
+      final isDownloaded = await _audioManager.isChapterDownloaded(
+          widget.book.id, widget.initialChapter);
+      
+      if (isDownloaded) {
+        // Precise Seek if we have timestamps
+        if (_activeChapterTimestamps.isNotEmpty) {
+            // Adjust index for dummy [0,0] if it exists
+            final hasDummy = _activeChapterTimestamps[0][0] == 0 && _activeChapterTimestamps[0][1] == 0;
+            final actualTsIndex = hasDummy ? index + 1 : index;
+            
+            if (actualTsIndex < _activeChapterTimestamps.length) {
+                final startTime = _activeChapterTimestamps[actualTsIndex][0];
+                final seekPos = Duration(milliseconds: (startTime * 1000).round());
+                debugPrint("🎯 [ChapterPage] Precise seek to ${startTime}s");
+                
+                setState(() => _isSeeking = true);
+                await _audioManager.playChapter(widget.book.id, widget.initialChapter, startPosition: seekPos);
+                // Wait briefly for the audio to move before re-enabling sync highlight
+                await Future.delayed(const Duration(milliseconds: 300));
+                if (mounted) setState(() => _isSeeking = false);
+                return;
+            }
+        }
+        
+        // Fallback: Play from start if no timestamps or index out of range
+        debugPrint("▶️ [ChapterPage] No timestamps or index out of range, playing from start");
+        await _audioManager.playChapter(widget.book.id, widget.initialChapter);
+      } else {
+        // Option 1: Trigger download (or show toast)
+        _audioManager.downloadChapter(widget.book.id, widget.initialChapter);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('正在下载语音包...')),
+        );
+      }
+    } else {
+      _startTtsCoordinator(index, verses);
     }
-    return buffer.toString();
   }
 
   void _toggleTts(List<dynamic> verses) async {
@@ -158,58 +196,138 @@ class _ChapterPageState extends State<ChapterPage> {
     });
 
     if (_settings.isHumanVoice.value) {
-      // 真人朗读模式
       final isDownloaded = await _audioManager.isChapterDownloaded(
           widget.book.id, widget.initialChapter);
       if (isDownloaded) {
         _audioManager.playChapter(widget.book.id, widget.initialChapter);
+        if (_currentHighlightIndex == -1) {
+          setState(() => _currentHighlightIndex = 0);
+        }
+      } else {
+        _audioManager.downloadChapter(widget.book.id, widget.initialChapter);
       }
     } else {
-      // TTS 模式 (使用系统 TtsService)
-      final fullText = _prepareMappings(verses);
-      _ttsHeadOffset = 0;
-      _ttsService.speak(fullText);
+      _startTtsCoordinator(0, verses);
     }
   }
 
-  void _playFromVerse(int index, List<dynamic> verses) {
-    // 1. Prepare mappings
-    final fullText = _prepareMappings(verses);
+  Future<void> _startTtsCoordinator(int startIndex, List<dynamic> verses) async {
+    if (_isTtsPlaying) {
+      await _ttsService.stop();
+      _isTtsPlaying = false;
+      await Future.delayed(const Duration(milliseconds: 200));
+    }
 
-    // 2. Calculate start offset
-    if (index >= _verseMappings.length) return;
+    _isTtsPlaying = true;
+    _ttsService.stateNotifier.value = TtsState.playing;
 
-    int startOffset = _verseMappings[index]['start'];
+    for (int i = startIndex; i < verses.length; i++) {
+      if (!_isTtsPlaying || !_showTtsPanel) break;
 
-    // 3. Extract text
-    String textToPlay = fullText.substring(startOffset);
+      setState(() {
+        _currentHighlightIndex = i;
+      });
+      _scrollToIndex(i);
 
-    // 4. Update head offset
-    _ttsHeadOffset = startOffset;
+      final verse = verses[i];
+      final text = verse.content;
+      
+      await _ttsService.speak(text);
+      await Future.delayed(const Duration(milliseconds: 100));
 
-    // 5. Speak
-    setState(() {
-      _showTtsPanel = true;
-      _currentHighlightIndex = index;
-    });
+      bool started = false;
+      for (int retry = 0; retry < 60; retry++) {
+        if (await _ttsService.isSpeaking()) {
+          started = true;
+          break;
+        }
+        await Future.delayed(const Duration(milliseconds: 50));
+        if (!_isTtsPlaying) return;
+      }
+      
+      if (!started) continue;
 
-    _ttsService.stop();
-    _ttsService.speak(textToPlay);
+      int idleCount = 0;
+      while (idleCount < 2) {
+        if (!await _ttsService.isSpeaking()) {
+          idleCount++;
+        } else {
+          idleCount = 0;
+        }
+        await Future.delayed(const Duration(milliseconds: 50));
+        if (!_isTtsPlaying) return;
+      }
+      
+      await Future.delayed(const Duration(milliseconds: 50));
+    }
+
+    if (_isTtsPlaying && _currentHighlightIndex == verses.length - 1) {
+      _isTtsPlaying = false;
+      _ttsService.stateNotifier.value = TtsState.completed;
+      _navigateToChapter(widget.initialChapter + 1, autoPlay: true);
+    }
+    
+    _isTtsPlaying = false;
+  }
+
+  void _saveProgress() {
+    getIt<SettingsService>()
+        .saveReadingProgress(widget.book.id, widget.initialChapter, 0.0);
   }
 
   void _navigateToChapter(int newChapter, {bool autoPlay = false}) {
-    if (newChapter < 1) return;
-    final total = BibleConstants.bookChapterCounts[widget.book.id] ?? 999;
-    if (newChapter > total) {
+    final currentTotal = BibleConstants.bookChapterCounts[widget.book.id] ?? 999;
+    final isSimplified = _settings.currentIsSimplified;
+
+    // Handle Backward Book Navigation
+    if (newChapter < 1) {
+      final prevBookId = widget.book.id - 1;
+      if (prevBookId < 1) return; // Already first book
+
+      final prevBookMaxChapter = BibleConstants.bookChapterCounts[prevBookId] ?? 1;
+      final prevBook = Book(
+        id: prevBookId,
+        name: BibleConstants.getFullName(prevBookId, isSimplified: isSimplified),
+        shortName: BibleConstants.getShortName(prevBookId, isSimplified: isSimplified),
+        chapterCount: prevBookMaxChapter,
+        testament: prevBookId >= 40 ? 'NT' : 'OT',
+      );
+
+      _performNavigation(prevBook, prevBookMaxChapter, autoPlay);
       return;
     }
+    
+    // Handle Forward Book Navigation
+    if (newChapter > currentTotal) {
+      final nextBookId = widget.book.id + 1;
+      if (nextBookId > 66) return; // Already last book
+      
+      final nextBook = Book(
+        id: nextBookId,
+        name: BibleConstants.getFullName(nextBookId, isSimplified: isSimplified),
+        shortName: BibleConstants.getShortName(nextBookId, isSimplified: isSimplified),
+        chapterCount: BibleConstants.bookChapterCounts[nextBookId] ?? 1,
+        testament: nextBookId >= 40 ? 'NT' : 'OT',
+      );
+
+      _performNavigation(nextBook, 1, autoPlay);
+      return;
+    }
+
+    // Standard Chapter Navigation within same book
+    _performNavigation(widget.book, newChapter, autoPlay);
+  }
+
+  void _performNavigation(Book book, int chapter, bool autoPlay) {
+    _ttsService.stop();
+    _audioManager.stop();
 
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (_) => ChapterPage(
-          book: widget.book,
-          initialChapter: newChapter,
+          book: book,
+          initialChapter: chapter,
           autoPlay: autoPlay,
         ),
       ),
@@ -223,7 +341,6 @@ class _ChapterPageState extends State<ChapterPage> {
         ..add(LoadChapterEvent(
             bookId: widget.book.id, chapter: widget.initialChapter)),
       child: BlocConsumer<BibleBloc, BibleState>(
-        // Use Consumer to handle AutoPlay logic
         listener: (context, state) {
           if (state is ChapterLoaded && widget.autoPlay && !_showTtsPanel) {
             _toggleTts(state.verses);
@@ -233,11 +350,26 @@ class _ChapterPageState extends State<ChapterPage> {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                  '${getIt<SettingsService>().currentIsSimplified ? BibleConstants.getSimplifiedFullName(widget.book.id) : BibleConstants.getFullName(widget.book.id, isSimplified: false)} 第 ${widget.initialChapter} 章'),
+                  '${getIt<SettingsService>().currentIsSimplified ? BibleConstants.getSimplifiedFullName(widget.book.id) : BibleConstants.getFullName(widget.book.id, isSimplified: false)} 第 ${widget.initialChapter} 章',
+                  style: TextStyle(fontFamily: _settings.currentIsSimplified ? 'LxgwWenKai' : 'LxgwWenkaiTC')),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.chevron_left, size: 32),
+                  onPressed: () => _navigateToChapter(widget.initialChapter - 1),
+                  tooltip: '上一章',
+                ),
+                IconButton(
+                  icon: const Icon(Icons.chevron_right, size: 32),
+                  onPressed: () => _navigateToChapter(widget.initialChapter + 1),
+                  tooltip: '下一章',
+                ),
+                const SizedBox(width: 8),
+              ],
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   _ttsService.stop();
+                  _audioManager.stop();
                   Navigator.pop(context);
                 },
               ),
@@ -248,11 +380,8 @@ class _ChapterPageState extends State<ChapterPage> {
                   return FloatingActionButton.large(
                     onPressed: () {
                       if (_settings.isHumanVoice.value) {
-                        // Human Voice Logic
-                        final audioState =
-                            _audioManager.playerStateNotifier.value;
-                        if (audioState == AudioPlayerState.playing ||
-                            audioState == AudioPlayerState.buffering) {
+                        final audioState = _audioManager.playerStateNotifier.value;
+                        if (audioState == AudioPlayerState.playing || audioState == AudioPlayerState.buffering) {
                           setState(() => _showTtsPanel = true);
                         } else if (audioState == AudioPlayerState.paused) {
                           setState(() => _showTtsPanel = true);
@@ -261,10 +390,8 @@ class _ChapterPageState extends State<ChapterPage> {
                           _toggleTts(state.verses);
                         }
                       } else {
-                        // TTS Logic (System Only)
                         final ttsState = _ttsService.stateNotifier.value;
-                        if (ttsState == TtsState.playing ||
-                            ttsState == TtsState.continued) {
+                        if (ttsState == TtsState.playing || ttsState == TtsState.continued) {
                           setState(() => _showTtsPanel = true);
                         } else if (ttsState == TtsState.paused) {
                           setState(() => _showTtsPanel = true);
@@ -275,8 +402,7 @@ class _ChapterPageState extends State<ChapterPage> {
                       }
                     },
                     backgroundColor: Colors.brown,
-                    child: const Icon(Icons.play_arrow,
-                        size: 48, color: Colors.white),
+                    child: const Icon(Icons.play_arrow, size: 48, color: Colors.white),
                   );
                 }
                 return const SizedBox();
@@ -290,101 +416,79 @@ class _ChapterPageState extends State<ChapterPage> {
                       if (state is BibleLoading) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (state is ChapterLoaded) {
+                         if (_verses != state.verses) {
+                              _verses = state.verses;
+                              _activeChapterTimestamps = getIt<WeightService>().getChapterTimestamps(
+                                widget.book.id, 
+                                widget.initialChapter
+                              );
+                         }
                         return ScrollablePositionedList.builder(
                           itemCount: state.verses.length + 1,
                           itemScrollController: _itemScrollController,
                           itemPositionsListener: _itemPositionsListener,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 16),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           itemBuilder: (context, index) {
                             if (index == state.verses.length) {
-                              return Column(
+                              return const Column(
                                 children: [
-                                  const SizedBox(height: 48),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      if (widget.initialChapter > 1)
-                                        ElevatedButton.icon(
-                                          style: ElevatedButton.styleFrom(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 24, vertical: 16),
-                                            textStyle:
-                                                const TextStyle(fontSize: 20),
-                                          ),
-                                          onPressed: () => _navigateToChapter(
-                                              widget.initialChapter - 1),
-                                          icon:
-                                              const Icon(Icons.arrow_back_ios),
-                                          label: const Text('上一章'),
-                                        ),
-                                      ElevatedButton.icon(
-                                        style: ElevatedButton.styleFrom(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 24, vertical: 16),
-                                          textStyle:
-                                              const TextStyle(fontSize: 20),
-                                        ),
-                                        onPressed: () => _navigateToChapter(
-                                            widget.initialChapter + 1),
-                                        icon:
-                                            const Icon(Icons.arrow_forward_ios),
-                                        label: const Text('下一章'),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 120),
+                                  SizedBox(height: 160),
+                                  Center(child: Text('--- 本章结束 ---', style: TextStyle(color: Colors.grey, fontSize: 16))),
+                                  SizedBox(height: 80),
                                 ],
                               );
                             }
 
                             final verse = state.verses[index];
-                            final isHighlighted =
-                                index == _currentHighlightIndex;
+                            final isHighlighted = index == _currentHighlightIndex;
+                            final isSimplified = _settings.currentIsSimplified;
+                            
+                            // Determine font family
+                            String fontFamily = isSimplified ? 'LxgwWenKai' : 'LxgwWenkaiTC';
+                            // If traditional and not loaded, fallback or handle
+                            if (!isSimplified && !getIt<FontService>().isLoaded('LxgwWenkaiTC')) {
+                                // You might want to fallback to system font or LxgwWenKai 
+                                // if it has some traditional glyphs, but better use default.
+                                // Let's keep the requested family, Flutter will fallback to system 
+                                // if the family isn't found/loaded.
+                            }
 
                             return GestureDetector(
-                              onDoubleTap: () =>
-                                  _playFromVerse(index, state.verses),
+                              onDoubleTap: () => _playFromVerse(index, state.verses),
+                              onTap: () {
+                                if (_showTtsPanel) {
+                                  _playFromVerse(index, state.verses);
+                                }
+                              },
                               child: Container(
-                                margin: const EdgeInsets.only(bottom: 24),
-                                padding: const EdgeInsets.all(12),
+                                width: double.infinity,
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                                 decoration: isHighlighted
                                     ? BoxDecoration(
-                                        color: const Color(0xFFFFF8E1)
-                                            .withOpacity(0.8),
-                                        border: Border.all(
-                                            color:
-                                                Colors.brown.withOpacity(0.3)),
-                                        borderRadius: BorderRadius.circular(12),
-                                        boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.brown.withOpacity(0.1),
-                                              blurRadius: 10,
-                                              offset: const Offset(0, 4),
-                                            )
-                                          ])
+                                        color: Colors.brown.withOpacity(0.12),
+                                        border: const Border(
+                                          top: BorderSide(color: Colors.brown, width: 2),
+                                          bottom: BorderSide(color: Colors.brown, width: 2),
+                                        ),
+                                      )
                                     : null,
                                 child: RichText(
                                   text: TextSpan(
                                     style: TextStyle(
-                                      color: isHighlighted
-                                          ? Colors.brown.shade900
-                                          : const Color(0xFF212121),
+                                      color: isHighlighted ? Colors.brown.shade900 : const Color(0xFF212121),
                                       fontSize: 36,
                                       height: 1.6,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: isHighlighted ? FontWeight.bold : FontWeight.w500,
+                                      fontFamily: fontFamily,
                                     ),
                                     children: [
                                       TextSpan(
                                         text: '${verse.verseNumber} ',
                                         style: TextStyle(
-                                          fontSize: 22,
-                                          color: isHighlighted
-                                              ? Colors.brown
-                                              : Colors.brown.withOpacity(0.7),
+                                          fontSize: 24,
+                                          color: isHighlighted ? Colors.brown.shade700 : Colors.brown.withOpacity(0.7),
                                           fontWeight: FontWeight.bold,
+                                          fontFamily: fontFamily,
                                         ),
                                       ),
                                       TextSpan(text: verse.content),
@@ -410,9 +514,7 @@ class _ChapterPageState extends State<ChapterPage> {
                       setState(() => _showTtsPanel = false);
                     },
                     onPlay: () {
-                      final startIndex = _currentHighlightIndex >= 0
-                          ? _currentHighlightIndex
-                          : 0;
+                      final startIndex = _currentHighlightIndex >= 0 ? _currentHighlightIndex : 0;
                       _playFromVerse(startIndex, state.verses);
                     },
                     currentChapter: widget.initialChapter,
@@ -425,14 +527,12 @@ class _ChapterPageState extends State<ChapterPage> {
                     onNextChapter: () {
                       _ttsService.stop();
                       _audioManager.stop();
-                      _navigateToChapter(widget.initialChapter + 1,
-                          autoPlay: true);
+                      _navigateToChapter(widget.initialChapter + 1, autoPlay: true);
                     },
                     onPreviousChapter: () {
                       _ttsService.stop();
                       _audioManager.stop();
-                      _navigateToChapter(widget.initialChapter - 1,
-                          autoPlay: true);
+                      _navigateToChapter(widget.initialChapter - 1, autoPlay: true);
                     },
                   ),
               ],

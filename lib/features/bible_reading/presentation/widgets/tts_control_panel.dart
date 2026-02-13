@@ -51,7 +51,7 @@ class TtsControlPanel extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFFFF3E0),
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.zero,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
@@ -99,32 +99,6 @@ class TtsControlPanel extends StatelessWidget {
               ],
             ),
 
-            // Audio Source Display
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ValueListenableBuilder<bool>(
-                valueListenable: settings.isHumanVoice,
-                builder: (context, isHuman, _) {
-                  return Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.brown.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      isHuman ? "当前：真人朗读" : "当前：机械朗读",
-                      style: const TextStyle(
-                        color: Colors.brown,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-
             const SizedBox(height: 16),
 
             // Verse Progress Slider
@@ -138,11 +112,13 @@ class TtsControlPanel extends StatelessWidget {
                       children: [
                         Text('第1节',
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.brown.withOpacity(0.7))),
                         Text('第$totalVerses节',
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.brown.withOpacity(0.7))),
                       ],
                     ),
@@ -153,8 +129,11 @@ class TtsControlPanel extends StatelessWidget {
                         thumbColor: Colors.brown,
                         overlayColor: Colors.brown.withOpacity(0.2),
                         trackHeight: 4,
-                        thumbShape:
-                            const RoundSliderThumbShape(enabledThumbRadius: 8),
+                        thumbShape: _TextSliderThumbShape(
+                          currentVerse: currentVerse,
+                          enabledThumbRadius: 18,
+                        ),
+                        showValueIndicator: ShowValueIndicator.never,
                       ),
                       child: Slider(
                         min: 1,
@@ -163,7 +142,6 @@ class TtsControlPanel extends StatelessWidget {
                             .toDouble()
                             .clamp(1, totalVerses.toDouble()),
                         divisions: totalVerses > 1 ? totalVerses - 1 : 1,
-                        label: '第$currentVerse节',
                         onChanged: (value) {
                           onVerseSeek?.call(value.round());
                         },
@@ -173,21 +151,169 @@ class TtsControlPanel extends StatelessWidget {
                 ),
               ),
 
-            const SizedBox(height: 8),
+            const SizedBox(height: 16),
 
-            // Main Controls Area
+            // Unified Main Controls Area
             ValueListenableBuilder<bool>(
               valueListenable: settings.isHumanVoice,
               builder: (context, isHuman, _) {
                 if (isHuman) {
-                  return _buildHumanVoiceControls(audioManager);
+                  return FutureBuilder<bool>(
+                    future: audioManager.isChapterDownloaded(bookId, currentChapter),
+                    builder: (context, snapshot) {
+                      final isDownloaded = snapshot.data ?? false;
+                      final downloadKey = "${bookId}_$currentChapter";
+
+                      return ValueListenableBuilder<Map<String, double>>(
+                        valueListenable: audioManager.downloadProgressNotifier,
+                        builder: (context, progressMap, _) {
+                          final isDownloading = progressMap.containsKey(downloadKey);
+                          final progress = progressMap[downloadKey] ?? 0.0;
+
+                          if (isDownloading) {
+                             return _buildUnifiedPlayerControls(
+                              isPlaying: false,
+                              isLoading: true,
+                              progress: progress,
+                              onPlayPause: () {},
+                              onPrev: onPreviousChapter,
+                              onNext: onNextChapter,
+                            );
+                          }
+
+                          if (!isDownloaded) {
+                            return _buildUnifiedPlayerControls(
+                              isPlaying: false,
+                              // Just show play button, handle download inside click
+                              onPlayPause: () => audioManager.downloadChapter(bookId, currentChapter),
+                              onPrev: onPreviousChapter,
+                              onNext: onNextChapter,
+                            );
+                          }
+
+                          return ValueListenableBuilder<AudioPlayerState>(
+                            valueListenable: audioManager.playerStateNotifier,
+                            builder: (context, state, _) {
+                              final isPlaying = state == AudioPlayerState.playing || state == AudioPlayerState.buffering;
+                              return _buildUnifiedPlayerControls(
+                                isPlaying: isPlaying,
+                                onPlayPause: () {
+                                  if (isPlaying) {
+                                    audioManager.pause();
+                                  } else {
+                                    if (state == AudioPlayerState.paused) {
+                                      audioManager.resume();
+                                    } else {
+                                      audioManager.playChapter(bookId, currentChapter);
+                                    }
+                                  }
+                                },
+                                onPrev: onPreviousChapter,
+                                onNext: onNextChapter,
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  );
                 } else {
-                  return _buildTtsControls(ttsService, settings);
+                  // TTS Mode
+                  return ValueListenableBuilder<TtsState>(
+                    valueListenable: ttsService.stateNotifier,
+                    builder: (context, state, _) {
+                      final isPlaying = state == TtsState.playing || state == TtsState.continued;
+                      return _buildUnifiedPlayerControls(
+                        isPlaying: isPlaying,
+                        onPlayPause: () {
+                          if (isPlaying) {
+                            ttsService.pause();
+                          } else {
+                            // Always use onPlay (restart/continue from current verse) 
+                            // as true resume is not supported by Rust engine yet
+                            onPlay?.call();
+                          }
+                        },
+                        onPrev: onPreviousChapter,
+                        onNext: onNextChapter,
+                      );
+                    },
+                  );
                 }
               },
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildUnifiedPlayerControls({
+    required bool isPlaying,
+    required VoidCallback onPlayPause,
+    VoidCallback? onPrev,
+    VoidCallback? onNext,
+    bool isLoading = false,
+    double progress = 0.0,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildControlBtn(
+              icon: Icons.skip_previous, label: "上一章", onTap: onPrev, size: 36),
+          
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  if (isLoading)
+                    SizedBox(
+                      width: 96,
+                      height: 96,
+                      child: CircularProgressIndicator(
+                        value: progress,
+                        strokeWidth: 4,
+                        color: Colors.brown,
+                      ),
+                    ),
+                  Container(
+                    width: 88,
+                    height: 88,
+                    decoration: const BoxDecoration(
+                        color: Colors.brown,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8,
+                              offset: Offset(0, 4))
+                        ]),
+                    child: IconButton(
+                      icon: Icon(
+                        isPlaying ? Icons.pause : Icons.play_arrow,
+                        size: 48,
+                        color: Colors.white,
+                      ),
+                      onPressed: onPlayPause,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text(
+                isLoading ? "下载 ${(progress * 100).toInt()}%" : (isPlaying ? "暂停" : "播放"),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.brown)
+              ),
+            ],
+          ),
+          
+          _buildControlBtn(
+              icon: Icons.skip_next, label: "下一章", onTap: onNext, size: 36),
+        ],
       ),
     );
   }
@@ -204,194 +330,103 @@ class TtsControlPanel extends StatelessWidget {
           icon: Icon(icon, size: size, color: Colors.brown),
           onPressed: onTap,
         ),
-        Text(label, style: const TextStyle(fontSize: 12, color: Colors.brown)),
+        Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.brown)),
       ],
     );
   }
+}
 
-  Widget _buildHumanVoiceControls(AudioManager audioManager) {
-    return FutureBuilder<bool>(
-      future: audioManager.isChapterDownloaded(bookId, currentChapter),
-      builder: (context, snapshot) {
-        final downloadKey = "${bookId}_$currentChapter";
+class _TextSliderThumbShape extends SliderComponentShape {
+  final double enabledThumbRadius;
+  final int currentVerse;
 
-        return ValueListenableBuilder<Map<String, double>>(
-          valueListenable: audioManager.downloadProgressNotifier,
-          builder: (context, progressMap, _) {
-            final isDownloading = progressMap.containsKey(downloadKey);
-            final progress = progressMap[downloadKey] ?? 0.0;
-            final isDownloaded = snapshot.data ?? false;
+  _TextSliderThumbShape({
+    required this.enabledThumbRadius,
+    required this.currentVerse,
+  });
 
-            if (isDownloading) {
-              return Column(
-                children: [
-                  LinearProgressIndicator(value: progress, color: Colors.brown),
-                  const SizedBox(height: 8),
-                  Text("下载中... ${(progress * 100).toStringAsFixed(0)}%",
-                      style: const TextStyle(color: Colors.brown)),
-                ],
-              );
-            }
-
-            if (!isDownloaded) {
-              return Column(
-                children: [
-                  const Text("本章音频未下载", style: TextStyle(color: Colors.brown)),
-                  const SizedBox(height: 8),
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.download),
-                    label: const Text("下载音频"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown,
-                      foregroundColor: Colors.white,
-                    ),
-                    onPressed: () {
-                      audioManager.downloadChapter(bookId, currentChapter);
-                    },
-                  ),
-                ],
-              );
-            }
-
-            // If downloaded, show Playback Controls
-            return _buildPlayerControls(
-              stateNotifier: audioManager.playerStateNotifier,
-              isPlayingSelector: (state) {
-                return state == AudioPlayerState.playing ||
-                    state == AudioPlayerState.buffering;
-              },
-              onPlayPause: (isPlaying) {
-                if (isPlaying) {
-                  audioManager.pause();
-                } else {
-                  if (audioManager.playerStateNotifier.value ==
-                      AudioPlayerState.paused) {
-                    audioManager.resume();
-                  } else {
-                    audioManager.playChapter(bookId, currentChapter);
-                  }
-                }
-              },
-              onPrev: onPreviousChapter,
-              onNext: onNextChapter,
-            );
-          },
-        );
-      },
-    );
+  @override
+  Size getPreferredSize(bool isEnabled, bool isDiscrete) {
+    return Size.fromRadius(enabledThumbRadius);
   }
 
-  Widget _buildTtsControls(TtsService ttsService, SettingsService settings) {
-    return ValueListenableBuilder<String>(
-      valueListenable: settings.ttsEngine,
-      builder: (context, engine, _) {
-        if (engine == 'piper') {
-          // Piper Controls (Placeholder for now)
-          return Center(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Piper TTS 运行中",
-                  style: TextStyle(color: Colors.brown)),
-              const SizedBox(width: 16),
-              IconButton(
-                icon: const Icon(Icons.stop_circle,
-                    size: 40, color: Colors.brown),
-                onPressed: () {
-                  onPlay
-                      ?.call(); // Toggle or stop? TtsControlPanel expect stop on close.
-                  // Actually onClose stops it. onPlay calls _playFromVerse.
-                  // We need a way to PAUSE piper. But PiperTtsService is basic.
-                  // For now allow Close.
-                },
-              )
-            ],
-          ));
-        } else {
-          return _buildSystemTtsControls(ttsService);
-        }
-      },
-    );
-  }
-
-  Widget _buildSystemTtsControls(TtsService ttsService) {
-    return _buildPlayerControls(
-      stateNotifier: ttsService.stateNotifier,
-      isPlayingSelector: (state) {
-        return state == TtsState.playing || state == TtsState.continued;
-      },
-      onPlayPause: (isPlaying) {
-        final state = ttsService.stateNotifier.value;
-        if (isPlaying) {
-          ttsService.pause();
-        } else {
-          if (state == TtsState.paused) {
-            ttsService.resume();
-          } else {
-            onPlay?.call();
-          }
-        }
-      },
-      onPrev: onPreviousChapter,
-      onNext: onNextChapter,
-    );
-  }
-
-  Widget _buildPlayerControls({
-    required ValueListenable stateNotifier,
-    required bool Function(dynamic) isPlayingSelector,
-    required Function(bool) onPlayPause,
-    VoidCallback? onPrev,
-    VoidCallback? onNext,
+  @override
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildControlBtn(
-              icon: Icons.skip_previous, label: "上一章", onTap: onPrev, size: 36),
-          ValueListenableBuilder(
-            valueListenable: stateNotifier,
-            builder: (context, state, _) {
-              final isPlaying = isPlayingSelector(state);
+    final Canvas canvas = context.canvas;
 
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 72,
-                    height: 72,
-                    decoration: const BoxDecoration(
-                        color: Colors.brown,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 8,
-                              offset: Offset(0, 4))
-                        ]),
-                    child: IconButton(
-                      icon: Icon(
-                        isPlaying ? Icons.pause : Icons.play_arrow,
-                        size: 40,
-                        color: Colors.white,
-                      ),
-                      onPressed: () => onPlayPause(isPlaying),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(isPlaying ? "暂停" : "播放",
-                      style:
-                          const TextStyle(fontSize: 12, color: Colors.brown)),
-                ],
-              );
-            },
-          ),
-          _buildControlBtn(
-              icon: Icons.skip_next, label: "下一章", onTap: onNext, size: 36),
-        ],
+    // Draw the thumb shadow
+    final Path shadowPath = Path()
+      ..addOval(Rect.fromCircle(center: center, radius: enabledThumbRadius));
+    canvas.drawShadow(shadowPath, Colors.black, 3, true);
+
+    // Draw the thumb circle
+    final Paint paint = Paint()
+      ..color = sliderTheme.thumbColor ?? Colors.brown
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(center, enabledThumbRadius, paint);
+
+    // Draw the text (current verse)
+    final textSpan = TextSpan(
+      style: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w900,
+        color: Colors.white,
       ),
+      text: '$currentVerse',
     );
+
+    final textPainter = TextPainter(
+      text: textSpan,
+      textAlign: TextAlign.center,
+      textDirection: textDirection,
+    );
+
+    textPainter.layout();
+
+    final Offset textOffset = Offset(
+      center.dx - (textPainter.width / 2),
+      center.dy - (textPainter.height / 2),
+    );
+
+    textPainter.paint(canvas, textOffset);
   }
+}
+
+class _ArrowPainter extends CustomPainter {
+  final Color color;
+  final bool upward;
+  _ArrowPainter({required this.color, this.upward = false});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..color = color;
+    final path = Path();
+    if (upward) {
+      path.moveTo(size.width / 2, 0);
+      path.lineTo(size.width, size.height);
+      path.lineTo(0, size.height);
+    } else {
+      path.moveTo(0, 0);
+      path.lineTo(size.width / 2, size.height);
+      path.lineTo(size.width, 0);
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

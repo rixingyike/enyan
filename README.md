@@ -2,6 +2,8 @@
 
 专为长辈设计的大字版有声圣经，集成 Rust 高性能 TTS 引擎。
 
+https://www.wordproject.org/bibles/gb/01/2.htm#0 
+
 ## 项目结构 (Project Structure)
 
 - **`lib/`**: Flutter 核心代码

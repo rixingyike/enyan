@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gracewords/core/di/injection.dart';
+import 'package:gracewords/core/services/settings_service.dart';
 import 'package:gracewords/core/services/tts_service.dart';
 import 'package:gracewords/src/rust/api/simple.dart';
 
@@ -12,90 +13,16 @@ class TtsTestPage extends StatefulWidget {
 
 class _TtsTestPageState extends State<TtsTestPage> {
   final TtsService _ttsService = getIt<TtsService>();
+  final SettingsService _settings = getIt<SettingsService>();
   final TextEditingController _controller =
       TextEditingController(text: "起初，神创造天地。地是空虚混沌，渊面黑暗。");
-
-  List<dynamic> _voices = [];
-  Map<String, String>? _selectedVoice;
   String _logs = "";
 
   @override
   void initState() {
     super.initState();
-    _loadVoices();
-  }
-
-  Future<void> _loadVoices() async {
-    _log("Loading voices...");
-    try {
-      // Rust Tts 目前不暴露语音列表给 Dart
-      // 自动选择在 Rust 内部完成
-      /*
-      final voices = await _ttsService.instance.getVoices;
-      setState(() {
-        _voices = voices as List<dynamic>;
-      });
-      */
-      _log("Loaded ${_voices.length} voices.");
-
-      // Try to find current
-      // This is tricky because TtsService doesn't expose current voice easily unless we track it.
-      // We'll just default to what we think is best using the logic from TtsService
-      _findBestVoice();
-    } catch (e) {
-      _log("Error loading voices: $e");
-    }
-  }
-
-  void _findBestVoice() {
-    try {
-      if (_voices.isEmpty) return;
-
-      Map<String, dynamic>? target;
-
-      // 1. Ting-Ting
-      try {
-        target = _voices.firstWhere((v) {
-          final name = v["name"].toString().toLowerCase();
-          return name.contains("ting-ting") || name.contains("tingting");
-        }) as Map<String, dynamic>?;
-        if (target != null) _log("Found Ting-Ting: ${target['name']}");
-      } catch (_) {}
-
-      // 2. zh-CN
-      if (target == null) {
-        try {
-          target = _voices.firstWhere((v) {
-            return v["locale"].toString() == "zh-CN";
-          }) as Map<String, dynamic>?;
-          if (target != null) _log("Found zh-CN: ${target['name']}");
-        } catch (_) {}
-      }
-
-      if (target != null) {
-        setState(() {
-          _selectedVoice = Map<String, String>.from(
-              target!.map((k, v) => MapEntry(k, v.toString())));
-        });
-      }
-    } catch (e) {
-      _log("Error finding best voice: $e");
-    }
-  }
-
-  Future<void> _setVoice(Map<String, String> voice) async {
-    _log("Setting voice to: ${voice['name']} (Rust 自动管理，手动设置暂不可用)");
-    /*
-    try {
-      await _ttsService.instance.setVoice(voice);
-      setState(() {
-        _selectedVoice = voice;
-      });
-      _log("Voice set successfully.");
-    } catch (e) {
-      _log("Error setting voice: $e");
-    }
-    */
+    _log("TTS Test Page Initialized");
+    _log("Backend: Rust TTS (rSpeak)");
   }
 
   Future<void> _speak() async {
@@ -104,16 +31,27 @@ class _TtsTestPageState extends State<TtsTestPage> {
 
     _log("Speaking: $text");
     try {
-      // await _ttsService.instance.setLanguage("zh-CN"); // Rust 内部已处理
       await _ttsService.speak(text);
+      _log("Speak command sent.");
     } catch (e) {
       _log("Error speaking: $e");
     }
   }
 
+  Future<void> _stop() async {
+    _log("Stopping...");
+    try {
+      await _ttsService.stop();
+      _log("Stop command sent.");
+    } catch (e) {
+      _log("Error stopping: $e");
+    }
+  }
+
   void _log(String msg) {
+    if (!mounted) return;
     setState(() {
-      _logs += "$msg\n";
+      _logs += "${DateTime.now().second}:${DateTime.now().millisecond} - $msg\n";
     });
     debugPrint("[TTS-TEST] $msg");
   }
@@ -121,106 +59,152 @@ class _TtsTestPageState extends State<TtsTestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("TTS 诊断测试")),
-      body: Column(
-        children: [
-          // Input
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
+      appBar: AppBar(title: const Text("TTS 语音诊断")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const Text(
+              "Rust TTS 专用诊断工具",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              "当前已启用内嵌 Rust 语音引擎。\n通过下面的下拉列表切换音色，观察不同声效。",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey),
+            ),
+            const SizedBox(height: 16),
+            
+            // Voice Selector
+            _buildVoiceSelector(),
+            const SizedBox(height: 24),
+            
+            // Input
+            TextField(
+              controller: _controller,
+              maxLines: 3,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "测试文本",
+              ),
+            ),
+            const SizedBox(height: 16),
+            
+            // Controls
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(child: TextField(controller: _controller)),
-                const SizedBox(width: 8),
-                ElevatedButton(onPressed: _speak, child: const Text("朗读")),
+                ElevatedButton.icon(
+                  onPressed: _speak,
+                  icon: const Icon(Icons.play_arrow),
+                  label: const Text("朗读测试"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.brown,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  ),
+                ),
+                ElevatedButton.icon(
+                  onPressed: _stop,
+                  icon: const Icon(Icons.stop),
+                  label: const Text("停止"),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  ),
+                ),
               ],
             ),
-          ),
 
-          const Divider(),
+            const SizedBox(height: 24),
+            const Divider(),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text("运行日志:", style: TextStyle(fontWeight: FontWeight.bold)),
+            ),
+            const SizedBox(height: 8),
 
-          // Voice Selector
-          if (_voices.isNotEmpty)
+            // Logs
             Expanded(
-              flex: 2,
-              child: ListView.builder(
-                itemCount: _voices.length,
-                itemBuilder: (context, index) {
-                  final voice = Map<String, String>.from(
-                      _voices[index].map((k, v) => MapEntry(k, v.toString())));
-                  final name = voice["name"] ?? "Unknown";
-                  final locale = voice["locale"] ?? "-";
-                  final isSelected = _selectedVoice?["name"] == name;
-
-                  // Filter for Chinese only to keep list clean? Or show all?
-                  // Show all but highlight CH
-                  final isChinese = locale.toLowerCase().contains("zh");
-
-                  return Container(
-                    color: isSelected ? Colors.blue.withOpacity(0.1) : null,
-                    child: ListTile(
-                      title: Text(name,
-                          style: TextStyle(
-                              fontWeight: isChinese
-                                  ? FontWeight.bold
-                                  : FontWeight.normal)),
-                      subtitle: Text(locale),
-                      trailing: isSelected ? const Icon(Icons.check) : null,
-                      onTap: () => _setVoice(voice),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.black12),
+                ),
+                padding: const EdgeInsets.all(8),
+                child: SingleChildScrollView(
+                  child: Text(
+                    _logs,
+                    style: const TextStyle(
+                      fontFamily: 'Courier', 
+                      fontSize: 12,
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
             ),
-
-          const Divider(),
-
-          // Rust Test
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Rust TTS 测试 (flutter_rust_bridge)",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    ElevatedButton(
-                        onPressed: () async {
-                          final text = _controller.text;
-                          _log("[Rust] Calling speak_chinese_test('$text')...");
-                          try {
-                             final res = await speakChineseTest(text: text);
-                             _log("[Rust] Result: $res");
-                          } catch (e) {
-                             _log("[Rust] Error: $e");
-                          }
-                        },
-                        child: const Text("Rust 朗读")),
-                  ],
-                )
-              ],
-            ),
-          ),
-
-          const Divider(),
-
-          // Logs
-          Expanded(
-            flex: 1,
-            child: Container(
-              width: double.infinity,
-              color: Colors.black12,
-              padding: const EdgeInsets.all(8),
-              child: SingleChildScrollView(
-                child: Text(_logs,
-                    style:
-                        const TextStyle(fontFamily: 'Courier', fontSize: 12)),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildVoiceSelector() {
+    return ValueListenableBuilder<String?>(
+      valueListenable: _settings.rustVoiceId,
+      builder: (context, selectedId, _) {
+        return FutureBuilder<List<VoiceInfo>>(
+          future: _ttsService.getVoices(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
+              return const Text("正在获取系统声线...", style: TextStyle(color: Colors.grey));
+            }
+
+            final List<VoiceInfo> voices = snapshot.data!;
+            String? currentId = selectedId;
+            if (currentId == null || !voices.any((VoiceInfo v) => v.id == currentId)) {
+              final defaultVoice = voices.firstWhere(
+                (VoiceInfo v) => v.name.contains("Mei-Jia") || v.name.contains("Li-mu"),
+                orElse: () => voices.first,
+              );
+              currentId = defaultVoice.id;
+            }
+
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              decoration: BoxDecoration(
+                color: Colors.brown.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.brown.withOpacity(0.2)),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: currentId,
+                  isExpanded: true,
+                  icon: const Icon(Icons.record_voice_over, color: Colors.brown),
+                  items: voices.map<DropdownMenuItem<String>>((VoiceInfo v) {
+                    return DropdownMenuItem<String>(
+                      value: v.id,
+                      child: Text(
+                        v.name,
+                        style: const TextStyle(fontSize: 14, color: Colors.brown),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (id) {
+                    if (id != null) {
+                      _log("Switching voice to ID: $id");
+                      _ttsService.setVoice(id);
+                    }
+                  },
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

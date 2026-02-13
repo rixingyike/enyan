@@ -67,3 +67,8 @@ server/packs/voice_*.zip
 
 # User requested ignore
 scripts/packs/
+data/bible_assets/audio_opus/
+server/packs/*.zip
+data/bible_assets/
+data/
+server/packs/

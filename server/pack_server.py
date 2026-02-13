@@ -35,56 +35,16 @@ class PackHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         if self.path == '/api/packs':
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.send_header('Access-Control-Allow-Origin', '*')
-            self.end_headers()
-            
-            # host_ip = get_host_ip()
-            host_ip = '127.0.0.1' # 强制使用 127.0.0.1 以适应本地环境
-            base_url = f"http://{host_ip}:{PORT}"
-            
-            # 计算实际文件大小
-            def get_size(filename):
-                path = os.path.join(PACKS_DIR, filename)
-                if os.path.exists(path):
-                    size = os.path.getsize(path) / 1024 / 1024
-                    return f"{size:.1f}MB"
-                return "N/A"
-            
-            packs = {
-                "packs": [
-                    {
-                        "id": "lang_cht", 
-                        "name": "繁体中文语言包", 
-                        "size": get_size("lang_cht.zip"), 
-                        "type": "language",
-                        "url": f"{base_url}/lang_cht.zip"
-                    },
-                    {
-                        "id": "voice_6k", 
-                        "name": "6K语音包 (极致压缩)", 
-                        "size": get_size("voice_6k.zip"), 
-                        "type": "voice",
-                        "url": f"{base_url}/voice_6k.zip"
-                    },
-                    {
-                        "id": "voice_8k", 
-                        "name": "8K语音包 (高清)", 
-                        "size": get_size("voice_8k.zip"), 
-                        "type": "voice",
-                        "url": f"{base_url}/voice_8k.zip"
-                    },
-                    {
-                        "id": "piper-zh_CN-huayan-medium", 
-                        "name": "Piper语音模型 (Huayan)", 
-                        "size": get_size("piper_model.zip"), 
-                        "type": "model",
-                        "url": f"{base_url}/piper_model.zip"
-                    }
-                ]
-            }
-            self.wfile.write(json.dumps(packs, ensure_ascii=False).encode('utf-8'))
+            mock_file = os.path.join(os.path.dirname(__file__), 'api', 'packs')
+            if os.path.exists(mock_file):
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                with open(mock_file, 'rb') as f:
+                    self.wfile.write(f.read())
+            else:
+                self.send_error(404, "Mock packs file not found")
             return
         
         # 其他请求作为静态文件处理

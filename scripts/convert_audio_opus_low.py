@@ -21,8 +21,8 @@ import concurrent.futures
 import time
 
 # 配置
-SOURCE_DIR = Path("data/bible_assets/audio_full")
-TARGET_DIR = Path("data/bible_assets/audio_opus_16k")
+SOURCE_DIR = Path("data/hehemp3")
+TARGET_DIR = Path("data/opus_6k")
 
 # FFmpeg 终极压缩命令
 # ffmpeg -i input.mp3 -c:a libopus -b:a 16k -vbr on -compression_level 10 -application voip -ar 16000 -ac 1 -map_metadata -1 -vn output_16k.opus

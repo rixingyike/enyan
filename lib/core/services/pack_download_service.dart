@@ -7,6 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:archive/archive.dart';
+import 'package:gracewords/core/di/injection.dart';
+import 'package:gracewords/core/services/font_service.dart';
 
 enum PackStatus {
   notDownloaded,
@@ -39,6 +41,7 @@ class PackDownloadService {
     if (packsDir.existsSync()) {
       if (File('${packsDir.path}/lang_cht/completed').existsSync()) {
         status['lang_cht'] = PackStatus.downloaded;
+        await _checkAndLoadFonts('lang_cht', Directory('${packsDir.path}/lang_cht'));
       }
       if (File('${packsDir.path}/voice_6k/completed').existsSync()) {
         status['voice_6k'] = PackStatus.downloaded;
@@ -87,17 +90,32 @@ class PackDownloadService {
       }
 
       final dir = await getApplicationDocumentsDirectory();
-      final zipFile = File('${dir.path}/temp_$packId.zip');
+      
+      // Determine file processing based on extension
+      // Expecting: .gz (single file) or .zip.gz (archive) or .zip
+      
+      final isGzip = url.endsWith('.gz');
+      final isZip = url.contains('.zip'); // .zip or .zip.gz
+      
+      final tempFile = File('${dir.path}/temp_$packId${isGzip ? '.gz' : '.zip'}');
 
       // Stream download
-      final IOSink sink = zipFile.openWrite();
+      final IOSink sink = tempFile.openWrite();
       await response.stream.pipe(sink);
       await sink.close();
 
-      // 3. Unzip
-      debugPrint("Unzipping $packId...");
-      final bytes = await zipFile.readAsBytes();
-      final archive = ZipDecoder().decodeBytes(bytes);
+      List<int> bytes = await tempFile.readAsBytes();
+
+      // 3. Decompress Gzip if needed
+      if (isGzip) {
+        debugPrint("📦 Decompressing Gzip: $packId...");
+        try {
+          bytes = GZipDecoder().decodeBytes(bytes);
+        } catch (e) {
+             debugPrint("❌ Gzip Error: $e");
+             throw e;
+        }
+      }
 
       // Create target dir
       final targetDir = Directory('${dir.path}/packs/$packId');
@@ -105,34 +123,76 @@ class PackDownloadService {
         await targetDir.create(recursive: true);
       }
 
-      for (final file in archive) {
-        final filename = file.name;
-        if (file.isFile) {
-          final data = file.content as List<int>;
-          File('${targetDir.path}/$filename')
-            ..createSync(recursive: true)
-            ..writeAsBytesSync(data);
-        } else {
-          Directory('${targetDir.path}/$filename').create(recursive: true);
+      if (isZip) {
+        // 4. Unzip
+        debugPrint("🤐 Unzipping: $packId...");
+        final archive = ZipDecoder().decodeBytes(bytes);
+
+        for (final file in archive) {
+          final filename = file.name;
+          if (file.isFile) {
+            final data = file.content as List<int>;
+            File('${targetDir.path}/$filename')
+              ..createSync(recursive: true)
+              ..writeAsBytesSync(data);
+          } else {
+            Directory('${targetDir.path}/$filename').create(recursive: true);
+          }
         }
+      } else {
+        // Single file (e.g. bible_cht.db.br -> bible_cht.db)
+        String targetFilename;
+        if (packId == 'lang_cht') {
+          targetFilename = 'bible_cht.db';
+        } else {
+          // Default: remove .gz from url basename
+          targetFilename = url.split('/').last.replaceAll('.gz', '');
+        }
+
+        final targetFile = File('${targetDir.path}/$targetFilename');
+        debugPrint("📦 Saving single file to: ${targetFile.path}");
+        targetFile.writeAsBytesSync(bytes);
       }
 
-      // 4. Mark completed (create a marker file)
+      // 5. Mark completed
       File('${targetDir.path}/completed').createSync();
 
-      // 5. Cleanup
-      if (zipFile.existsSync()) zipFile.deleteSync();
+      // Check for font files to load
+      await _checkAndLoadFonts(packId, targetDir);
+
+      // Cleanup
+      if (tempFile.existsSync()) tempFile.deleteSync();
 
       _updateStatus(packId, PackStatus.downloaded);
-      debugPrint("Download & Unzip complete: $packId");
+      debugPrint("✅ Download & Process complete: $packId");
     } catch (e) {
-      debugPrint("Download error: $e");
+      debugPrint("❌ Download error: $e");
       _updateStatus(packId, PackStatus.error);
     }
   }
 
+  Future<void> _checkAndLoadFonts(String packId, Directory targetDir) async {
+    try {
+      final entities = await targetDir.list().toList();
+      for (final entity in entities) {
+        if (entity is File && entity.path.endsWith('.ttf')) {
+          String family = '';
+          if (packId == 'lang_cht' || entity.path.contains('_cht.ttf')) family = 'LxgwWenkaiTC';
+          // Supports identifying by filename suffix
+          if (entity.path.contains('_chs.ttf')) family = 'LxgwWenKai';
+          
+          if (family.isNotEmpty) {
+            await getIt<FontService>().loadFontFromFile(family, entity.path);
+          }
+        }
+      }
+    } catch (e) {
+      debugPrint("Error checking fonts in $packId: $e");
+    }
+  }
+
   void _updateStatus(String packId, PackStatus status) {
-    final current = Map<String, PackStatus>.from(statusNotifier.value);
+    var current = Map<String, PackStatus>.from(statusNotifier.value);
     current[packId] = status;
     statusNotifier.value = current;
   }

@@ -6,7 +6,14 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `get_tts`
+// These functions are ignored because they are not marked as `pub`: `get_tts_internal`, `with_tts`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+
+Future<List<VoiceInfo>> rGetVoices() =>
+    RustLib.instance.api.crateApiSimpleRGetVoices();
+
+Future<void> rSetVoice({required String id}) =>
+    RustLib.instance.api.crateApiSimpleRSetVoice(id: id);
 
 Future<void> customInitTts() =>
     RustLib.instance.api.crateApiSimpleCustomInitTts();
@@ -16,5 +23,33 @@ Future<void> rSpeak({required String text}) =>
 
 Future<void> rStop() => RustLib.instance.api.crateApiSimpleRStop();
 
+Future<bool> rIsSpeaking() => RustLib.instance.api.crateApiSimpleRIsSpeaking();
+
 Future<String> speakChineseTest({required String text}) =>
     RustLib.instance.api.crateApiSimpleSpeakChineseTest(text: text);
+
+Future<Uint8List> rDecodeEncodec(
+        {required String modelPath, required String inputPath}) =>
+    RustLib.instance.api.crateApiSimpleRDecodeEncodec(
+        modelPath: modelPath, inputPath: inputPath);
+
+class VoiceInfo {
+  final String id;
+  final String name;
+
+  const VoiceInfo({
+    required this.id,
+    required this.name,
+  });
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VoiceInfo &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name;
+}
