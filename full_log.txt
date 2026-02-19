@@ -1,0 +1,1000 @@
+02-18 15:16:57.687  1082  9905 D AudioALSAHardware: -mAudioALSAHardware(0xb400007be2c9f9c0)
+02-18 15:16:57.687  1863  2298 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/com.miui.cleanmaster/com.miui.optimizecenter.cloudcontrol.CloudControlSyncJobService' DISABLED (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10243), (1000, JobScheduler)}})], disabled: false, procState: 0, reason: greeze
+02-18 15:16:57.687  1863  2298 D ExternalInterface: setUidState, uid = 10243 allow = true
+02-18 15:16:57.687  1168  1378 D AudioFlinger: -thread->setParameters(): io = 13, customStopStreamType=5
+02-18 15:16:57.687  1168  1379 V AudioPolicyInterfaceImpl: doStopOutputSamplerate(): client portId 1347, active 0, ActiveClientRefCount 0
+02-18 15:16:57.687  1168  1379 V AudioPolicyInterfaceImpl: doReleaseOutput from tid 1379
+02-18 15:16:57.687  1863  2138 I SmartPower: com.miui.cleanmaster/10243(31952): idle->background(26087ms) R(service create com.miui.cleanmaster/com.miui.optimizecenter.cloudcontrol.CloudControlSyncJobService) adj=0.
+02-18 15:16:57.687  1168  1379 D APM_AudioPolicyManager: releaseOutput portId 1347
+02-18 15:16:57.687  1168  1379 D APM_AudioPolicyManager: [MTK_APM_Output]releaseOutput() 13 portId 1347
+02-18 15:16:57.687  1168  1379 D APM_AudioPolicyManager: releaseOutput() output 13, stream 5, session 7601 [uid=1000]
+02-18 15:16:57.688  1168  1379 D ClientInfoStub: ~ClientInfoStub()
+02-18 15:16:57.688  1863  2225 I MiuiNetworkPolicy: updateUidState uid = 10243, uidState = 8
+02-18 15:16:57.688  1863  2138 D ActivityManager: Logging bindService for com.miui.cleanmaster, stopped=false, firstLaunch=false
+02-18 15:16:57.688  1863  2298 D GreezeCallback: thawedByOther uid=10243 pid=31952
+02-18 15:16:57.689  1863  2138 I whetstone.activity: Power Event callback listener is empty for resId=256
+02-18 15:16:57.689  1863  2138 D BatteryStatsManagerStub: notifyEvent for resId=256 used 0ms
+02-18 15:16:57.691 28765 28765 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=5cb3e589-f6d5-465c-ba4d-92996c62518f, generation=0)
+02-18 15:16:57.692 27929 27929 I Finsky  : [2] acgh.onStartJob(128): SCH: job service start with id 9708.
+02-18 15:16:57.692 28765 30593 D WM-Processor: Work WorkGenerationalId(workSpecId=5cb3e589-f6d5-465c-ba4d-92996c62518f, generation=0) is already enqueued for processing
+02-18 15:16:57.698 31952 32184 I CloudControlHelper: start loadCloudControlSettings
+02-18 15:16:57.698 31952 32184 I CloudControlHelper: loadCloudControlWhiteList
+02-18 15:16:57.699 27929  1482 I Finsky  : [6564] kzh.a(256): SCH: Satisfied jobs for 9708 are: 12-1
+02-18 15:16:57.700 27929  1502 I Finsky  : [6565] zmh.accept(450): SCH: Job 12-1 starting
+02-18 15:16:57.700 27929 27929 I Finsky  : [2] ContentSyncJob.h(14): [ContentSync] job started
+02-18 15:16:57.702  1863  2225 I MiuiNetworkPolicy: updateUidState uid = 10084, uidState = 8
+02-18 15:16:57.705 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterWhiteList  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.711 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterWhiteList  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.715  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:57.727 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterWhiteList  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.730 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterWhiteList  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.743 31952 32184 I CloudControlHelper: loadNotificationPriorityConfig
+02-18 15:16:57.745 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CmNotificationPriorityConfig  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.746 31952 31974 I iui.cleanmaster: This is non sticky GC, maxfree is 33554432 minfree is 8388608
+02-18 15:16:57.748 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CmNotificationPriorityConfig  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.750 31952  1521 D JavaheapMonitor: Java heap used=2M max=512M, proc: com.miui.cleanmaster
+02-18 15:16:57.750 31952  1521 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:16:57.751 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanerSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.756 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanerSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.759 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanerSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.762 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanerSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.765 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterEngineSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.766  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:57.767 31952 32184 I CloudControlHelper: current default engine :
+02-18 15:16:57.768 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterEngineSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.770 31952 32184 W System.err: org.json.JSONException: End of input at character 0 of 
+02-18 15:16:57.774 31952 32184 W System.err: 	at org.json.JSONTokener.syntaxError(JSONTokener.java:469)
+02-18 15:16:57.774 31952 32184 W System.err: 	at org.json.JSONTokener.nextValue(JSONTokener.java:101)
+02-18 15:16:57.774 31952 32184 W System.err: 	at org.json.JSONArray.<init>(JSONArray.java:127)
+02-18 15:16:57.774 31952 32184 W System.err: 	at x1.a.f(SourceFile:70)
+02-18 15:16:57.774 31952 32184 W System.err: 	at x1.a.c(SourceFile:17)
+02-18 15:16:57.774 31952 32184 W System.err: 	at com.miui.optimizecenter.cloudcontrol.CloudControlSyncJobService$a.a(SourceFile:7)
+02-18 15:16:57.774 31952 32184 W System.err: 	at com.miui.optimizecenter.cloudcontrol.CloudControlSyncJobService$a.doInBackground(SourceFile:3)
+02-18 15:16:57.774 31952 32184 W System.err: 	at android.os.AsyncTask$3.call(AsyncTask.java:397)
+02-18 15:16:57.774 31952 32184 W System.err: 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+02-18 15:16:57.774 31952 32184 W System.err: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1302)
+02-18 15:16:57.774 31952 32184 W System.err: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:677)
+02-18 15:16:57.774 31952 32184 W System.err: 	at java.lang.Thread.run(Thread.java:1119)
+02-18 15:16:57.774 31952 32184 I CloudControlHelper: loadCloudScanRules
+02-18 15:16:57.775 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanerScanRuleSettings  uriMatch = 2, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.777 31952 32184 I CloudControlHelper: ruleStr=
+02-18 15:16:57.781 27729 27760 I htmlviewercloudcontrol: isStagingEnv:false param =  CleanMasterAppUninstallReminder  uriMatch = 1, cluster: cn, version: 661907, traceId: 59ffd4db68e1f83894a4f7c8c606021e, regId: FDVoMXuFFd/QhXQapdOnNZzdDtQEWkfDWd2QiSnnRZ4qxdfg4ZlfgaM5xedtylfH
+02-18 15:16:57.787 31952 32184 D IdProviderImpl: getOAID from com.miui.cleanmaster
+02-18 15:16:57.792  1863  2122 D ConnectivityService: Returning UNBLOCKED NetworkInfo to uid=10243
+02-18 15:16:57.798 31952 32184 W System  : ClassLoader referenced unknown path: /system/framework/tcmclient.jar
+02-18 15:16:57.799 31952 32184 W System  : ClassLoader referenced unknown path: /system/framework/tcmiface.jar
+02-18 15:16:57.815  1096  1154 D HfLooper: sensor 33171111 = 4838.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:57.837  1082 15940 I android.hardware.audio.service.mediatek: misoundfx process numSamples: 480
+02-18 15:16:57.866  1096  1154 D HfLooper: sensor 33171111 = 4837.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:57.886 27929 27938 I android.vending: This is sticky GC, maxfree is 33554432 minfree is 8388608
+02-18 15:16:57.888 27929 29664 D JavaheapMonitor: Java heap used=11M max=256M, proc: com.android.vending
+02-18 15:16:57.888 27929 29664 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:16:57.894  1129  1231 I mtkpower@impl: [powerd_req] TIMER_MSG_PERF_LOCK_TIMEOUT hdl:39388
+02-18 15:16:57.894  1129  1231 I libPowerHal: [perfLockRel] hdl:39388, idx:0
+02-18 15:16:57.894  1129  1231 I libPowerHal: [unsetGPUFreq] current min:0, max:0; scn_gpu_min:0, scn_gpu_max:-1; scn_gpu_min(HL):-1, scn_gpu_max(HL):-1
+02-18 15:16:57.894  1129  1231 I libPowerHal: system_server: set gpu opp level: 46
+02-18 15:16:57.894  1129  1231 I libPowerHal: system_server: set gpu opp level max: 0
+02-18 15:16:57.895  1129  1231 I libPowerHal: [setGPUFreq] Soft min/max = (46, 0); Hard min/max = (46, 0)
+02-18 15:16:57.895  1129  1231 I libPowerHal: [setGPUFreq] final min/max = (46, 0)
+02-18 15:16:57.895  1129  1231 I libPowerHal: system_server: set gpu opp level: 46
+02-18 15:16:57.895  1129  1231 I libPowerHal: system_server: set gpu opp level max: 0
+02-18 15:16:57.896  1129  1231 I libPowerHal: [setDvfsrcDevFreqOpp] opp:1, freq:4212000000
+02-18 15:16:57.896  1129  1231 I libPowerHal: [PD] system_server update cmd:1000000 param:1
+02-18 15:16:57.910  1863  2120 D ActivityManager: Logging bindService for com.google.android.gms, stopped=false, firstLaunch=false
+02-18 15:16:57.910  1863  3012 D ActivityManager: Logging bindService for com.google.android.gms, stopped=false, firstLaunch=false
+02-18 15:16:57.916  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:57.930  1863  2417 D PerfMTKStubImpl: perfLockReleaseHandler: 39388
+02-18 15:16:57.930  1863  2417 I mtkpower_client: perf_lock_rel, hdl:39388, pid: 1863, tid:2417
+02-18 15:16:57.930  1863  2417 D MTKSchedBoost: stopBoostInternal
+02-18 15:16:57.931  1129  1231 I libPowerHal: [perfLockRel] hdl:39388, idx:-1
+02-18 15:16:57.931  1863  2417 D SchedBoost: thread tid=2840, priority is set to -10
+02-18 15:16:57.931  1863  2417 D PerfMTKStubImpl: perfLockReleaseHandler: 0
+02-18 15:16:57.931  1863  2417 D MTKSchedBoost: stopBoostInternal
+02-18 15:16:57.931  1863  2417 D SchedBoost: thread tid=3259, priority is set to -10
+02-18 15:16:57.953  1863  3012 W ActivityManagerServiceImpl: Sending non-protected broadcast com.miui.action.UPDATE_PREDICT_LIST_EXTERNAL from system 21742:com.miui.securitycenter.remote/1000 pkg com.miui.securitycenter. Callers=
+02-18 15:16:57.953 21742 22264 D AppPredictWidget: start update widget
+02-18 15:16:57.954 21742 24961 D AppPredictWidget: AppPredictWidgetUtils::updateWidget::appWidgetIds = []
+02-18 15:16:57.956  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:16:57.956  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:16:57.956  2690  3263 V BtGatt.ScanController: onScanResult() - eventType=0x1, addressType=1, address=XX:XX:XX:XX:C4:FC, primaryPhy=1, secondaryPhy=1, advertisingSid=0x0, txPower=127, rssi=-88, periodicAdvInt=0x0, originalAddress=00:00:00:00:00:00
+02-18 15:16:57.957  2690  3263 V BtGatt.ScanController: Skipping client: permission=true matches=false
+02-18 15:16:57.957  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:16:57.957  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:16:57.957  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:16:57.965  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:57.967  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:16:57.967  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:16:57.967  2690  3263 V BtGatt.ScanController: onScanResult() - eventType=0x1, addressType=1, address=XX:XX:XX:XX:34:79, primaryPhy=1, secondaryPhy=1, advertisingSid=0x0, txPower=-2, rssi=-76, periodicAdvInt=0x0, originalAddress=00:00:00:00:00:00
+02-18 15:16:57.967  2690  3263 V BtGatt.ScanController: Skipping client: permission=true matches=false
+02-18 15:16:57.967  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:16:57.967  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:16:57.967  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:16:57.977  1863  3012 I whetstone.activity: Power Event callback listener is empty for resId=256
+02-18 15:16:57.977  1863  3012 D BatteryStatsManagerStub: notifyEvent for resId=256 used 0ms
+02-18 15:16:57.977  1863  3012 I ActivityManager: unbindService com.android.server.am.ActiveServices@d9c6b9e conn=android.app.LoadedApk$ServiceDispatcher$InnerConnection@f82c23d callingPid=1863 callers: com.android.server.job.JobServiceContext.handleFinishedLocked:1412 com.android.server.job.JobServiceContext.doCallbackLocked:1288 com.android.server.job.JobServiceContext.doJobFinished:848 com.android.server.job.JobServiceContext$JobCallback.jobFinished:315 android.app.job.IJobCallback$Stub.onTransact:313 android.os.Binder.execTransactInternal:1428 android.os.Binder.execTransact:1372 <bottom of call stack> <bottom of call stack> <bottom of call stack> 
+02-18 15:16:57.979  1863  2225 I MiuiNetworkPolicy: updateUidState uid = 10243, uidState = 10
+02-18 15:16:57.979  1863  2225 I MiuiNetworkPolicy: updateUidState uid = 10084, uidState = 10
+02-18 15:16:57.982  1863  2225 I MiuiNetworkPolicy: updateUidState uid = 10243, uidState = 19
+02-18 15:16:57.982  1863  2225 I MiuiNetworkPolicy: updateUidState uid = 10084, uidState = 19
+02-18 15:16:58.016  1096  1154 D HfLooper: sensor 33171111 = 4840.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.020  1129  1201 D power@timer: [mtkPowerTimer] visRead:0
+02-18 15:16:58.044  2811  3107 D JavaheapMonitor: Java heap used=16M max=256M, proc: com.android.phone
+02-18 15:16:58.044  2811  3107 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:16:58.066  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.077  1863  2120 I ActivityManager: unbindService com.android.server.am.ActiveServices@d9c6b9e conn=android.os.BinderProxy@c093b85 callingPid=29573
+02-18 15:16:58.115  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.166  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.167  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.216  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.217  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.265  1096  1154 D HfLooper: sensor 33171111 = 4839.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.267  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.267  1863  1926 D BatteryStatsManagerStub: audio off uid=1000
+02-18 15:16:58.302  1863  3327 D SLM-SRV-SLAService: checktemp temperature = 34271 temperature_average = 34139 isPerformanceMode = false thermal_enable_slm = true
+02-18 15:16:58.311  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:16:58.316  1096  1154 D HfLooper: sensor 33171111 = 4838.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.317  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:58.317  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.365  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.366  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.416  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.417  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.466  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.467  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.515  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.517  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.566  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.567  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:58.567  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.618  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.619  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.666  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.667  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.684  1863  2225 I MiuiNetworkPolicy: bandwidth: 1 KB/s, Max bandwidth: 18750 KB/s
+02-18 15:16:58.716  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.717  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.766  1096  1154 D HfLooper: sensor 33171111 = 4838.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.767  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.818  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.819  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:58.819  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.867  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.868  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.905  1863 24210 D MiuiNM  : invalid statsEntry
+02-18 15:16:58.907  1863  2236 E AmlWifiScoreReportInjector: current network is in roaming environment
+02-18 15:16:58.909  1863  2236 D MiuiNM  : tcp fail rate reach: 100
+02-18 15:16:58.911  1146  1146 E vendor.xiaomi.hardware.micharge-service: Cannot access sysfs node sys/devices/platform/soc/a600000.ssusb/super_speed
+02-18 15:16:58.911  1863  1898 E IMiCharge: MiCharge method 36 val = 0
+02-18 15:16:58.912  1863  1898 I SmartPower: com.miui.analytics/10141(27272): idle->background(4606ms) R(service start com.miui.analytics/.onetrack.TrackService) adj=0.
+02-18 15:16:58.912  1863  1898 D ActivityManager: Logging startService for com.miui.analytics, stopped=false, firstLaunch=false, intent=Intent { act=onetrack.action.TRACK_EVENT flg=0x2 xflg=0x4 pkg=com.miui.analytics (has extras) }, r.app=ProcessRecord{25ecb61 27272:com.miui.analytics/u0a141}
+02-18 15:16:58.916  1096  1154 D HfLooper: sensor 33171111 = 4838.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.918  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:58.950  1168  1598 D AudioFlinger: updateActiveAudioState mLastActiveAudioState=1 isActiveAudio=1
+02-18 15:16:58.951  1168  1601 D AudioFlinger: updateActiveAudioState mLastActiveAudioState=1 isActiveAudio=1
+02-18 15:16:58.957  1168  1607 D AudioFlinger: updateActiveAudioState mLastActiveAudioState=1 isActiveAudio=1
+02-18 15:16:58.958  1168  1606 D AudioFlinger: updateActiveAudioState mLastActiveAudioState=1 isActiveAudio=1
+02-18 15:16:58.967  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:58.969  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.021  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.022  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.067  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.068  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:59.068  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.118  1096  1154 D HfLooper: sensor 33171111 = 4838.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.119  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.167  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.168  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.213  1296  1493 D connsyslogger: SD_LOG_ROOT is /data/debuglogger/connsyslog/fw.
+02-18 15:16:59.213  1296  1493 D connsyslogger: systemReady:1
+02-18 15:16:59.219  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.220  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.266  1096  1153 W AString : ctor got NULL, using empty string instead
+02-18 15:16:59.266  1096  1153 I SensorSavedChannel: [64,3,-108,-3058,-687,3930]==>gyro_temp.json
+02-18 15:16:59.267  1096  1153 W AString : ctor got NULL, using empty string instead
+02-18 15:16:59.267  1096  1153 I SensorSavedChannel: [-781,-556,178]==>gyro_bias.json
+02-18 15:16:59.268  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.269  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.312  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: retry left 9
+02-18 15:16:59.312  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:16:59.318  1096  1154 D HfLooper: sensor 33171111 = 4827.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.320  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:59.320  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.340  1410  1870 D ULogGuard: Monitoring: 12 threads, 0 requests, 0 time-bombs; 15 guards. ResetFlags = 0x7
+02-18 15:16:59.369  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.371  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.417  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.419  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.468  1096  1154 D HfLooper: sensor 33171111 = 4825.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.469  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.517  1096  1154 D HfLooper: sensor 33171111 = 4825.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.519  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.565  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.567  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:59.567  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.586  1082  9905 D AudioALSAStreamOut: standby(), flag 2
+02-18 15:16:59.586  1082  9905 D AudioALSAStreamOut: standbyStreamOut(), halRequest 0, mDestroy 0, flag 2
+02-18 15:16:59.586  1082  9905 D AudioALSAStreamOut: close_l(), flags 2
+02-18 15:16:59.586  1082  9905 D AudioALSAHardware: -mAudioALSAHardware(0xb400007be2c9f9c0)
+02-18 15:16:59.586  1082  9905 D AudioALSAHardware: [DEBUG] setDeviceStatusChanged: devices=[0x2], isOpen=[0], isFast=[0]
+02-18 15:16:59.586  1082  9905 D AudioALSAHardware: [DEBUG] setCachedParam2soundfx: targetScenario PLAYBACK_NORMAL
+02-18 15:16:59.586  1082  9905 I android.hardware.audio.service.mediatek: misound_arsi_set_key_value_pair(), key value pair = MisoundEnable=0
+02-18 15:16:59.586  1082  9905 I android.hardware.audio.service.mediatek: misound_arsi_set_key_value_pair(), key: MisoundEnable
+02-18 15:16:59.586  1082  9905 I android.hardware.audio.service.mediatek: misound_arsi_set_key_value_pair(), value: 0
+02-18 15:16:59.586  1082  9905 I android.hardware.audio.service.mediatek: misound FxEnable setparam: 0
+02-18 15:16:59.586  1082  9905 D aurisys_lib_handler: lib_name misound, 0xb400007ba2c9ec70, ADB_CMD_KEY_VALUE: set 512, 15, MisoundEnable=0, retval 0
+02-18 15:16:59.586  1082  9905 D AudioALSAHardware: [DEBUG] setCachedParam2soundfx: mMisoundEnable is 0
+02-18 15:16:59.586  1082  9905 D AudioALSAStreamOut: closeWavDump(), flag 2, mBytesWavDumpWritten = 0, format = 3, channels = 2, sample_rate = 48000
+02-18 15:16:59.586  1082  9905 D AudioALSAHardwareResourceManager: +stopOutputDeviceWithoutNotify(), mOutputDevices = 0x2, mStartOutputDevicesCount = 1
+02-18 15:16:59.586  1082  9905 D AudioSmartPaController: +dspOnBoardSpeakerOff()
+02-18 15:16:59.586  1082  9905 D AudioDspStreamManager: +stopDevice() Devices 0x2 mOutputDeviceCount 0x1
+02-18 15:16:59.586  1082  9905 D WCNChipController: IsBTI2SSupport(), BTChipHWInterface() = 3, ret = 0
+02-18 15:16:59.586  1082  9905 D AudioDspStreamManager: dataPassToCodec output_devices = 0x2 mAudioOutputFlags = 2 devicecount = 1 ret = 1
+02-18 15:16:59.586  1082  9905 D AudioDspStreamManager: dataPasstoDspAfe output_devices = 0x2 Flags = 2 isUseAdspPlaybackTask = 1 ret = 1
+02-18 15:16:59.586  1082  9905 D audio_messenger_ipi: hal send, task: 9, msg_id: 0x10, ack_type: 0, p1: 0x0, p2: 0x0
+02-18 15:16:59.586  1082  9905 D AudioDspStreamManager: -triggerDsp task_scene = 9 data_type = 16
+02-18 15:16:59.586  1082  9905 D AudioDspStreamManager: stopTasks_l() mDspStreamState = DSP_STREAM_STOP
+02-18 15:16:59.586  1082  9905 D AudioDspStreamManager: -stopDevice() Devices 0x2
+02-18 15:16:59.596  1082  9905 D AudioALSAPlaybackHandlerDsp: -closePcmDriver(), mPcm = 0x0
+02-18 15:16:59.596  1082  9905 D audio_messenger_ipi: hal send, task: 13, msg_id: 0x16, ack_type: 1, p1: 0x0, p2: 0x0
+02-18 15:16:59.596  1082  9905 D aurisys_lib_manager: delete_aurisys_lib_manager(), manager 0xb400007c22cb05f0
+02-18 15:16:59.596  1082  9905 D AudioALSAPlaybackHandlerBase: audiodumphal, CloseWAVDumpDSP() flag 2, task_scene = 13
+02-18 15:16:59.596  1082  9905 D audio_messenger_ipi: audio_ipi_dma_cbk_deregister(), task 13
+02-18 15:16:59.597  1082  9905 D AudioDspStreamManager: setDspRuntimeEn(), task_scene = 13, condition = 0
+02-18 15:16:59.597  1082  9905 D AudioDspStreamManager: removePlaybackHandler() mDspMusicStreamState = DSP_STREAM_STOP
+02-18 15:16:59.597  1082  9905 D AudioDspStreamManager: removePlaybackHandler() mOutputDeviceCount 0x0
+02-18 15:16:59.619  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.620  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.651  4261  4261 I MBrainServer: [INFO] MStaticInfoCenter.cpp:911 IsMBrainEnabled: disable MBrain, dynamic close
+02-18 15:16:59.666  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.668  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.716  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.717  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.766  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.767  1423  2237 D AALLightSensor: oldLux=59 [SA:-1 LA:-1] newLux=59 (oriLux: 59)
+02-18 15:16:59.767  1082  9905 D AudioALSADeviceConfigManager: ApplyDeviceTurnoffSequenceByName(), DeviceName = PLAYBACK11_TO_I2S1 descriptor->DeviceStatusCounter = 1, Ctlsize=4
+02-18 15:16:59.768  1082  9905 D AudioALSADeviceConfigManager: ApplyDeviceTurnoffSequenceByName(), DeviceName = TINYCONN_I2S2_TO_CAPTURE4 descriptor->DeviceStatusCounter = 1, Ctlsize=4
+02-18 15:16:59.768  1082  9905 D audio_messenger_ipi: hal send, task: 9, msg_id: 0x16, ack_type: 1, p1: 0x0, p2: 0x0
+02-18 15:16:59.768  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.769  1082  9905 D aurisys_lib_manager: delete_aurisys_lib_manager(), manager 0xb400007c22cafd30
+02-18 15:16:59.769  1082  9905 D audio_messenger_ipi: audio_ipi_dma_cbk_deregister(), task 9
+02-18 15:16:59.769  1082  9905 D AudioALSAPlaybackHandlerBase: ClosePCMDumpDSP() flag 2, task_scene = 9
+02-18 15:16:59.769  1082  9905 D AudioDspStreamManager: -closePlaybackTask(), mDspTaskPlaybackActive = 0, mPlaybackUlPcm = 0x0 mPlaybackDlPcm = 0x0, mDspPcm = 0x0
+02-18 15:16:59.769  1082  9905 D AudioALSAHardwareResourceManager: notifyOutputDeviceStatusChange(), device = 2, status = 1, sampleRate = 0, mOpenSpeakerPathCount = 0
+02-18 15:16:59.769  1082  9905 D AudioALSAStreamManager: speakerStatusChangeCb(), status = 1, sampleRate = 0
+02-18 15:16:59.769  1082  9905 D AudioALSAVoiceWakeUpController: updateSpeakerPlaybackStatus(), isSpeakerPlaying = 0
+02-18 15:16:59.769  1082  9905 D AudioALSAVoiceWakeUpController: +setBargeInEnable(), enable = 0
+02-18 15:16:59.782  1082  9905 D AudioALSAVoiceWakeUpController: setBargeInEnable(), VOW_BARGEIN_OFF set, irq = 26, ret = 0
+02-18 15:16:59.783  1082  9905 D AudioALSADeviceConfigManager: ApplyDeviceTurnoffSequenceByName(), DeviceName = VOW_BARGE_IN_ECHO_SPEAKER_HIFI3 descriptor->DeviceStatusCounter = 1, Ctlsize=14
+02-18 15:16:59.783  1082  9905 D AudioALSAVoiceWakeUpController: -setBargeInEnable(), mBargeInPcm = 0x0, mBargeInEnable = 0
+02-18 15:16:59.783  1082  9905 D audio_messenger_ipi: hal send, task: 7, msg_id: 0x16, ack_type: 1, p1: 0x0, p2: 0x0
+02-18 15:16:59.784  1082  9905 D aurisys_lib_manager: delete_aurisys_lib_manager(), manager 0xb400007c22cb30d0
+02-18 15:16:59.784  1082  9905 D audio_messenger_ipi: audio_ipi_dma_cbk_deregister(), task 7
+02-18 15:16:59.785  1082  9905 D AudioALSAPlaybackHandlerBase: DestroyAurisysLibManager()
+02-18 15:16:59.785  1082  9905 I android.hardware.audio.service.mediatek: mi_lrswitch_destroy_handler mi_lrswitch_destroy_handler
+02-18 15:16:59.785  1082  9905 D aurisys_lib_handler: aurisys_arsi_destroy_handler(), lib_name misoundcrossfade, 0xb400007ba2cac860, arsi_destroy_handler, arsi_handler = 0xb400007d32ca8710, retval = 0
+02-18 15:16:59.785  1082  9905 I android.hardware.audio.service.mediatek: misound4_arsi_destroy_handler misound_arsi_destroy_handler
+02-18 15:16:59.785  1082  9905 D aurisys_lib_handler: aurisys_arsi_destroy_handler(), lib_name misound, 0xb400007ba2c9ec70, arsi_destroy_handler, arsi_handler = 0xb400007d82ca4ee0, retval = 0
+02-18 15:16:59.785  1082  9905 D aurisys_lib_manager: delete_aurisys_lib_manager(), manager 0xb400007c22cb0190
+02-18 15:16:59.785  1082  9905 D AudioALSAPlaybackHandlerBase: closeWavDump()
+02-18 15:16:59.785  1082  9905 D AudioALSAPlaybackHandlerBase: closeWavDump(), flag 2, mBytesWavDumpWritten = 0, format = 4, channels = 2, sample_rate = 48000
+02-18 15:16:59.785  1082  9905 D AudioALSAPlaybackHandlerBase: ClosePCMDumpDSP() flag 2, task_scene = 7
+02-18 15:16:59.785  1082  9905 D AudioUtility: ~AudioThrottleTimeControl()
+02-18 15:16:59.785  1082  9905 D AudioALSAPlaybackHandlerDsp: -close(), flag 0x2, mDevice = 0x2
+02-18 15:16:59.785  1082  9905 D AudioUtility: power_hal_hint - custPowerHint 38, data 0
+02-18 15:16:59.785  1082  9905 D AudioALSAPlaybackHandlerDsp: ~AudioALSAPlaybackHandlerDsp()
+02-18 15:16:59.785  1082  9905 D AudioALSAStreamManager: routingOutputDeviceForIEMs()
+02-18 15:16:59.785  1082  9905 D AudioIEMsController: routing(+), cur out 0x0 in 0x0, hs 0, bt 0, usb 0, device 0x2, mask 0x1, on 0
+02-18 15:16:59.785  1082  9905 D AudioIEMsController: routing(-), cur out 0x0 in 0x0
+02-18 15:16:59.786  1082  9905 I EffectsFactory: Effect_Command(): self = 0xb400007c62ca3e50, cmdCode = 23
+02-18 15:16:59.786  1082  9905 V EffectMiSound: MiSound_command() start, cmdCode=23
+02-18 15:16:59.786  1082  9905 V EffectMiSound: MiSound_Command EFFECT_CMD_SET_AUDIO_STANDBY, current mode = 0
+02-18 15:16:59.786  1168  1593 D AudioFlinger: updateActiveAudioState mLastActiveAudioState=1 isActiveAudio=0
+02-18 15:16:59.817  1096  1154 D HfLooper: sensor 33171111 = 4828.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.819  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:16:59.819  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.867  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.868  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.917  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.918  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:16:59.929  1863  3751 I ActivityManager: unbindService com.android.server.am.ActiveServices@d9c6b9e conn=android.os.BinderProxy@a51c715 callingPid=30651
+02-18 15:16:59.967  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:16:59.968  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.000  1863  2157 E AlarmManager: not align this alarm: Alarm{6c54409 type 3 origWhen 234416312 whenElapsed 234416312 android}, reason=0
+02-18 15:17:00.000  1863  2157 D AlarmManager: mBroadcastRefCount -> 1
+02-18 15:17:00.000  1863  2157 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*alarm*' (uid=1000 pid=1863 pkg=android ws=WorkSource{1000 chains=WorkChain{(10117), (1000, JobScheduler)}})], disabled: true, procState: 0, reason: PowerKeeper
+02-18 15:17:00.001  1863  1863 D AlarmManager: mBroadcastRefCount -> 0
+02-18 15:17:00.001  1863  1863 D AlarmManager: mPendingIntent -> null
+02-18 15:17:00.001  1863  1929 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+02-18 15:17:00.002  1863  1929 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+02-18 15:17:00.002  1863  1929 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+02-18 15:17:00.003  1863  1929 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+02-18 15:17:00.003  1863  1929 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+02-18 15:17:00.006  1863  3574 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+02-18 15:17:00.006  2466  2471 D WifiHAL : WifiRequest::create vendor command to iface 36, vendor_id=0x1a11, subcmd=0x1200, res=0
+02-18 15:17:00.006  2466  2471 I WifiHAL : WifiCommand::requestResponse err=-14
+02-18 15:17:00.006  1863  3574 E WifiStaIfaceAidlImpl: getLinkLayerStats failed with service-specific exception: android.os.ServiceSpecificException: unknown (code 9)
+02-18 15:17:00.006  1863  3574 E NetworkSDKService: mMiuiWlanLayerQoE == null
+02-18 15:17:00.006  2840  2840 D NotificationHeaderExpandController: onExpansionChanged: progress =  0.0
+02-18 15:17:00.006  1863  3574 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:41
+02-18 15:17:00.006  1863  3574 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+02-18 15:17:00.006  1863  3574 I NetworkAccelerateSwitchService: getAverageWifiRssi:41
+02-18 15:17:00.007  1863  3574 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+02-18 15:17:00.007  2840  2840 D NotificationHeaderExpandController: onExpansionChanged: progress =  0.0
+02-18 15:17:00.004  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466023): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:00.008  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466024): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:00.012  2840  2840 D MiuiClockController: Listener updateTime
+02-18 15:17:00.013  2840  2840 D ClassicClockBaseView: mNeedShowTimeView2=false mTimeView2=[]
+02-18 15:17:00.013  2840  2840 E AnimationHelper: updateTime sToAod:false mHasNotification: true, mClockType: classic_plus
+02-18 15:17:00.013  2840  2840 D MiuiClockController: Listener updateTime
+02-18 15:17:00.017  1096  1154 D HfLooper: sensor 33171111 = 4825.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.018  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.022  1197  1197 I BufferQueueProducer: [StatusBar1#133](this:0xb400006f6e81b680,id:-1,api:0,p:-1,c:1197) queueBuffer: fps=3.09 dur=4530.95 max=3564.71 min=16.33
+02-18 15:17:00.022  1197  1197 I BufferQueueProducer: [StatusBar#128](this:0xb400006f6e7b7bd0,id:-1,api:0,p:-1,c:1197) queueBuffer: fps=1.14 dur=3514.93 max=3464.92 min=16.52
+02-18 15:17:00.022  1197  1197 I BufferQueueProducer: [NotificationShade#18317](this:0xb400006f6e89b8d0,id:-1,api:0,p:-1,c:1197) queueBuffer: fps=10.38 dur=3564.77 max=2965.35 min=16.36
+02-18 15:17:00.022  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:00.023  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:00.024  1197  1197 I BufferQueueProducer: [FramebufferSurface](this:0xb400006f8e4f9c50,id:-1,api:1,p:1197,c:1197) queueBuffer: fps=2.11 dur=2849.63 max=2416.59 min=16.32
+02-18 15:17:00.024  1089  1128 I hwcomposer: [HWCDisplay] [Display_0 (type:1, mode:2)] fps:0.413784,dur:2416.72,max:2416.72,min:2416.72  
+02-18 15:17:00.025  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:00.025  1506  2192 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:00.025  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:00.025  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:00.025  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:00.025  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:00.025  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:00.025  1089  1128 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:00.025  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:00.026  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:00.026  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:00.026  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:00.026  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:00.026  1089  1089 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:00.026  1089  1089 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d979710)  
+02-18 15:17:00.026  1089  1089 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d979710)  
+02-18 15:17:00.026  1089  1089 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:00.038  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:00.039  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:00.040  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d97a130, fence:213, period16666667
+02-18 15:17:00.040  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:00.040  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:00.067  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.068  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:00.068  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.070  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:00.070  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:00.070  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:00.071  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:00.071  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:00.071  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:00.071  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:00.072  1506  2196 D libsensor-parseRGB: the value of RGB [194.940577 192.056384 186.741807], powPara: 1.525000
+02-18 15:17:00.117  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.167  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.168  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.183  1089  1592 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[4]  
+02-18 15:17:00.188  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:00.189  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:00.219  1096  1154 D HfLooper: sensor 33171111 = 4828.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.267  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.312  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: retry left 8
+02-18 15:17:00.313  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:17:00.317  1096  1154 D HfLooper: sensor 33171111 = 4826.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.367  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.417  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.468  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.517  1096  1154 D HfLooper: sensor 33171111 = 4837.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.567  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.617  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.668  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.684  1863  2409 I SmartPower: com.android.vending/10117(27929): background->idle(3001ms) R(service create com.android.vending/com.google.android.finsky.scheduler.process.mainimpl.PhoneskyJobServiceMain) adj=250.
+02-18 15:17:00.688  1863  2409 I SmartPower: com.miui.cleanmaster/10243(31952): background->idle(3000ms) R(service create com.miui.cleanmaster/com.miui.optimizecenter.cloudcontrol.CloudControlSyncJobService) adj=905.
+02-18 15:17:00.717  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.719  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.767  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.769  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.817  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.819  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.867  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.868  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:00.868  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.900  6451  7964 I lyra-disc: DiscoveryDataNormal::OnCheckAdvertisingReceived:354 now=234357212, next check after 30010 ms
+02-18 15:17:00.910  1296  1497 D connsyslogger: idx=0 Bootup Log: 2 log files! filecount=3 
+02-18 15:17:00.910  1296  1497 D connsyslogger: idx=1 Bootup Log: 2 log files! filecount=3 
+02-18 15:17:00.912  1296  1495 I connsyslogger: thrLogWriter: LogBuf=226.845703KB,idx=0
+02-18 15:17:00.917  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.918  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.939 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11440): 1 [CONTEXT service_id=168 ]
+02-18 15:17:00.967  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:00.968  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:00.979  1863  1921 D AES     : AEEIOCTL_GET/SET_SF_STATE IOCTL,cmd= 1074294797, lParam=0. 
+02-18 15:17:00.979  1863  1921 D AES     : AEEIOCTL_RT_MON_Kick IOCTL,cmd= 2147774474, lParam=300. 
+02-18 15:17:01.009 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11441): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.017  1096  1154 D HfLooper: sensor 33171111 = 4838.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.018  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.067  1096  1154 D HfLooper: sensor 33171111 = 4828.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.068  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.112  5370  6187 D JavaheapMonitor: Java heap used=20M max=256M, proc: com.miui.personalassistant
+02-18 15:17:01.112  5370  6187 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:17:01.117  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.118  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:01.118  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.167  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.169  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.184 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11442): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.213  1296  1493 D connsyslogger: SD_LOG_ROOT is /data/debuglogger/connsyslog/fw.
+02-18 15:17:01.213  1296  1493 D connsyslogger: systemReady:1
+02-18 15:17:01.214 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11443): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.217  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.218  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.241  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:17:01.241  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:17:01.241  2690  3263 V BtGatt.ScanController: onScanResult() - eventType=0x1, addressType=1, address=XX:XX:XX:XX:34:79, primaryPhy=1, secondaryPhy=1, advertisingSid=0x0, txPower=-2, rssi=-84, periodicAdvInt=0x0, originalAddress=00:00:00:00:00:00
+02-18 15:17:01.241  2690  3263 V BtGatt.ScanController: Skipping client: permission=true matches=false
+02-18 15:17:01.241  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:17:01.241  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:17:01.241  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:17:01.267  1096  1154 D HfLooper: sensor 33171111 = 4828.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.268  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.279  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:17:01.279  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:17:01.279  2690  3263 V BtGatt.ScanController: onScanResult() - eventType=0x1, addressType=1, address=XX:XX:XX:XX:C4:FC, primaryPhy=1, secondaryPhy=1, advertisingSid=0x0, txPower=127, rssi=-92, periodicAdvInt=0x0, originalAddress=00:00:00:00:00:00
+02-18 15:17:01.279  2690  3263 V BtGatt.ScanController: Skipping client: permission=true matches=false
+02-18 15:17:01.279  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:17:01.279  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:17:01.279  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:17:01.313  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: retry left 7
+02-18 15:17:01.314  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:17:01.317  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.318  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.367  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.368  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:01.369  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.417  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.418  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.441 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11444): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.467  1096  1154 D HfLooper: sensor 33171111 = 4836.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.468  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.516  1096  1154 D HfLooper: sensor 33171111 = 4835.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.518  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.526 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11445): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.567  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.569  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.610 32577 32587 I :actionprovider: This is non sticky GC, maxfree is 33554432 minfree is 8388608
+02-18 15:17:01.617  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.618  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:01.618  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.624 32577  1538 D JavaheapMonitor: Java heap used=3M max=512M, proc: com.xiaomi.aicr:actionprovider
+02-18 15:17:01.624 32577  1538 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:17:01.667  1096  1154 D HfLooper: sensor 33171111 = 4830.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.668 32612 32623 I icr:instruction: This is non sticky GC, maxfree is 33554432 minfree is 8388608
+02-18 15:17:01.669  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.670 32612  1542 D JavaheapMonitor: Java heap used=2M max=512M, proc: com.xiaomi.aicr:instruction
+02-18 15:17:01.670 32612  1542 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:17:01.687  1863  2225 I MiuiNetworkPolicy: bandwidth: 1 KB/s, Max bandwidth: 18750 KB/s
+02-18 15:17:01.717  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.718  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.731 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11446): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.732 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11448): 1 [CONTEXT service_id=168 ]
+02-18 15:17:01.767  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.769  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.817  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.818  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.867  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.868  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:01.868  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.913  1863  2409 I SmartPower: com.miui.analytics/10141(27272): background->idle(3001ms) R(service start com.miui.analytics/.onetrack.TrackService) adj=100.
+02-18 15:17:01.917  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.918  1863 24210 D MiuiNM  : invalid statsEntry
+02-18 15:17:01.919  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:01.921  1863  2236 E AmlWifiScoreReportInjector: current network is in roaming environment
+02-18 15:17:01.923  1863  2236 D MiuiNM  : tcp fail rate reach: 100
+02-18 15:17:01.923  1863  2236 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1280 android.content.ContextWrapper.sendBroadcast:522 com.android.server.wifi.MiuiNetworkMonitor.sendBroadcastForNetwork:775 com.android.server.wifi.MiuiNetworkMonitor.notifyNetworkWarning:716 com.android.server.wifi.MiuiNetworkMonitor.evaluateNetworkQoE:628 
+02-18 15:17:01.924  1863  1929 D BroadcastQueue: Logging broadcast for android, stopped=false, firstLaunch=false
+02-18 15:17:01.925  1427  2049 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 0
+02-18 15:17:01.925  1404 15927 D BufferPoolAccessor2.0: evictor expired: 2, evicted: 0
+02-18 15:17:01.927 32345 32508 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 0
+02-18 15:17:01.967  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:01.968  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.017  1096  1154 D HfLooper: sensor 33171111 = 4829.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.018  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.034 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11450): 1 [CONTEXT service_id=168 ]
+02-18 15:17:02.035 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11452): 1 [CONTEXT service_id=168 ]
+02-18 15:17:02.069  1096  1154 D HfLooper: sensor 33171111 = 4831.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.070  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.089  2840  2840 E backgroundBlur: setMiViewBlurMode disable com.android.systemui.statusbar.notification.row.NotificationBackgroundView
+02-18 15:17:02.089  2840  2840 D AppMiniWindowManager: notificationSettingsManager android
+02-18 15:17:02.089  2840  2840 D ExpandableNotificationRowInjector: updateMiniWindowBar: isPinned: false, mIsInModal: false, isHeadsUpAnimatingAway: false, currentStatus: 0
+02-18 15:17:02.090  2840  2840 W TouchableRegionManager: onHeadsUpPinnedModeChanged
+02-18 15:17:02.090  2840  2840 D AppMiniWindowManager: notificationSettingsManager android
+02-18 15:17:02.090  2840  2840 D ExpandableNotificationRowInjector: updateMiniWindowBar: isPinned: false, mIsInModal: false, isHeadsUpAnimatingAway: true, currentStatus: 0
+02-18 15:17:02.090  2840  2840 D AppMiniWindowManager: notificationSettingsManager android
+02-18 15:17:02.090  2840  2840 E backgroundBlur: setMiViewBlurMode disable com.android.systemui.statusbar.notification.row.NotificationBackgroundView
+02-18 15:17:02.106  1863  3012 W AppCompatLetterboxPolicy: start not layout letterbox Window{b6f44ea u0 LauncherOverlayWindow:com.miui.personalassistant}
+02-18 15:17:02.106  2840  4088 D MiBridge: requestCpuHighFreq---- uid: 1000 level: 1 timeoutms:2000
+02-18 15:17:02.106  1863  3012 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{db19678 u0 com.miui.home/com.miui.home.launcher.Launcher} 0
+02-18 15:17:02.106  2840  4088 D MiBridge: requestCpuHighFreq handle: 1
+02-18 15:17:02.106  2840  4088 D CpuBoostUtil: boostCpuToMax:0
+02-18 15:17:02.106  1405 23012 W MiuiBooster: "MiuiBoosterService requestCpuHighFreq: 1000, 1, 2000"
+02-18 15:17:02.106  1863  3012 D BarFollowAnimation: isAppTaskBarOnTop win:Window{db19678 u0 com.miui.home/com.miui.home.launcher.Launcher} (mCurrentTopTask:Task{32c9345 #569 type=standard A=1000:com.miui.securitycenter nonResizable} : false); (mAssociatedTask:null : false); (mHomeTask:Task{43857e4 #1 type=home} : true); mReparentToOriginParent:true mLastAppBarVisible:false mLastHomeBarVisible:true
+02-18 15:17:02.106  1863  3012 D MiuiRefreshRatePolicy: reset
+02-18 15:17:02.106  1405 23012 W MiuiBooster: "[OPT-TF-CPU/GPU] Permission not granted : 1000"
+02-18 15:17:02.106  2840  2840 D AppMiniWindowManager: notificationSettingsManager android
+02-18 15:17:02.107  2499  7571 D SystemGestureExclusionListener: onSystemGestureExclusionChanged: systemGestureExclusion = SkRegion((607,39,673,191)), systemGestureExclusionUnrestricted = null
+02-18 15:17:02.104  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466025): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:02.117  1096  1154 D HfLooper: sensor 33171111 = 4834.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.119  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:471.2,IR:0.0,scales:1.000000, hsv: -1.000000
+02-18 15:17:02.119  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.121  1197  1197 I BufferQueueProducer: [NotificationShade#18317](this:0xb400006f6e89b8d0,id:-1,api:0,p:-1,c:1197) queueBuffer: fps=0.48 dur=2098.91 max=2098.91 min=2098.91
+02-18 15:17:02.121  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.122  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.123  1197  1197 I BufferQueueProducer: [FramebufferSurface](this:0xb400006f8e4f9c50,id:-1,api:1,p:1197,c:1197) queueBuffer: fps=1.43 dur=2098.73 max=1933.18 min=15.49
+02-18 15:17:02.123  1089  1089 I hwcomposer: [HWCDisplay] [Display_0 (type:1, mode:2)] fps:1.429501,dur:2098.63,max:1933.22,min:15.38  
+02-18 15:17:02.123  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:02.123  1506  2192 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:02.124  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:02.124  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.124  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.124  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.124  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.124  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.124  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.124  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:02.124  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:02.124  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:02.124  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:02.124  1089  1128 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:02.124  1089  1128 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d97b570)  
+02-18 15:17:02.124  1089  1128 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d97b570)  
+02-18 15:17:02.124  1089  1128 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:02.138  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.139  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.139  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d979710, fence:213, period16666667
+02-18 15:17:02.140  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:02.140  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:02.154  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.155  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.167  1096  1154 D HfLooper: sensor 33171111 = 4832.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.168  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.169  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.169  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.170  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.170  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.170  1089  1128 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.170  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.170  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:02.170  1506  2196 D libsensor-parseRGB: the value of RGB [194.940577 192.056384 186.741807], powPara: 1.525000
+02-18 15:17:02.171  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.172  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.188  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.189  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.204  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.205  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.217  1096  1154 D HfLooper: sensor 33171111 = 4833.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.221  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.222  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.238  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.238  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.254  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.255  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.267  1096  1154 D HfLooper: sensor 33171111 = 4837.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.268  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.271  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.272  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.288  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.289  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.298  1863  2299 D GreezeManager: FZ uid = 10374 reason =check binder success !
+02-18 15:17:02.298  1863  2299 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'WorkManager:TikTokListenableWorker startWork -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> NoAccountWorkerFactory startWork()' ACQ=-5s5ms (uid=10374 pid=28765 pkg=com.google.android.googlequicksearchbox)], disabled: true, procState: 8, reason: greeze
+02-18 15:17:02.298  1863  2299 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'WorkManager:TikTokListenableWorker startWork -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> NoAccountWorkerFactory startWork()' ACQ=-5s5ms (uid=10374 pid=30651 pkg=com.google.android.googlequicksearchbox)], disabled: true, procState: 8, reason: greeze
+02-18 15:17:02.298  1863  2299 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' ACQ=-5s5ms (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: true, procState: 0, reason: greeze
+02-18 15:17:02.298  1863  2299 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' ACQ=-5s6ms (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: true, procState: 0, reason: greeze
+02-18 15:17:02.298  1863  2299 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' ACQ=-5s6ms (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: true, procState: 0, reason: greeze
+02-18 15:17:02.298  1863  2299 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' ACQ=-4s619ms (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: true, procState: 0, reason: greeze
+02-18 15:17:02.299  1863  2298 D GreezeManager: iso uid:10374 p:{30712} :true
+02-18 15:17:02.300  1863  2299 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+02-18 15:17:02.300  1863  2299 D InetDiagMessage: Destroyed 1 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+02-18 15:17:02.301  1863  2299 D InetDiagMessage: Destroyed live tcp sockets for uids={10374} in 1ms
+02-18 15:17:02.301  1863  2299 D ActionExecute: frozen uid = 10374 reason=check binder
+02-18 15:17:02.301  1863  2299 D ExternalInterface: setUidState, uid = 10374 allow = false
+02-18 15:17:02.304  1863  3012 D GreezeManager: THAW uid = 10374 pid = [ 28765 30651 ]  reason : Check Binder caller : 1
+02-18 15:17:02.304  1863  3012 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'WorkManager:TikTokListenableWorker startWork -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> NoAccountWorkerFactory startWork()' DISABLED (uid=10374 pid=28765 pkg=com.google.android.googlequicksearchbox)], disabled: false, procState: 8, reason: greeze
+02-18 15:17:02.304  1863  3012 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'WorkManager:TikTokListenableWorker startWork -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> com.google.apps.tiktok.sync.impl.workmanager.SyncPeriodicWorker startWork() -> NoAccountWorkerFactory startWork()' DISABLED (uid=10374 pid=30651 pkg=com.google.android.googlequicksearchbox)], disabled: false, procState: 8, reason: greeze
+02-18 15:17:02.304  1863  3012 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' DISABLED (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: false, procState: 0, reason: greeze
+02-18 15:17:02.304  1863  3012 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' DISABLED (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: false, procState: 0, reason: greeze
+02-18 15:17:02.304  1863  3012 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' DISABLED (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: false, procState: 0, reason: greeze
+02-18 15:17:02.304  1863  3012 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 '*job*r/@androidx.work.systemjobscheduler@com.google.android.googlequicksearchbox/androidx.work.impl.background.systemjob.SystemJobService' DISABLED (uid=1000 pid=1863 pkg=android ws=WorkSource{ chains=WorkChain{(10374), (1000, JobScheduler)}})], disabled: false, procState: 0, reason: greeze
+02-18 15:17:02.304  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.305  1863  3012 D ExternalInterface: setUidState, uid = 10374 allow = true
+02-18 15:17:02.306  1863  2298 D GreezeManager: iso uid:10374 p:{30712} :false
+02-18 15:17:02.306  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.314  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: retry left 6
+02-18 15:17:02.314  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:17:02.317  1096  1154 D HfLooper: sensor 33171111 = 4839.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.321  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.322  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.338  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.338  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.339  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:02.339  1506  2192 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:02.339  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:02.339  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.339  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.339  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.339  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.339  1089  1128 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.339  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.340  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:02.340  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:02.340  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:02.340  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:02.340  1089  1089 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:02.340  1089  1089 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d97a130)  
+02-18 15:17:02.340  1089  1089 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d97a130)  
+02-18 15:17:02.340  1089  1089 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:02.340  1410  1870 D ULogGuard: Monitoring: 12 threads, 0 requests, 0 time-bombs; 15 guards. ResetFlags = 0x7
+02-18 15:17:02.354  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.355  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.356  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d97b570, fence:211, period16666667
+02-18 15:17:02.357  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:02.357  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:02.367  1096  1154 D HfLooper: sensor 33171111 = 4854.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.371  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.386  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.386  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.386  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.386  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.386  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.386  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.386  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:02.387  1506  2196 D libsensor-parseRGB: the value of RGB [237.818409 237.242240 234.683323], powPara: 1.525000
+02-18 15:17:02.388  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.396  5496 12265 D JavaheapMonitor: Java heap used=6M max=256M, proc: com.xiaomi.xmsf
+02-18 15:17:02.396  5496 12265 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:17:02.404  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.418  1096  1154 D HfLooper: sensor 33171111 = 4856.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.421  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.437  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.454  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.467  1096  1154 D HfLooper: sensor 33171111 = 4774.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.468  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.471  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.488  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.504  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.517  1096  1154 D HfLooper: sensor 33171111 = 4841.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.521  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.521  2840  2840 D AppMiniWindowManager: notificationSettingsManager android
+02-18 15:17:02.521  2840  2840 D ExpandableNotificationRowInjector: updateMiniWindowBar: isPinned: false, mIsInModal: false, isHeadsUpAnimatingAway: false, currentStatus: 0
+02-18 15:17:02.521  2840  2840 D AppMiniWindowManager: notificationSettingsManager android
+02-18 15:17:02.521  2840  2840 E backgroundBlur: setMiViewBlurMode disable com.android.systemui.statusbar.notification.row.NotificationBackgroundView
+02-18 15:17:02.522  2840  4088 D MiBridge: cancelCpuHighFreq---uid: 1000
+02-18 15:17:02.522  2840  4088 D MiBridge: cancelCpuHighFreq ret: 0
+02-18 15:17:02.522  2840  4088 D CpuBoostUtil: cancelCpuHighFreq:0
+02-18 15:17:02.522  1405 23012 W MiuiBooster: "MiuiBoosterService cancelCpuHighFreq: 1000"
+02-18 15:17:02.522  1405 23012 W MiuiBooster: "[OPT-TF-CPU/GPU] Permission not granted : 1000"
+02-18 15:17:02.522  2840  2840 D KeyguardPanelViewController: vis=false shouleBe=false BarState=0
+02-18 15:17:02.523  2840  2840 D VRI[NotificationShade]: getMiuiFreeformStackInfo mTmpFrames.miuiFreeFormStackInfo: null
+02-18 15:17:02.524  1863  3012 W AppCompatLetterboxPolicy: start not layout letterbox Window{b6f44ea u0 LauncherOverlayWindow:com.miui.personalassistant}
+02-18 15:17:02.524  1863  3012 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{db19678 u0 com.miui.home/com.miui.home.launcher.Launcher} 0
+02-18 15:17:02.525  1863  3012 D BarFollowAnimation: isAppTaskBarOnTop win:Window{db19678 u0 com.miui.home/com.miui.home.launcher.Launcher} (mCurrentTopTask:Task{32c9345 #569 type=standard A=1000:com.miui.securitycenter nonResizable} : false); (mAssociatedTask:null : false); (mHomeTask:Task{43857e4 #1 type=home} : true); mReparentToOriginParent:true mLastAppBarVisible:false mLastHomeBarVisible:true
+02-18 15:17:02.525  1863  3012 D MiuiRefreshRatePolicy: reset
+02-18 15:17:02.538  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.538  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.539  2840  2840 D DynamicIslandWindowViewController: handleDynamicIsland: action_heads_up_height_changed
+02-18 15:17:02.539  2840  2840 D DynamicIslandTouchDebug: entry: null, headsUpHeight: 0
+02-18 15:17:02.539  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:02.539  1506  2192 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:02.540  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:02.540  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.540  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.540  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.540  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.540  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.540  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.540  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:02.540  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:02.540  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:02.540  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:02.540  1089  1128 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:02.540  1089  1128 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d979710)  
+02-18 15:17:02.540  1089  1128 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d979710)  
+02-18 15:17:02.540  2840  2840 D QS      : setExpanded false
+02-18 15:17:02.541  1089  1128 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:02.541  2840  2840 D KeyguardPanelViewInjector: resetKeyguardMoveHelper
+02-18 15:17:02.541  2499  7571 D SystemGestureExclusionListener: onSystemGestureExclusionChanged: systemGestureExclusion = SkRegion(), systemGestureExclusionUnrestricted = null
+02-18 15:17:02.541  2840  2840 D NotificationPanelExpandController: hide false
+02-18 15:17:02.541  2840  2840 D NotificationPanelExpandController: expand height changed to 0.0
+02-18 15:17:02.541  2840  2840 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=com.android.systemui.back.domain.interactor.BackActionInteractor$callback$2@ec6f343
+02-18 15:17:02.542  1863  5794 D CoreBackPreview: Window{5961967 u0 NotificationShade}: Setting back callback null
+02-18 15:17:02.543  2840  2840 D KeyguardViewMediator: readyForKeyguardDone
+02-18 15:17:02.543  2840  2840 D ControlCenterControllerImpl: disable1: 0 -> 0 (diff1: 0)
+02-18 15:17:02.543  2840  2840 D ControlCenterControllerImpl: disable2: 0 -> 0 (diff1: 0)
+02-18 15:17:02.543  2840  2840 D ControlCenterControllerImpl: panelEnabled changed from true to true
+02-18 15:17:02.543  2840  2840 D EmptyNotif: setContractedChild: -1|android|17302936|null|1000  null
+02-18 15:17:02.543  2840  2840 D NotificationRowContentBinderInjectorImpl: changeToFullAodContext: not need change full aod style
+02-18 15:17:02.544  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.545  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.548  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.549  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.554  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.555  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.556  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d97a130, fence:218, period16666667
+02-18 15:17:02.556  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:02.556  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:02.557  1863  5794 W AppCompatLetterboxPolicy: start not layout letterbox Window{b6f44ea u0 LauncherOverlayWindow:com.miui.personalassistant}
+02-18 15:17:02.558  1863  5794 D BarFollowAnimation: pairAppearanceRegionAndWin win=Window{db19678 u0 com.miui.home/com.miui.home.launcher.Launcher} 0
+02-18 15:17:02.558  1863  5794 D BarFollowAnimation: isAppTaskBarOnTop win:Window{db19678 u0 com.miui.home/com.miui.home.launcher.Launcher} (mCurrentTopTask:Task{32c9345 #569 type=standard A=1000:com.miui.securitycenter nonResizable} : false); (mAssociatedTask:null : false); (mHomeTask:Task{43857e4 #1 type=home} : true); mReparentToOriginParent:true mLastAppBarVisible:false mLastHomeBarVisible:true
+02-18 15:17:02.559  1863  5794 D MiuiRefreshRatePolicy: reset
+02-18 15:17:02.561  2840  2840 W ndroid.systemui: Binder 0xb400007269596d80 destroyed after setInheritRt before being parceled.
+02-18 15:17:02.561  1197  4573 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+02-18 15:17:02.561  2840  2840 D BLASTBufferQueue: [VRI[NotificationShade]#2304](f:0,a:5) destructor()
+02-18 15:17:02.561  2840  2840 D BufferQueueConsumer: [VRI[NotificationShade]#2304(BLAST Consumer)2304](id:b1800000901,api:0,p:-1,c:2840) disconnect
+02-18 15:17:02.564  2840  3416 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+02-18 15:17:02.567  1096  1154 D HfLooper: sensor 33171111 = 4659.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.572  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.572  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.572  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.574  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.579  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.581  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.584  2840  2840 D AlertCoordinator: onViewBound, buzzBeep for -1|android|17302936|null|1000
+02-18 15:17:02.586  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.586  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.586  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.586  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.586  1089  1128 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.586  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.586  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:02.587  1197  1197 I SurfaceFlinger: onHandleDestroyed: layerId=18317, name=NotificationShade#18317
+02-18 15:17:02.587  1506  2196 D libsensor-parseRGB: the value of RGB [46.252124 32.535382 10.272637], powPara: 1.525000
+02-18 15:17:02.587  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.591  2840  2840 W NotifRow: cancelAppearDrawing childKey: -1|android|26|null|1000 wasDrawing:false
+02-18 15:17:02.591  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.592  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.595  2840  2840 E backgroundBlur: setMiViewBlurMode disable com.android.systemui.statusbar.notification.row.NotificationBackgroundView
+02-18 15:17:02.595  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.596  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.600  2840  2840 W NotifRow: cancelAppearDrawing childKey: -1|android|32|null|1000 wasDrawing:false
+02-18 15:17:02.600  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.601  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.605  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.600  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466026): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:02.604  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466027): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:02.610  2840  2840 D EmptyNotif: setContractedChild: -1|android|26|null|1000  null
+02-18 15:17:02.610  2840  2840 D NotificationRowContentBinderInjectorImpl: changeToFullAodContext: not need change full aod style
+02-18 15:17:02.608  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466028): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:02.610  2840  2840 D NotificationRowContentBinderInjectorImpl: changeToFullAodContext: not need change full aod style
+02-18 15:17:02.611  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.612  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.613  2840  2840 D NotificationHeaderExpandController: onExpansionChanged: progress =  0.0
+02-18 15:17:02.615  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.617  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.617  1096  1154 D HfLooper: sensor 33171111 = 4551.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.612  1197  1197 W binder:1197_5: type=1400 audit(0.0:1466029): avc:  denied  { search } for  name="mcd" dev="dm-57" ino=1171 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:mcd_data_file:s0 tclass=dir permissive=0
+02-18 15:17:02.619  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.621  1197  1197 I BufferQueueProducer: [StatusBar#128](this:0xb400006f6e7b7bd0,id:-1,api:0,p:-1,c:1197) queueBuffer: fps=0.38 dur=2598.85 max=2598.85 min=2598.85
+02-18 15:17:02.621  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.621  1197  1197 I BufferQueueProducer: [StatusBar1#133](this:0xb400006f6e81b680,id:-1,api:0,p:-1,c:1197) queueBuffer: fps=0.38 dur=2599.00 max=2599.00 min=2599.00
+02-18 15:17:02.621  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.622  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.624  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.626  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.628  2840  3416 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.629  2840  3416 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.637  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.641  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.642  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.645  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.646  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.649  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.650  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.653  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.654  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.654  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.656  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.658  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.662  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.663  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.665  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.667  1096  1154 D HfLooper: sensor 33171111 = 4546.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.667  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.669  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.669  1506  2201 I libsensor-displayalgo: dbv:15,lux:72.6,hsv:-1.0,dc:0CWB R:346.2,G:202.5,B:34.9Event ALS:4546.0,IR:38.0Cali ALS:0.0,IR:0.6
+02-18 15:17:02.669  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.671  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.673  2840  2840 D IconCustomizer: drawableToBitmap: sourceWidth=764, sourceHeight=764, ratio=0.2853403
+02-18 15:17:02.675  2840  2840 W Bitmap  : Called getDensity() on a recycle()'d bitmap! This is undefined behavior!
+02-18 15:17:02.688  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.691  1863  2299 D GreezeManager: FZ uid = 10243 reason =from system success !
+02-18 15:17:02.693  1863  2299 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+02-18 15:17:02.693  1863  2299 D InetDiagMessage: Destroyed 1 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+02-18 15:17:02.693  1863  2299 D InetDiagMessage: Destroyed live tcp sockets for uids={10243} in 1ms
+02-18 15:17:02.693  1863  2299 D ActionExecute: frozen uid = 10243 reason=from system
+02-18 15:17:02.694  1863  2299 D ExternalInterface: setUidState, uid = 10243 allow = false
+02-18 15:17:02.704  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.717  1096  1154 D HfLooper: sensor 33171111 = 4549.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.721  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.737  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.767  1096  1154 D HfLooper: sensor 33171111 = 4545.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.807  1089  1592 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[4]  
+02-18 15:17:02.820  1096  1154 D HfLooper: sensor 33171111 = 4546.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.821  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.821  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.822  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:02.823  1506  2192 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:02.823  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:02.823  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.823  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.824  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.824  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.824  1089  1128 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.824  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.824  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:02.824  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:02.824  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:02.824  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:02.824  1089  1089 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:02.824  1089  1089 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d97b570)  
+02-18 15:17:02.824  1089  1089 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d97b570)  
+02-18 15:17:02.824  1089  1089 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:02.837  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.838  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.838  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d979710, fence:156, period16666667
+02-18 15:17:02.838  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:02.838  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:02.867  1096  1154 D HfLooper: sensor 33171111 = 4546.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.869  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:02.869  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:02.869  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:02.869  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:02.869  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:02.869  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:02.869  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:02.870  1506  2196 D libsensor-parseRGB: the value of RGB [46.252124 32.535382 10.272637], powPara: 1.525000
+02-18 15:17:02.917  1096  1154 D HfLooper: sensor 33171111 = 4545.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.925  1427  2049 D BufferPoolAccessor2.0: bufferpool2 0xb4000072821be278 : 0(0 size) total buffers - 0(0 size) used buffers - 53/56 (recycle/alloc) - 3/55 (fetch/transfer)
+02-18 15:17:02.925  1427  2049 D BufferPoolAccessor2.0: evictor expired: 3, evicted: 1
+02-18 15:17:02.926  1404 15927 D BufferPoolAccessor2.0: bufferpool2 0xb400007cedde95c8 : 0(0 size) total buffers - 0(0 size) used buffers - 53/61 (recycle/alloc) - 8/116 (fetch/transfer)
+02-18 15:17:02.926  1404 15927 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 1
+02-18 15:17:02.927 32345 32508 D BufferPoolAccessor2.0: evictor expired: 5, evicted: 0
+02-18 15:17:02.943  1089  1592 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[4]  
+02-18 15:17:02.954  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:02.954  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:02.967  1096  1154 D HfLooper: sensor 33171111 = 4546.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:02.968  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:0.0,IR:0.6,scales:1.000000, hsv: 33.891430
+02-18 15:17:02.968  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:02.988  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+02-18 15:17:02.989  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+02-18 15:17:02.989  1863  2242 D InetDiagMessage: Destroyed live tcp sockets for uids={10243} in 2ms
+02-18 15:17:02.989  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+02-18 15:17:02.990  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+02-18 15:17:02.990  1863  2242 D InetDiagMessage: Destroyed live tcp sockets for uids={20243} in 1ms
+02-18 15:17:02.991  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+02-18 15:17:02.992  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+02-18 15:17:02.992  1863  2242 D InetDiagMessage: Destroyed live tcp sockets for uids={10084} in 2ms
+02-18 15:17:02.992  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+02-18 15:17:02.993  1863  2242 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+02-18 15:17:02.993  1863  2242 D InetDiagMessage: Destroyed live tcp sockets for uids={20084} in 1ms
+02-18 15:17:03.010  1863  3574 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+02-18 15:17:03.010  2466  2471 D WifiHAL : WifiRequest::create vendor command to iface 36, vendor_id=0x1a11, subcmd=0x1200, res=0
+02-18 15:17:03.010  2466  2471 I WifiHAL : WifiCommand::requestResponse err=-14
+02-18 15:17:03.010  1863  3574 E WifiStaIfaceAidlImpl: getLinkLayerStats failed with service-specific exception: android.os.ServiceSpecificException: unknown (code 9)
+02-18 15:17:03.010  1863  3574 E NetworkSDKService: mMiuiWlanLayerQoE == null
+02-18 15:17:03.010  1863  3574 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:41
+02-18 15:17:03.010  1863  3574 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+02-18 15:17:03.010  1863  3574 I NetworkAccelerateSwitchService: getAverageWifiRssi:41
+02-18 15:17:03.010  1863  3574 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+02-18 15:17:03.018  1096  1154 D HfLooper: sensor 33171111 = 4545.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.067  1096  1154 D HfLooper: sensor 33171111 = 4547.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.106  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:03.106  1506  2192 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:03.106  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:03.106  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:03.106  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:03.106  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:03.106  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:03.106  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:03.106  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:03.106  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:03.106  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:03.106  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:03.107  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:03.107  1089  1128 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:03.107  1089  1128 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d97a130)  
+02-18 15:17:03.107  1089  1128 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d97a130)  
+02-18 15:17:03.107  1089  1128 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:03.117  1096  1154 D HfLooper: sensor 33171111 = 4547.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.119  5339  9740 D JavaheapMonitor: Java heap used=25M max=256M, proc: com.mediatek.voicecommand
+02-18 15:17:03.120  5339  9740 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:17:03.120  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:03.121  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:03.122  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d97b570, fence:156, period16666667
+02-18 15:17:03.122  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:03.122  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:03.122  1089  1574 I android.hardware.graphics.composer@3.2-service: Sensor: notify citsensorservice to trigger cwb
+02-18 15:17:03.122  1506  2228 D libsensor-displayalgo: mframeBufferManager request
+02-18 15:17:03.122  1506  2195 D libsensor-frameBufferManager: request dump start
+02-18 15:17:03.122  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:03.122  1089  1128 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:03.122  1089  1128 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:03.122  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 1, (0,0,200,200), (200, 200), 3  
+02-18 15:17:03.122  1089  1128 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 1/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:03.122  1089  1128 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:03.122  1506  2195 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : first_time getDispDump Enable ret = 0
+02-18 15:17:03.122  1506  2195 D libcomposer_ext: ClientImplAidl::getDispDump(), dpy 1, dst (200, 200), dump_point 1, release_fence -1
+02-18 15:17:03.123  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(14), client_handle: 1
+02-18 15:17:03.123  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDump()
+02-18 15:17:03.123  1089  1089 D libcomposer_ext: DeviceImplAidl::ParseGetDispDump(), dpy 1, dst (200, 200), dump_point 1
+02-18 15:17:03.123  1089  1089 I hwcomposer: [HWC] getDispDump(), client(1), dpy 1, (400,93,600,293), (200, 200), (1, 2), (-1), (-1), (0xb40000749d979710)  
+02-18 15:17:03.123  1089  1089 I hwcomposer: [DISP_DUMP] setDumpBuf(), client(1), dpy(0), src(400, 93, 600, 293), dst(200, 200), (1, 2), -1, (-1), (0xb40000749d979710)  
+02-18 15:17:03.123  1089  1089 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[9]  
+02-18 15:17:03.137  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:03.137  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:03.138  1089  1089 I hwcomposer: [HWCDisplay] [Display_0 (type:1, mode:2)] fps:40.405533,dur:1014.71,max:166.27,min:15.35  
+02-18 15:17:03.138  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::NotifyDispDumpReady(), client_handle:1, buffer:0xb40000749d97a130, fence:174, period16666667
+02-18 15:17:03.152  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:03.152  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:03.152  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:03.152  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:03.152  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/1, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:03.152  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:03.153  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:03.153  1506  2192 D libcomposer_ext: ClientCallbackAidl::asyncPerform(15)
+02-18 15:17:03.153  1506  2192 D libcomposer_ext: ClientImplAidl::ParseNotifyDispDumpReady()
+02-18 15:17:03.153  1506  2196 D libsensor-parseRGB: the value of RGB [46.252124 32.535382 10.272637], powPara: 1.525000
+02-18 15:17:03.167  1096  1154 D HfLooper: sensor 33171111 = 4551.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.169  1506  2192 D libcomposer_ext: ClientImplAidl::getDispDumpEnable()
+02-18 15:17:03.169  1089  1089 D libcomposer_ext: DeviceImplAidl::syncPerform(13), client_handle: 1
+02-18 15:17:03.169  1089  1089 D libcomposer_ext: DeviceImplAidl::DeviceClientContextAidl::ParseGetDispDumpEnable()
+02-18 15:17:03.169  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), client(1), dpy 1, enable 0, (0,0,200,200), (200, 200), 3  
+02-18 15:17:03.169  1089  1089 I hwcomposer: [DISP_DUMP] setEnable(), client(1), dpy(0), enable 0/0, src(0, 0, 200, 200), dst(200, 200), fmt 0x3  
+02-18 15:17:03.169  1089  1089 I hwcomposer: [HWC] getDispDumpEnable(), register to client callback with client(1), disp(0)  
+02-18 15:17:03.169  1506  2192 D libsensor-frameBufferManager: frameBufferManager_sensor_debug : getDispDump_Disable ret = 0
+02-18 15:17:03.170  1506  2196 D libsensor-parseRGB: the value of RGB [46.252124 32.535382 10.272637], powPara: 1.525000
+02-18 15:17:03.189 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11456): 1 [CONTEXT service_id=168 ]
+02-18 15:17:03.213  1296  1493 D connsyslogger: SD_LOG_ROOT is /data/debuglogger/connsyslog/fw.
+02-18 15:17:03.213  1296  1493 D connsyslogger: systemReady:1
+02-18 15:17:03.213 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: checkCertRefresh: need refresh. ts: 1771399023213
+02-18 15:17:03.214 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: notifyStatus:CHECK_DONE_NEED_REQUEST
+02-18 15:17:03.218 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: periodicCheck done, next check time:1771320508416
+02-18 15:17:03.218 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: send certmng status: CHECK_DONE_NEED_REQUEST
+02-18 15:17:03.218 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: requestCertRefresh: start to request.
+02-18 15:17:03.222  1096  1154 D HfLooper: sensor 33171111 = 4551.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.239  1089  1592 I hwcomposer: [HWC] (0)fire a callback of refresh to SF[4]  
+02-18 15:17:03.254  1197  1197 D CompositionEngine: AodOverrideCEHelper 1 setEnabled
+02-18 15:17:03.254  1197  1197 E HwcComposer: presentOrValidateDisplay 0 presentFence:-1
+02-18 15:17:03.255  1197  1197 I BufferQueueProducer: [FramebufferSurface](this:0xb400006f8e4f9c50,id:-1,api:1,p:1197,c:1197) queueBuffer: fps=13.25 dur=1132.07 max=499.72 min=15.98
+02-18 15:17:03.257 16134  8530 W AOSP-MdnsDiscoveryManag: Error while decoding multicast packet (11457): 1 [CONTEXT service_id=168 ]
+02-18 15:17:03.267  1096  1154 D HfLooper: sensor 33171111 = 4550.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.268  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:03.315  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: retry left 5
+02-18 15:17:03.315  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:17:03.317  1096  1154 D HfLooper: sensor 33171111 = 4547.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.367  1096  1154 D HfLooper: sensor 33171111 = 4551.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.409 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: requestCertRefresh: get response.
+02-18 15:17:03.409 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: updateInterval: get interval:30
+02-18 15:17:03.410 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: save certs.
+02-18 15:17:03.410 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: delete invalid certs.
+02-18 15:17:03.410 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: notifyStatus:REQUEST_DONE_NO_UPDATE
+02-18 15:17:03.410 32345 32513 I VA_AivsSDK-[AIVS 6707-CertMngThread] certManager: send certmng status: REQUEST_DONE_NO_UPDATE
+02-18 15:17:03.420  1096  1154 D HfLooper: sensor 33171111 = 4552.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.424  6481 11816 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.lbe.security.miui
+02-18 15:17:03.424  6481 11816 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+02-18 15:17:03.466  1096  1154 D HfLooper: sensor 33171111 = 4551.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.517  1096  1154 D HfLooper: sensor 33171111 = 4550.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.567  1096  1154 D HfLooper: sensor 33171111 = 4548.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.623  1096  1154 D HfLooper: sensor 33171111 = 4547.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.667  1096  1154 D HfLooper: sensor 33171111 = 4549.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.717  1096  1154 D HfLooper: sensor 33171111 = 4550.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.767  1096  1154 D HfLooper: sensor 33171111 = 4546.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.768  1423  2237 D AALLightSensor: oldLux=59 [SA:-1 LA:-1] newLux=59 (oriLux: 59)
+02-18 15:17:03.782  8486  8486 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d'
+02-18 15:17:03.821  1096  1154 D HfLooper: sensor 33171111 = 4550.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.823  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:03.867  1096  1154 D HfLooper: sensor 33171111 = 4551.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.869  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:03.918  1096  1154 D HfLooper: sensor 33171111 = 4547.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.919  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:03.967  1096  1154 D HfLooper: sensor 33171111 = 4542.000000 38.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:17:03.969  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:0.0,IR:0.6,scales:1.000000, hsv: 33.891430
+02-18 15:17:03.969  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:17:03.984  3469  4556 D JavaheapMonitor: Java heap used=8M max=256M, proc: com.xiaomi.bluetooth
+02-18 15:17:03.984  3469  4556 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000

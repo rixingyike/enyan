@@ -1,0 +1,24 @@
+{
+  "packs": [
+    {
+      "id": "lang_cht",
+      "name": "繁体中文",
+      "description": "Traditional Chinese Bible Database",
+      "url": "http://192.168.3.7:8080/lang_cht.zip.gz"
+    },
+    {
+      "id": "voice_6k",
+      "name": "基础语音包",
+      "description": "Opus 6kbps Audio Pack",
+      "parts": 2,
+      "url": "http://192.168.3.7:8080/voice_6k.zip.gz"
+    },
+    {
+      "id": "voice_8k",
+      "name": "高级语音包",
+      "description": "Opus 8kbps Audio Pack",
+      "parts": 3,
+      "url": "http://192.168.3.7:8080/voice_8k.zip.gz"
+    }
+  ]
+}

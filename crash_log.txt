@@ -1,0 +1,200 @@
+02-18 15:15:28.967  1096  1154 D HfLooper: sensor 33171111 = 4563.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:28.971  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.017  1096  1154 D HfLooper: sensor 33171111 = 4566.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.022  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:0.0,IR:0.6,scales:1.000000, hsv: 33.891430
+02-18 15:15:29.023  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.070  1096  1153 W AString : ctor got NULL, using empty string instead
+02-18 15:15:29.071  1096  1153 I SensorSavedChannel: [61,0,-106,-3008,-450,3828]==>gyro_temp.json
+02-18 15:15:29.071  1096  1153 W AString : ctor got NULL, using empty string instead
+02-18 15:15:29.072  1096  1154 D HfLooper: sensor 33171111 = 4568.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.072  1096  1153 I SensorSavedChannel: [-793,-320,90]==>gyro_bias.json
+02-18 15:15:29.077  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.118  1096  1154 D HfLooper: sensor 33171111 = 4563.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.123  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.154  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: retry left 8
+02-18 15:15:29.156  1419  1517 E mtk_storageproxyd: ipc-trustonic: ipc_trustonic_connect: Unable to resolve family name (-12)
+02-18 15:15:29.167  1096  1154 D HfLooper: sensor 33171111 = 4562.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.173  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.189  1296  1493 D connsyslogger: SD_LOG_ROOT is /data/debuglogger/connsyslog/fw.
+02-18 15:15:29.190  1296  1493 D connsyslogger: systemReady:1
+02-18 15:15:29.219  1096  1154 D HfLooper: sensor 33171111 = 4557.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.224  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.269  1096  1154 D HfLooper: sensor 33171111 = 4561.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.275  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:0.0,IR:0.6,scales:1.000000, hsv: 33.891430
+02-18 15:15:29.275  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.289  1410  1870 D ULogGuard: Monitoring: 12 threads, 0 requests, 0 time-bombs; 15 guards. ResetFlags = 0x7
+02-18 15:15:29.322  1096  1154 D HfLooper: sensor 33171111 = 4556.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.328  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.360  1863  1926 D JavaheapMonitor: Java heap used=190M max=512M, proc: system_server
+02-18 15:15:29.364  1863  1926 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+02-18 15:15:29.367  1096  1154 D HfLooper: sensor 33171111 = 4557.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.373  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.418  1096  1154 D HfLooper: sensor 33171111 = 4565.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.425  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.467  1096  1154 D HfLooper: sensor 33171111 = 4561.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.474  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.513  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:15:29.513  2690  3263 W BluetoothMetricsLogger: MetricsLogger isn't initialized
+02-18 15:15:29.513  2690  3263 V BtGatt.ScanController: onScanResult() - eventType=0x1, addressType=1, address=XX:XX:XX:XX:34:79, primaryPhy=1, secondaryPhy=1, advertisingSid=0x0, txPower=-2, rssi=-75, periodicAdvInt=0x0, originalAddress=00:00:00:00:00:00
+02-18 15:15:29.513  2690  3263 V BtGatt.ScanController: Skipping client: permission=true matches=false
+02-18 15:15:29.513  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:15:29.513  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:15:29.513  2690  3263 V BtGatt.ScanController: Legacy scan, non legacy result; skip.
+02-18 15:15:29.516  2811  2811 D SatelliteController: Satellite for carrier is not supported.
+02-18 15:15:29.516  2811  2811 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+02-18 15:15:29.516  2811  2811 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+02-18 15:15:29.516  2811  2811 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+02-18 15:15:29.516  2811  2811 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+02-18 15:15:29.518  1096  1154 D HfLooper: sensor 33171111 = 4557.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.521  2811  2811 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+02-18 15:15:29.521  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:0.0,IR:0.6,scales:1.000000, hsv: 33.891430
+02-18 15:15:29.521  2811  2811 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+02-18 15:15:29.521  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.521  2811  2811 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+02-18 15:15:29.521  2811  2811 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+02-18 15:15:29.522  1863  2986 D CustFeatureResolve:  The result of feature is_non_roaming_show_non_null_nitz is true
+02-18 15:15:29.529  1863  2986 D CustFeatureResolve:  The result of feature is_non_roaming_show_non_null_nitz is true
+02-18 15:15:29.538  2811  3464 D SatelliteController: isCarrierRoamingNtnEligible: satellite access is not allowed
+02-18 15:15:29.539  2811  3464 D SatelliteController: evaluateCarrierRoamingNtnEligibilityChange: isCarrierRoamingNtnEligible=false
+02-18 15:15:29.539  2811  3464 D SatelliteController: getSelectedSatelliteSubId: subId=-1
+02-18 15:15:29.539  2811  3464 D SatelliteController: notifyNtnEligibility: phoneId=0 currentNtnEligibility=false
+02-18 15:15:29.540  2811  2811 D ServiceStateProvider: subId=1
+02-18 15:15:29.540  2811  3464 V SatelliteController: getWwanIsInService: return true
+02-18 15:15:29.540  2811  3779 D FivegOfflineStatistic: handleMessage msg : 4
+02-18 15:15:29.541  2811  3779 D FivegOfflineStatistic: phoneId = 0, curRilRat = 20, mLastRilRat = 20
+02-18 15:15:29.542  2811  2811 D SatelliteController: iisInCarrierRoamingNbIotNtn: satellite is disabled
+02-18 15:15:29.544  2811  3464 D SatelliteController: updateLastNotifiedNtnModeAndNotify: phone=0 subId=1 initialized=true lastNotifiedNtnMode=false currNtnMode=false
+02-18 15:15:29.544  2811  3464 D SatelliteController: iisInCarrierRoamingNbIotNtn: satellite is disabled
+02-18 15:15:29.548  2774  2918 D HyperComm_TelephonyMonitor: onServiceStateChanged[0]: {mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=504990, duplexMode()=0, mCellBandwidths=[100000], mOperatorAlphaLong=中国移动, mOperatorAlphaShort=中国移动, isManualNetworkSelection=false(automatic), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=20(NR_SA), mCssIndicator=unsupported, mNetworkId=-1, mSystemId=-1, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=PS transportType=WLAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 0 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=null isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING networkRegistrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn= isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME networkRegistrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=NR rejectCause=0 emergencyEnabled=false availableServices=[DATA,MMS] cellIdentity=CellIdentityNr:{ mMcc = 460 mMnc = 00 mAlphaLong = 中国移动 mAlphaShort = 中国移动 mAdditionalPlmns = {} } voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 16 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false mLteAttachResultType = 0 mLteAttachExtraInfo = 0 NrVopsSupportInfo :  mVopsSupport = 1 mEmcSupport = 0 mEmfSupport = 0 } nrState=**** rRplmn=46000 isUsingCarrierAggregation=false isNonTerrestrialNetwork=TERRESTRIAL}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=中国移动, mOperatorAlphaShortRaw=中国移动, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false, mIsUsingNonTerrestrialNetwork=false}
+02-18 15:15:29.549  2774  2918 I SceneObserver: notify event: EVENT_SERVICE_CELL_CHANGED
+02-18 15:15:29.553  1863  2986 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1330 android.content.Context.sendBroadcastMultiplePermissions:2597 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:4268 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1928 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:613 
+02-18 15:15:29.553  2811  2811 I Telephony: TelecomAccountRegistry$TelecomAccountTelephonyCallback: TelecomAccountRegistry: onServiceStateChanged: newState=0, mServiceState=0
+02-18 15:15:29.554  2811  2811 D PhoneInterfaceManager: isRttSupported: carrier: false, device: true, mtk: true
+02-18 15:15:29.556  2811  2811 I Telephony: isRttCurrentlySupported -- regular acct, hasVoiceAvailability: true
+02-18 15:15:29.556  2811  2811 I Telephony:  isRttSupported: false
+02-18 15:15:29.556  2811  2811 I Telephony:  alwaysAllowWhileRoaming: false
+02-18 15:15:29.556  2811  2811 I Telephony:  isRoaming: false
+02-18 15:15:29.556  2811  2811 I Telephony:  isOnWfc: false
+02-18 15:15:29.556  1863  2986 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1363 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:4273 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1928 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:613 android.os.Binder.execTransactInternal:1428 
+02-18 15:15:29.560  1863  1929 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+02-18 15:15:29.561  2811  2811 D SimStatistic: mReceiver action=android.intent.action.SERVICE_STATE
+02-18 15:15:29.563  2811  3509 D SimStatistic: processSimNotRecognizedServiceStatus phoneId = 0; mServiceState = 0
+02-18 15:15:29.567  1096  1154 D HfLooper: sensor 33171111 = 4562.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.569  1863  1929 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+02-18 15:15:29.570  2811  2811 D SimStatistic: mReceiver action=android.intent.action.SERVICE_STATE
+02-18 15:15:29.571  2811  3509 D SimStatistic: processSimNotRecognizedServiceStatus phoneId = 0; mServiceState = 0
+02-18 15:15:29.573  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.573  1863  1929 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+02-18 15:15:29.576  1863  1929 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+02-18 15:15:29.578  1863  1929 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+02-18 15:15:29.581  1863  1929 D BroadcastQueue: Logging broadcast for com.android.phone, stopped=false, firstLaunch=false
+02-18 15:15:29.584  2811  2811 I MiuiPhoneUtils: do not support cellbroadcast, ignore switch
+02-18 15:15:29.584  1863  1929 D BroadcastQueue: Logging broadcast for com.android.systemui, stopped=false, firstLaunch=false
+02-18 15:15:29.588  1863  2986 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1363 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:4282 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1928 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:613 android.os.Binder.execTransactInternal:1428 
+02-18 15:15:29.589  1863  2986 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1363 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:4288 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1928 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:613 android.os.Binder.execTransactInternal:1428 
+02-18 15:15:29.592  2811  3107 D NetworkSelfRecovery: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.593  2811  7981 D SignalMapSubwayController: msg.what = 5
+02-18 15:15:29.593  2811  7981 D SignalMapSubwayController: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.594  2811  3562 D MiuiTelephonyDFS: msg.what = 1
+02-18 15:15:29.595  2840  2840 D MiuiCarrierTextController: updateCarrierText: 2,air=false, [China Mobile, ]
+02-18 15:15:29.596  2811  3556 D FiveGCloudController: getFiveGSaCloudStatus slotId: 0, operator: 46007
+02-18 15:15:29.596  2811  5455 D NetworkMetricsController: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.596  2811  3556 D FiveGCloudController: getFiveGSaCloudStatus slotId: 0, operator: 46007
+02-18 15:15:29.597  2811  5455 D NetworkMetricsController: newRat:20,oldRat:20,mIsFeatureEnable:true,isDds:true,mCurrentHstState:false
+02-18 15:15:29.597  2811  3556 D FiveGManager: getFiveGNetworkMode origMode: -1, dataSlotId: 0, disabledByCloud: false, enabledByCloud: false, is5GSaModeCarrierAvailable: false, is5GSaModeCarrierDisabled: false
+02-18 15:15:29.597  2811  3581 D ServiceStateMonitor: handleMessage=5
+02-18 15:15:29.597  2811  3581 D ServiceStateMonitor: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.597  2811  3556 D FiveGCloudController: getFiveGSaCloudStatus slotId: 0, operator: 46007
+02-18 15:15:29.597  1863  1863 D MiuiWifiService: onCellLocationChanged
+02-18 15:15:29.597  2811  3581 D ServiceStateMonitor: newRat:20,oldRat:20
+02-18 15:15:29.597  1863  1863 D MiuiWifiService: cancelPeriodWifiScan trigger
+02-18 15:15:29.598  2811  3565 D ModemDFS: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.598  2811  3565 D ModemDFS: newVoiceReg:0,oldVoiceReg=0
+02-18 15:15:29.598  2811  3990 D HighSpeedTrainModeController: msg.what = 11
+02-18 15:15:29.598  2811  3990 D HighSpeedTrainModeController: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.598  2774  2918 D HyperComm_TelephonyMonitor: onCellLocationChanged[0], cellLocation = GsmCellLocation:[...]
+02-18 15:15:29.598  2811  3527 D NetworkSpeedTracker: processServiceStateChangeEvent phoneId=0
+02-18 15:15:29.599  2811  3562 D MiSight::  constructEvent id=915100002
+02-18 15:15:29.599  2811  3556 D FiveGCloudController: getFiveGSaCloudStatus slotId: 0, operator: 46007
+02-18 15:15:29.601  5838 24954 I AIRC_CounterTrack: collect: signal-CellInfoPerception
+02-18 15:15:29.602  2811  3524 D NetworkModeRecognition: processCellLocationChanged, phoneId=0
+02-18 15:15:29.602  5838 24954 I MMKV    : <MMKV.cpp:1170::sync> MMKV::sync, SyncFlag = 1
+02-18 15:15:29.602  2811  3524 I MiuiPhoneUtils: getOperatorNumeric phone:0 numeric:46007
+02-18 15:15:29.603  2811  3562 D MiSight::  sendEvent id=915100002
+02-18 15:15:29.603  2811  3562 D MiSightJni: MiSight: Java_com_miui_misight_MiSight_nativeSendEvent enter called. '{"fromRAT":20,"toRAT":20}'
+02-18 15:15:29.603  2811  3562 D MiEvent : MiEvent: this 0x6ff35a3e20, paylod=0xb4000072b9408010
+02-18 15:15:29.603  2811  3562 D MiEvent : flatten EventId 915100002 -t 1771398929 -paraList {"fromRAT":20,"toRAT":20}
+02-18 15:15:29.603  2811  3562 D MiEvent : report:EventId 915100002 -t 1771398929 -paraList {"fromRAT":20,"toRAT":20} success
+02-18 15:15:29.603  2811  3562 D MiEvent : ~MiEvent: this 0x6ff35a3e20, paylod=0xb4000072b9408010
+02-18 15:15:29.603  1346  1412 I misight : OnEvent EventPrivacyCompliance event=915100002
+02-18 15:15:29.604  1346  1412 I misight : OnEvent EventStorageManager event=915100002,3
+02-18 15:15:29.604  1346  1412 I misight : DetectDropEvent event 915100002 over hour cnt drop it, hourCnt=6 halfCnt=4, maxCnt=200 punishSecond=432,space=322
+02-18 15:15:29.604  2811  3107 I RoamingManager: processServiceState phoneId: 0 simOperatorNumeric:46007 networkOperatorNumeric:46000 isHome:true
+02-18 15:15:29.605  2811  5455 D NetworkMetricsController: processCellLocationChangeEvent phoneId=0
+02-18 15:15:29.605  2811  5455 D NetworkMetricsController: processCellLocationChangeEvent newCGI=46000150a68003,preCGI=46000153618002,dds phoneId=0
+02-18 15:15:29.605  2811  5455 D NetworkMetricsController: processCellSignalSceneForC6C7 phoneId=0
+02-18 15:15:29.605  2811  7981 D SignalMapSubwayController: msg.what = 7
+02-18 15:15:29.605  2811  3107 I RoamingManager: processServiceState lastRoamingMode: 0 newRoamingMode:0
+02-18 15:15:29.606  2811  5457 D SmartNetworkRecoveryController: handleMessage event:53
+02-18 15:15:29.606  1346  1412 I misight : OnEvent HighProbFaultDetect 915100002
+02-18 15:15:29.606  1346  1412 I misight : CanProcessHplEvent CanProcessHplEvent openTime=1767731079 period=60 1771398929
+02-18 15:15:29.606  1346  1412 I misight : OnEvent EventLogProcessor event=915100002,3
+02-18 15:15:29.606  5838 17410 I AIRC_Perception: sendPerceptionSignal:CellInfoChangeEvent
+02-18 15:15:29.606  1346  1412 I misight : OnEvent EventInfoPack event 915100002
+02-18 15:15:29.611  1863  1891 D CompatChangeReporter: Compat change id reported: 297989574; UID 10124; state: ENABLED
+02-18 15:15:29.617  1096  1154 D HfLooper: sensor 33171111 = 4560.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.624  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.626  2774  2918 D HyperComm_TelephonyMonitor: onCellInfoChanged[0], cellInfo = [CellInfoNr:{ mRegistered=YES mTimeStamp=234265935189747ns mCellConnectionStatus=1 CellIdentityNr:{ mMcc = 460 mMnc = 00 mAlphaLong = 中国移动 mAlphaShort = 中国移动 mAdditionalPlmns = {} } CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = -87 ssRsrq = -11 ssSinr = 10 miuiLevel = 0 mOptimizedLevel = 0 level = 2 parametersUseForLevel = 0 timingAdvance = 4 } }]
+02-18 15:15:29.631  5838 24954 I AIRC_CounterTrack: collect: base_event-CellInfoChangeEvent
+02-18 15:15:29.631  5838 17411 I AIRC_Cognition_CognitionTriggerManager: dispatchEvent event=CellInfoChangeEvent, traceId=683a99e121614d7e92ff181ef6af9a30
+02-18 15:15:29.631  5838 17410 I AIRC_PerceptionEventBus: event=CellInfoChangeEvent,traceId=683a99e121614d7e92ff181ef6af9a30 send result=true
+02-18 15:15:29.632  5838 24954 I MMKV    : <MMKV.cpp:1170::sync> MMKV::sync, SyncFlag = 1
+02-18 15:15:29.632  5838 17411 I AIRC_CognitionEnableManager: LocationChange enable: true
+02-18 15:15:29.633  5838 17411 I AIRC_CognitionEnableManager: FrequentLocationCognition enable: true
+02-18 15:15:29.634  5838 17411 I AIRC_CognitionEnableManager: MetroCodeCognition enable: true
+02-18 15:15:29.635  5838 17411 I AIRC_CognitionEnableManager: TravelCognition enable: true
+02-18 15:15:29.636  5838 17411 I AIRC_CognitionEnableManager: ScanCodeCognition enable: true
+02-18 15:15:29.637  5838 17411 I AIRC_CognitionEnableManager: GeekCognition enable: true
+02-18 15:15:29.638  5838 17411 I AIRC_CognitionEnableManager: AudioCognition enable: true
+02-18 15:15:29.639  5838 17411 I AIRC_CognitionEnableManager: BatteryCognition enable: true
+02-18 15:15:29.639  5838 17411 I AIRC_LocationChange: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.640  5838 17411 I AIRC_FrequentLocationCognition: dispatchEvent needHandle:true, event:CellInfoChangeEvent
+02-18 15:15:29.640  5838 17411 I AIRC_FLCT: onEvent traceId:683a99e121614d7e92ff181ef6af9a30, event:CellInfoChangeEvent
+02-18 15:15:29.641  5838 17411 I AiCrEngine_DeviceUtils: isSupportIntention isInternationalDevice=false, isFoldDevice=false, isLiteDevice=false
+02-18 15:15:29.641  5838 17411 I AiCrEngine_OpenCapabilityProvider: is support xiao ai capability = true
+02-18 15:15:29.641  5838 17411 I AiCrEngine_DeviceUtils: isSupportIntention isInternationalDevice=false, isFoldDevice=false, isLiteDevice=false
+02-18 15:15:29.642  5838 17411 I AiCrEngine_OpenCapabilityProvider: call capCode=3100, isSupportCapability=true, method=method_support_geofence, arg=com.xiaomi.aicr
+02-18 15:15:29.642  5838 17411 D AiCrEngine_GeoFenceCapability: Polaris version = 2025.09.17.0
+02-18 15:15:29.643  5838 17411 I AiCrEngine_OpenCapabilityCaller: supportGeoFence false
+02-18 15:15:29.648  5838 17411 I AIRC_Cognition_FrequentLocationLearn: FrequentLocationRecognizer,changedEvent []
+02-18 15:15:29.649  5838 17411 I MMKV    : <MMKV.cpp:1170::sync> MMKV::sync, SyncFlag = 1
+02-18 15:15:29.651  5838 17411 I AIRC_FLCT: onEvent 683a99e121614d7e92ff181ef6af9a30,CellInfoChangeEvent,
+02-18 15:15:29.651  5838 17411 I AIRC_MetroCodeCognition: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.652  5838 17411 I AIRC_TravelCognition: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.652  5838 17411 I AIRC_ScanCodeCognition: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.652  5838 17411 I AIRC_GeekCognition: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.653  5838 17411 I AIRC_AudioCognition: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.653  5838 17411 I AIRC_BatteryCognition: dispatchEvent needHandle:false, event:CellInfoChangeEvent
+02-18 15:15:29.654  5838 24954 I AIRC_Cognition_CognitionTriggerManager: not in test mode
+02-18 15:15:29.667  1096  1154 D HfLooper: sensor 33171111 = 4561.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.672  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.722  1342  1631 I EMDLOGGER1: MD writer time out 96600 sec. m_ReadThreadStep = 10, Mode = 3
+02-18 15:15:29.723  1096  1154 D HfLooper: sensor 33171111 = 4560.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.728  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.767  1096  1154 D HfLooper: sensor 33171111 = 4560.000000 39.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.773  1506  2201 D libsensor-displayalgo: Write:the value of channelCali ALS:0.0,IR:0.6,scales:1.000000, hsv: 33.891430
+02-18 15:15:29.773  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.809  1863  3574 I NetworkAccelerateSwitchService: EVENT_RSSI_POLL. mRssiPoll=true
+02-18 15:15:29.810  2466  2471 D WifiHAL : WifiRequest::create vendor command to iface 36, vendor_id=0x1a11, subcmd=0x1200, res=0
+02-18 15:15:29.811  2466  2471 I WifiHAL : WifiCommand::requestResponse err=-14
+02-18 15:15:29.812  1863  3574 E WifiStaIfaceAidlImpl: getLinkLayerStats failed with service-specific exception: android.os.ServiceSpecificException: unknown (code 9)
+02-18 15:15:29.812  1863  3574 E NetworkSDKService: mMiuiWlanLayerQoE == null
+02-18 15:15:29.812  1863  3574 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed rssi:42
+02-18 15:15:29.813  1863  3574 I NetworkAccelerateSwitchService: checkWifiRssiAndLinkSpeed mWifiFastFade:false mWifiFastFadeAdjustThreshold:false
+02-18 15:15:29.813  1863  3574 I NetworkAccelerateSwitchService: getAverageWifiRssi:41
+02-18 15:15:29.813  1863  3574 D NetworkAccelerateSwitchService: checkIntervalModeChange mMovementState:false mIntervalMode:0 mIsBadLinkLayerQoE:false mBadLinkLayerQoETimes = 0
+02-18 15:15:29.817  1096  1154 D HfLooper: sensor 33171111 = 4559.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.822  1506  2201 D libsensor-displayalgo: ScreenId = 0
+02-18 15:15:29.839  8486  8486 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d'
+02-18 15:15:29.867  1096  1154 D HfLooper: sensor 33171111 = 4562.000000 40.000000 0.000000 0.000000 0.000000 0.000000
+02-18 15:15:29.870  1506  2201 D libsensor-displayalgo: ScreenId = 0

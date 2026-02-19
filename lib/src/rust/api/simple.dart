@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `get_tts_internal`, `with_tts`
+// These functions are ignored because they are not marked as `pub`: `get_tts_internal`, `process_tts_text`, `with_tts`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
 Future<List<VoiceInfo>> rGetVoices() =>
@@ -17,6 +17,10 @@ Future<void> rSetVoice({required String id}) =>
 
 Future<void> customInitTts() =>
     RustLib.instance.api.crateApiSimpleCustomInitTts();
+
+Future<void> customInitTtsWithPath({required String sharedPath}) =>
+    RustLib.instance.api
+        .crateApiSimpleCustomInitTtsWithPath(sharedPath: sharedPath);
 
 Future<void> rSpeak({required String text}) =>
     RustLib.instance.api.crateApiSimpleRSpeak(text: text);

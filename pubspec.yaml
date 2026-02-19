@@ -23,7 +23,7 @@ dependencies:
   
   # Network
   dio: ^5.4.3+1
-  background_downloader: ^1.2.4
+  background_downloader: ^9.5.2
   http: ^1.2.0
   archive: ^3.6.1
 
@@ -64,6 +64,10 @@ flutter:
   assets:
     - assets/chs/bible_chs.db
     - assets/chs/LxgwWenKai_chs.ttf
+    - assets/chs/bible_lexicon_chs.json
+    - assets/cht/bible_cht.db
+    - assets/cht/LxgwWenkaiTC_cht.ttf
+    - assets/cht/bible_lexicon_cht.json
     - assets/icons/app_icon.jpg
     - assets/audio_timestamps.json
     - assets/jinshimanong.png

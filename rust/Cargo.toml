@@ -9,12 +9,19 @@ crate-type = ["cdylib", "staticlib"]
 [dependencies]
 flutter_rust_bridge = "=2.11.1"
 tts = "0.26"
+ndk-context = "0.1"
+jni = "0.21"
 anyhow = "1.0"
 candle-core = "0.8.2"
 candle-transformers = "0.8.2"
 candle-nn = "0.8.2"
 hound = "3.5"
 symphonia = { version = "0.5.3", features = ["mp3"] }
+regex = "1.10.2"
+android_logger = "0.13"
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

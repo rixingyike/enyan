@@ -106,23 +106,25 @@ class _ChapterPageState extends State<ChapterPage> {
     // Precise Timestamps Only
     if (_activeChapterTimestamps.isNotEmpty) {
         final currentSec = current.inMilliseconds / 1000.0;
-        for (int i = 0; i < _activeChapterTimestamps.length; i++) {
+        // The structure is usually: [0,0], [Title], [Verse 1], [Verse 2], ...
+        // We skip the first fragment if it is [0,0]
+        final startIdx = (_activeChapterTimestamps[0][0] == 0 && _activeChapterTimestamps[0][1] == 0) ? 1 : 0;
+        
+        for (int i = startIdx; i < _activeChapterTimestamps.length; i++) {
             final start = _activeChapterTimestamps[i][0];
             final end = _activeChapterTimestamps[i][1];
             
-            // Skip dummy [0,0] at the start if it exists
-            if (i == 0 && start == 0 && end == 0) continue;
-
             if (currentSec >= start && currentSec <= end) {
-                // If timestamps have a dummy at 0, then i=1 corresponds to verses[0] (Verse 1)
-                // So index = i - 1
-                index = (_activeChapterTimestamps[0][0] == 0 && _activeChapterTimestamps[0][1] == 0) ? i - 1 : i;
+                // i = startIdx is Title
+                // i = startIdx + 1 is Verse 1 (index 0)
+                index = i - startIdx - 1;
                 break;
             }
         }
     }
 
     if (index != -1 && index != _currentHighlightIndex) {
+        debugPrint("✨ [ChapterPage] Highlight sync: Index $index (Audio Pos: ${current.inSeconds}s)");
         setState(() {
             _currentHighlightIndex = index;
         });
@@ -157,22 +159,27 @@ class _ChapterPageState extends State<ChapterPage> {
       if (isDownloaded) {
         // Precise Seek if we have timestamps
         if (_activeChapterTimestamps.isNotEmpty) {
-            // Adjust index for dummy [0,0] if it exists
-            final hasDummy = _activeChapterTimestamps[0][0] == 0 && _activeChapterTimestamps[0][1] == 0;
-            final actualTsIndex = hasDummy ? index + 1 : index;
+            // Adjust index to skip dummy [0,0] and Title
+            final startIdx = (_activeChapterTimestamps[0][0] == 0 && _activeChapterTimestamps[0][1] == 0) ? 1 : 0;
+            final actualTsIndex = index + startIdx + 1; // index 0 (Verse 1) -> startIdx + 1
             
             if (actualTsIndex < _activeChapterTimestamps.length) {
                 final startTime = _activeChapterTimestamps[actualTsIndex][0];
                 final seekPos = Duration(milliseconds: (startTime * 1000).round());
-                debugPrint("🎯 [ChapterPage] Precise seek to ${startTime}s");
+                debugPrint("🎯 [ChapterPage] Precise seek requested for verse ${index + 1} to ${startTime}s");
                 
                 setState(() => _isSeeking = true);
                 await _audioManager.playChapter(widget.book.id, widget.initialChapter, startPosition: seekPos);
-                // Wait briefly for the audio to move before re-enabling sync highlight
-                await Future.delayed(const Duration(milliseconds: 300));
+                
+                // Wait for audio position to settle
+                await Future.delayed(const Duration(milliseconds: 500));
                 if (mounted) setState(() => _isSeeking = false);
                 return;
+            } else {
+                debugPrint("⚠️ [ChapterPage] Index $actualTsIndex out of timestamp range (${_activeChapterTimestamps.length})");
             }
+        } else {
+            debugPrint("⚠️ [ChapterPage] No timestamps available for Book ${widget.book.id} Chapter ${widget.initialChapter}");
         }
         
         // Fallback: Play from start if no timestamps or index out of range
@@ -293,7 +300,7 @@ class _ChapterPageState extends State<ChapterPage> {
         testament: prevBookId >= 40 ? 'NT' : 'OT',
       );
 
-      _performNavigation(prevBook, prevBookMaxChapter, autoPlay);
+      _performNavigation(prevBook, prevBookMaxChapter, autoPlay, isNext: false);
       return;
     }
     
@@ -310,26 +317,38 @@ class _ChapterPageState extends State<ChapterPage> {
         testament: nextBookId >= 40 ? 'NT' : 'OT',
       );
 
-      _performNavigation(nextBook, 1, autoPlay);
+      _performNavigation(nextBook, 1, autoPlay, isNext: true);
       return;
     }
 
     // Standard Chapter Navigation within same book
-    _performNavigation(widget.book, newChapter, autoPlay);
+    _performNavigation(widget.book, newChapter, autoPlay, isNext: newChapter > widget.initialChapter);
   }
 
-  void _performNavigation(Book book, int chapter, bool autoPlay) {
+  void _performNavigation(Book book, int chapter, bool autoPlay, {bool isNext = true}) {
     _ttsService.stop();
     _audioManager.stop();
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (_) => ChapterPage(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => ChapterPage(
           book: book,
           initialChapter: chapter,
           autoPlay: autoPlay,
         ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final begin = isNext ? const Offset(1.0, 0.0) : const Offset(-1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.ease;
+
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
       ),
     );
   }

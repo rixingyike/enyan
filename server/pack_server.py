@@ -34,17 +34,21 @@ class PackHandler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=PACKS_DIR, **kwargs)
     
     def do_GET(self):
-        if self.path == '/api/packs':
-            mock_file = os.path.join(os.path.dirname(__file__), 'api', 'packs')
+        # Support both old and new paths for compatibility
+        if self.path == '/api/packs' or self.path == '/api/packs.json':
+            # Use packs.json as the source of truth
+            mock_file = os.path.join(os.path.dirname(__file__), 'api', 'packs.json')
             if os.path.exists(mock_file):
                 self.send_response(200)
-                self.send_header('Content-type', 'application/json')
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
                 self.send_header('Access-Control-Allow-Origin', '*')
                 self.end_headers()
+                # Read as text to ensure correct content length/encoding if needed, 
+                # but binary read is fine for simple serving
                 with open(mock_file, 'rb') as f:
                     self.wfile.write(f.read())
             else:
-                self.send_error(404, "Mock packs file not found")
+                self.send_error(404, f"Mock packs file not found: {mock_file}")
             return
         
         # 其他请求作为静态文件处理

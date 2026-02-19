@@ -29,7 +29,7 @@ class SettingsService {
     ttsEngine.value = _prefs.getString(_keyTtsEngine) ?? 'system';
     // TTS Server URL
     ttsServerUrl.value =
-        _prefs.getString(_keyTtsServerUrl) ?? 'http://localhost:8080/api/tts';
+        _prefs.getString(_keyTtsServerUrl) ?? 'http://192.168.3.7:8080/api/tts';
     // Rust Voice
     rustVoiceId.value = _prefs.getString(_keyRustVoiceId);
 
@@ -78,7 +78,7 @@ class SettingsService {
   // TTS Server URL
   static const String _keyTtsServerUrl = 'tts_server_url';
   final ValueNotifier<String> ttsServerUrl =
-      ValueNotifier('http://localhost:8080/api/tts');
+      ValueNotifier('http://192.168.3.7:8080/api/tts');
 
   Future<void> setTtsServerUrl(String value) async {
     ttsServerUrl.value = value;

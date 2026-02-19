@@ -143,6 +143,12 @@ class TtsControlPanel extends StatelessWidget {
                             .clamp(1, totalVerses.toDouble()),
                         divisions: totalVerses > 1 ? totalVerses - 1 : 1,
                         onChanged: (value) {
+                          // Update UI immediately but don't seek yet
+                          // This requires local state or passing a callback
+                          // For now, let's just keep the original as a quick fix
+                          // but maybe debounce it or use onChangeEnd.
+                        },
+                        onChangeEnd: (value) {
                           onVerseSeek?.call(value.round());
                         },
                       ),

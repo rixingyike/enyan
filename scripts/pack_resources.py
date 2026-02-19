@@ -4,7 +4,7 @@ import gzip
 import zipfile
 
 # Configuration
-SOURCE_DB = "assets/bible_cht.db"
+SOURCE_CHT_DIR = "assets/cht"
 SOURCE_OPUS_6K = "data/opus_6k"
 SOURCE_OPUS_8K = "data/opus_8k"
 
@@ -46,12 +46,12 @@ def pack_folder_gzip(folder_path, target_gz_path):
 def main():
     ensure_dir(TARGET_DIR)
 
-    # 1. Pack Database
-    if os.path.exists(SOURCE_DB):
-        target_db_gz = os.path.join(TARGET_DIR, "lang_cht.db.gz")
-        compress_file_gzip(SOURCE_DB, target_db_gz)
+    # 1. Pack CHT Resources (DB + Font)
+    if os.path.exists(SOURCE_CHT_DIR):
+        target_cht_gz = os.path.join(TARGET_DIR, "lang_cht.zip.gz")
+        pack_folder_gzip(SOURCE_CHT_DIR, target_cht_gz)
     else:
-        print(f"⚠️ Warning: {SOURCE_DB} not found.")
+        print(f"⚠️ Warning: {SOURCE_CHT_DIR} not found.")
 
     # 2. Pack Opus 6k
     if os.path.exists(SOURCE_OPUS_6K):

@@ -190,6 +190,9 @@ class AndroidEnvironment {
       rustFlags = '$rustFlags\x1f';
     }
     rustFlags = '$rustFlags-L\x1f$workaroundDir';
+    if (target.rust == 'aarch64-linux-android') {
+      rustFlags = '$rustFlags\x1f-C\x1ftarget-feature=+fullfp16';
+    }
     return rustFlags;
   }
 }

@@ -208,16 +208,32 @@ class SettingsPage extends StatelessWidget {
               return const SizedBox.shrink();
             }
 
-            final List<VoiceInfo> voices = snapshot.data!;
+            final List<VoiceInfo> rawVoices = snapshot.data!;
+            // Deduplicate voices by ID just in case
+            final uniqueVoices = <String, VoiceInfo>{};
+            for (var v in rawVoices) {
+              if (!uniqueVoices.containsKey(v.id)) {
+                uniqueVoices[v.id] = v;
+              }
+            }
+            final voices = uniqueVoices.values.toList();
+
             // If no voice is selected yet, or selected one is not in list, find a default
             String? currentId = selectedId;
-            if (currentId == null || !voices.any((VoiceInfo v) => v.id == currentId)) {
+            if (currentId == null || !uniqueVoices.containsKey(currentId)) {
+               if (voices.isEmpty) return const SizedBox.shrink();
                // Default to Ting-Ting if available, else first one
                final defaultVoice = voices.firstWhere(
                  (VoiceInfo v) => v.name.contains("Ting-Ting") || v.name.contains("Li-mu"),
                  orElse: () => voices.first,
                );
                currentId = defaultVoice.id;
+               // Update settings to match valid ID
+               if (currentId != selectedId) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    settings.setRustVoiceId(currentId!);
+                  });
+               }
             }
 
             return Padding(

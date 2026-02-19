@@ -58,7 +58,7 @@ def align_chapter(audio_path, text_lines, output_format="json"):
 
 def main():
     db_path = "assets/chs/bible_chs.db"
-    output_file = "assets/chs/audio_timestamps_chs.json"
+    output_file = "assets/audio_timestamps.json"
     audio_base_dir = "data/hehemp3"
     
     # Load existing results if available
@@ -87,9 +87,16 @@ def main():
             continue
             
         print(f"Aligning {book_name}...")
-        book_results = {}
+        if str(book_id) not in results:
+            results[str(book_id)] = {}
+        
+        book_results = results[str(book_id)]
         
         for chapter in range(1, total_chapters + 1):
+            # Check if this chapter already processed
+            if str(chapter) in book_results:
+                continue
+
             audio_path = os.path.join(book_dir, f"{chapter}.mp3")
             if not os.path.exists(audio_path):
                 print(f"  Missing audio for {book_name} Chapter {chapter}")
@@ -102,32 +109,47 @@ def main():
                 continue
                 
             # Prepare text for alignment
-            # Add Chapter Title as first line to align with intro audio
             chapter_title = f"{book_name} 第{chapter}章"
             text_lines = [chapter_title] + verses
             
             # Run alignment
-            fragments = align_chapter(audio_path, text_lines)
-            
-            if fragments:
-                # Process timestamps
-                # Fragment 0 is title, Fragment 1 is Verse 1, etc.
-                timestamps = []
-                for i, frag in enumerate(fragments):
-                    # Store [begin, end]
-                    timestamps.append([float(frag.begin), float(frag.end)])
+            # Use unique temp file to avoid clashing
+            temp_text_path = f"temp_align_{book_id}_{chapter}.txt"
+            try:
+                with open(temp_text_path, "w", encoding="utf-8") as f:
+                    for line in text_lines:
+                        f.write(line + "\n")
                 
-                book_results[str(chapter)] = timestamps
-                print(f"  Aligned Chapter {chapter}: {len(timestamps)} segments")
-            else:
-                print(f"  Failed to align Chapter {chapter}")
+                # Configure Task
+                config_string = "task_language=cmn|is_text_type=plain|os_task_file_format=json|is_text_file_encoding=utf-8"
+                task = Task(config_string=config_string)
+                task.audio_file_path_absolute = os.path.abspath(audio_path)
+                task.text_file_path_absolute = os.path.abspath(temp_text_path)
 
-        # Update results and save after EACH book
-        results[str(book_id)] = book_results
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(results, f, ensure_ascii=False, indent=2)
-        print(f"Saved progress for {book_name}")
-        
+                ExecuteTask(task).execute()
+                fragments = task.sync_map_leaves()
+                
+                if fragments:
+                    timestamps = []
+                    for i, frag in enumerate(fragments):
+                        timestamps.append([float(frag.begin), float(frag.end)])
+                    
+                    book_results[str(chapter)] = timestamps
+                    print(f"  Aligned Chapter {chapter}: {len(timestamps)} segments")
+                    
+                    # Save progress after each chapter to avoid loss
+                    with open(output_file, 'w', encoding='utf-8') as f:
+                        json.dump(results, f, ensure_ascii=False, indent=2)
+                else:
+                    print(f"  Failed to align Chapter {chapter}")
+            except Exception as e:
+                print(f"  Error aligning {book_name} Ch {chapter}: {e}")
+                # Keep temp file for debugging if it failed
+                continue
+            finally:
+                if os.path.exists(temp_text_path):
+                    os.remove(temp_text_path)
+
     print(f"Completed. Data saved to {output_file}")
 
 if __name__ == "__main__":

@@ -122,9 +122,11 @@ class AudioManager {
     try {
       // 1. If already playing the same chapter, just seek
       if (_currentBookId == bookId && _currentChapterId == chapterId) {
-        debugPrint("🎵 [Audio] Already playing $bookId:$chapterId. Seeking to $startPosition...");
+        debugPrint("🎵 [Audio] Same chapter ($bookId:$chapterId). startPosition: $startPosition");
         if (startPosition != null) {
-          await _player.play(); // Ensure it's not paused so seek works reliably
+          // Some players need to be active before seeking works reliably
+          await _player.play(); 
+          debugPrint("🎵 [Audio] Calling player.seek(${startPosition.inMilliseconds}ms)");
           await _player.seek(startPosition);
         } else {
           await _player.play();

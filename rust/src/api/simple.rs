@@ -3,6 +3,7 @@ use candle_core::{DType, Device, Tensor};
 use candle_nn::VarBuilder;
 use candle_transformers::models::encodec::{Config, Model};
 use flutter_rust_bridge::frb;
+use regex::Regex;
 use std::io::{Cursor, Read};
 use std::path::PathBuf;
 use std::sync::Mutex;
@@ -22,77 +23,59 @@ pub fn init_app() {
 // Global TTS instance using Mutex (Thread-safe)
 static TTS_INSTANCE: Mutex<Option<Tts>> = Mutex::new(None);
 static SELECTED_VOICE_ID: Mutex<Option<String>> = Mutex::new(None);
+static ASSETS_PATH: Mutex<Option<String>> = Mutex::new(None);
 
-fn get_tts_internal() -> Option<Tts> {
-    let mut lock = TTS_INSTANCE.lock().ok()?;
-    if lock.is_none() {
-        match Tts::default() {
-            Ok(mut tts) => {
-                // 初始化默认语音 (中文)
-                if let Ok(voices) = tts.voices() {
-                    let zh_voice = voices.iter().find(|v| {
-                        let n = v.name();
-                        let id = v.id();
-                        if n.contains("Ting-Ting") || n.contains("Meijia") {
-                            return true;
-                        }
-                        if n.contains("zh-CN") || id.contains("zh-CN") {
-                            return true;
-                        }
-                        if (n.contains("Chinese") || n.contains("zh"))
-                            && !n.contains("HK")
-                            && !n.contains("Cantonese")
-                            && !n.contains("Sin-ji")
-                            && !id.contains("HK")
-                        {
-                            return true;
-                        }
-                        false
-                    });
+// get_tts_internal was removed — use with_tts() helper instead.
 
-                    if let Some(v) = zh_voice {
-                        let _ = tts.set_voice(v);
-                        println!("Rust TTS Init: Set voice to {}", v.name());
-                    }
-                }
-                *lock = Some(tts);
-            }
-            Err(e) => {
-                eprintln!("❌ Failed to initialize TTS engine: {:?}", e);
-                return None;
-            }
-        }
-    }
-    // We can't easily clone Tts, but we only need it for the duration of the call
-    // However, MutexGuard doesn't allow returning the inner Tts easily.
-    // So we'll keep the lock inside the specific functions or use a helper.
-    None
-}
-
-// Special helper to run TTS actions
+/// Helper to run TTS actions with lazy initialization and retry.
 fn with_tts<F, R>(f: F) -> Option<R>
 where
     F: FnOnce(&mut Tts) -> R,
 {
     let mut lock = TTS_INSTANCE.lock().ok()?;
     if lock.is_none() {
-        if let Ok(mut tts) = Tts::default() {
-            // Apply selected voice if any
-            let voice_id = SELECTED_VOICE_ID.lock().ok().and_then(|l| l.clone());
-            if let Ok(voices) = tts.voices() {
-                if let Some(vid) = voice_id {
-                    if let Some(v) = voices.iter().find(|v| v.id() == vid) {
-                        let _ = tts.set_voice(v);
+        log::info!("with_tts: TTS not initialized, attempting Tts::default()...");
+        // Retry up to 2 times with a small delay (helps with Android init timing)
+        let mut last_err = None;
+        for attempt in 0..2 {
+            match Tts::default() {
+                Ok(mut tts) => {
+                    log::info!("Tts::default() succeeded on attempt {}", attempt + 1);
+                    // Apply selected voice if any (non-Android only; Android voices managed by Java)
+                    #[cfg(not(target_os = "android"))]
+                    {
+                        let voice_id = SELECTED_VOICE_ID.lock().ok().and_then(|l| l.clone());
+                        if let Ok(voices) = tts.voices() {
+                            if let Some(vid) = voice_id {
+                                if let Some(v) = voices.iter().find(|v| v.id() == vid) {
+                                    let _ = tts.set_voice(v);
+                                }
+                            } else if let Some(v) = voices.iter().find(|v| {
+                                let n = v.name();
+                                n.contains("zh-CN")
+                                    || n.contains("Ting-Ting")
+                                    || n.contains("Meijia")
+                            }) {
+                                let _ = tts.set_voice(v);
+                            }
+                        }
                     }
-                } else if let Some(v) = voices.iter().find(|v| {
-                    let n = v.name();
-                    n.contains("zh-CN") || n.contains("Ting-Ting") || n.contains("Meijia")
-                }) {
-                    let _ = tts.set_voice(v);
+                    *lock = Some(tts);
+                    last_err = None;
+                    break;
+                }
+                Err(e) => {
+                    log::warn!("Tts::default() failed on attempt {}: {:?}", attempt + 1, e);
+                    last_err = Some(e);
+                    if attempt < 1 {
+                        // Brief sleep before retry
+                        std::thread::sleep(std::time::Duration::from_millis(600));
+                    }
                 }
             }
-            *lock = Some(tts);
-        } else {
+        }
+        if let Some(e) = last_err {
+            log::error!("Tts::default() failed after all retries: {:?}", e);
             return None;
         }
     }
@@ -100,9 +83,11 @@ where
 }
 
 pub fn r_get_voices() -> Vec<VoiceInfo> {
+    log::info!("r_get_voices called");
     with_tts(|tts| {
-        tts.voices()
-            .unwrap_or_default()
+        let res = tts.voices();
+        log::info!("tts.voices() returned: {:?}", res.as_ref().map(|v| v.len()));
+        res.unwrap_or_default()
             .into_iter()
             .filter(|v| {
                 let lang = v.language().to_lowercase();
@@ -118,28 +103,93 @@ pub fn r_get_voices() -> Vec<VoiceInfo> {
 }
 
 pub fn r_set_voice(id: String) {
+    log::info!("r_set_voice called with id: {}", id);
     if let Ok(mut lock) = SELECTED_VOICE_ID.lock() {
         *lock = Some(id.clone());
     }
+    // On Android, voice setting is handled by Java layer via MethodChannel.
+    // tts crate's Android backend returns UnsupportedFeature for voices().
+    #[cfg(not(target_os = "android"))]
     with_tts(|tts| {
         if let Ok(voices) = tts.voices() {
             if let Some(v) = voices.iter().find(|v| v.id() == id) {
                 let _ = tts.set_voice(v);
-                println!("Rust TTS: Switched voice to {}", v.name());
+                log::info!("Rust TTS: Switched voice to {}", v.name());
             }
         }
     });
 }
 
 pub fn custom_init_tts() {
+    log::info!("custom_init_tts called (deprecated, use custom_init_tts_with_path)");
+    with_tts(|_| {});
+}
+
+pub fn custom_init_tts_with_path(shared_path: String) {
+    log::info!("custom_init_tts_with_path: {}", shared_path);
+    if let Ok(mut guard) = ASSETS_PATH.lock() {
+        *guard = Some(shared_path);
+    }
+    // Still trigger the lazy init of the default backend for now
     with_tts(|_| {});
 }
 
 // 核心功能：朗读
 pub fn r_speak(text: String) {
+    // Safe truncation for log: use chars() to avoid UTF-8 boundary panic
+    let preview: String = text.chars().take(7).collect();
+    log::info!("r_speak called, text: {}...", preview);
+    let processed = process_tts_text(&text);
     with_tts(|tts| {
-        let _ = tts.speak(text, true);
+        log::info!("Calling tts.speak()");
+        match tts.speak(&processed, true) {
+            Ok(_) => log::info!("tts.speak() succeeded"),
+            Err(e) => log::error!("tts.speak() failed: {:?}", e),
+        }
     });
+}
+
+fn process_tts_text(text: &str) -> String {
+    let mut processed = text.to_string();
+
+    // 1. Try to load dynamic lexicon from local path (Android compatibility)
+    if let Ok(path_guard) = ASSETS_PATH.lock() {
+        if let Some(base_path) = &*path_guard {
+            let lexicon_path = std::path::Path::new(base_path).join("bible_lexicon_chs.json");
+            if lexicon_path.exists() {
+                if let Ok(content) = std::fs::read_to_string(&lexicon_path) {
+                    if let Ok(json) = serde_json::from_str::<serde_json::Value>(&content) {
+                        if let Some(replacements) = json.as_object() {
+                            for (key, val) in replacements {
+                                if let Some(to) = val.as_str() {
+                                    processed = processed.replace(key, to);
+                                }
+                            }
+                            log::debug!("Applied dynamic lexicon from {}", lexicon_path.display());
+                        }
+                    }
+                }
+            } else {
+                log::warn!("Lexicon file not found at: {}", lexicon_path.display());
+            }
+        }
+    }
+
+    // 2. Hardcoded fallback for critical pronunciation
+    if !processed.contains("[dì]") {
+        processed = processed.replace("地", "地[dì]");
+    }
+
+    // 3. 匹配 "汉字[拼音]" 的格式，例如 "地[dì]"
+    // Regex pattern: matches a Han character followed by [...]
+    // We strictly match \p{Han} to avoid affecting other text.
+    if let Ok(re) = Regex::new(r"(\p{Han})\[([^\]]+)\]") {
+        // Replace with just the pinyin (group 2)
+        // input: "天地[dì]..." -> output: "天dì..."
+        re.replace_all(&processed, "$2").to_string()
+    } else {
+        processed
+    }
 }
 
 // 核心功能：停止

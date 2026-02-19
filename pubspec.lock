@@ -45,10 +45,10 @@ packages:
     dependency: "direct main"
     description:
       name: background_downloader
-      sha256: "1997c1edffdf089168e381e89b271509b21c1508997626b12237b1630e36bcd4"
+      sha256: "2ea5322fe836c0aaf96aefd29ef1936771c71927f687cf18168dcc119666a45f"
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.1"
+    version: "9.5.2"
   bloc:
     dependency: transitive
     description:

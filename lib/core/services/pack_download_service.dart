@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:archive/archive.dart';
 import 'package:gracewords/core/di/injection.dart';
 import 'package:gracewords/core/services/font_service.dart';
+import 'package:gracewords/core/config/app_config.dart';
 
 enum PackStatus {
   notDownloaded,
@@ -23,12 +24,8 @@ class PackDownloadService {
       ValueNotifier({});
 
   final _client = http.Client();
-  // IP will need to be configured or discovered
-  // For simulator: 127.0.0.1 or 10.0.2.2 usually works but for
-  // real device we need the actual IP of the computer running python server.
-  // We can hardcode for now or make it configurable.
-  // Let's assume localhost for macOS desktop app use case which is current focus.
-  static const String _baseUrl = "http://127.0.0.1:8080/api";
+  // Configured in AppConfig
+  static const String _baseUrl = AppConfig.packDownloadBaseUrl;
 
   Future<void> init() async {
     // Check local files to update initial status
@@ -55,7 +52,9 @@ class PackDownloadService {
 
   Future<List<Map<String, dynamic>>> fetchPacks() async {
     try {
-      final response = await _client.get(Uri.parse('$_baseUrl/packs'));
+      // If config URL ends with .json, use it directly; otherwise append /packs.json
+      final url = _baseUrl.endsWith('.json') ? _baseUrl : '$_baseUrl/packs.json';
+      final response = await _client.get(Uri.parse(url));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         return List<Map<String, dynamic>>.from(data['packs']);
@@ -66,6 +65,9 @@ class PackDownloadService {
     return [];
   }
 
+  // ... (downloadPack remains largely the same, passing partUrls if available)
+  
+  // Update downloadPack to pass explicit part_urls
   Future<void> downloadPack(String packId) async {
     // 1. Get info
     final packs = await fetchPacks();
@@ -77,32 +79,29 @@ class PackDownloadService {
     }
 
     final url = pack['url'] as String;
+    final int parts = pack['parts'] ?? 1;
+    final List<String>? explicitPartUrls = pack['part_urls'] != null 
+        ? List<String>.from(pack['part_urls']) 
+        : null;
 
     try {
       _updateStatus(packId, PackStatus.downloading);
 
-      // 2. Download
-      final request = http.Request('GET', Uri.parse(url));
-      final response = await _client.send(request);
-
-      if (response.statusCode != 200) {
-        throw Exception("Download failed: ${response.statusCode}");
-      }
-
       final dir = await getApplicationDocumentsDirectory();
       
       // Determine file processing based on extension
-      // Expecting: .gz (single file) or .zip.gz (archive) or .zip
-      
       final isGzip = url.endsWith('.gz');
       final isZip = url.contains('.zip'); // .zip or .zip.gz
       
       final tempFile = File('${dir.path}/temp_$packId${isGzip ? '.gz' : '.zip'}');
 
-      // Stream download
-      final IOSink sink = tempFile.openWrite();
-      await response.stream.pipe(sink);
-      await sink.close();
+      // 2. Download (Single or Multipart)
+      if (parts > 1) {
+        debugPrint("📦 Downloading $parts parts for $packId...");
+        await _downloadPartsAndMerge(url, parts, tempFile, explicitPartUrls: explicitPartUrls);
+      } else {
+        await _downloadSingleFile(url, tempFile);
+      }
 
       List<int> bytes = await tempFile.readAsBytes();
 
@@ -169,6 +168,49 @@ class PackDownloadService {
       debugPrint("❌ Download error: $e");
       _updateStatus(packId, PackStatus.error);
     }
+  }
+
+  Future<void> _downloadSingleFile(String url, File targetFile) async {
+      final request = http.Request('GET', Uri.parse(url));
+      final response = await _client.send(request);
+
+      if (response.statusCode != 200) {
+        throw Exception("Download failed: ${response.statusCode}");
+      }
+      
+      final sink = targetFile.openWrite();
+      await response.stream.pipe(sink);
+      await sink.close();
+  }
+
+  Future<void> _downloadPartsAndMerge(String baseUrl, int parts, File targetFile, {List<String>? explicitPartUrls}) async {
+      final sink = targetFile.openWrite();
+      
+      try {
+        for (int i = 1; i <= parts; i++) {
+            // Construct part URL: explicit or url.part1, url.part2 ...
+            String partUrl;
+            if (explicitPartUrls != null && i <= explicitPartUrls.length) {
+                partUrl = explicitPartUrls[i-1];
+            } else {
+                partUrl = "$baseUrl.part$i";
+            }
+
+            debugPrint("⬇️ Downloading part $i/$parts: $partUrl");
+            
+            final request = http.Request('GET', Uri.parse(partUrl));
+            final response = await _client.send(request);
+            
+            if (response.statusCode != 200) {
+              throw Exception("Part $i download failed: ${response.statusCode}");
+            }
+
+            // Append to sink
+            await sink.addStream(response.stream);
+        }
+      } finally {
+        await sink.close();
+      }
   }
 
   Future<void> _checkAndLoadFonts(String packId, Directory targetDir) async {

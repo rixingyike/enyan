@@ -15,7 +15,7 @@ class _TtsTestPageState extends State<TtsTestPage> {
   final TtsService _ttsService = getIt<TtsService>();
   final SettingsService _settings = getIt<SettingsService>();
   final TextEditingController _controller =
-      TextEditingController(text: "起初，神创造天地。地是空虚混沌，渊面黑暗。");
+      TextEditingController(text: "起初，神创造天地。地[dì]是空虚混沌，渊面黑暗。");
   String _logs = "";
 
   @override
@@ -162,9 +162,19 @@ class _TtsTestPageState extends State<TtsTestPage> {
               return const Text("正在获取系统声线...", style: TextStyle(color: Colors.grey));
             }
 
-            final List<VoiceInfo> voices = snapshot.data!;
+            final List<VoiceInfo> rawVoices = snapshot.data!;
+            // Deduplicate
+            final uniqueVoices = <String, VoiceInfo>{};
+            for (var v in rawVoices) {
+              if (!uniqueVoices.containsKey(v.id)) {
+                uniqueVoices[v.id] = v;
+              }
+            }
+            final voices = uniqueVoices.values.toList();
+
             String? currentId = selectedId;
-            if (currentId == null || !voices.any((VoiceInfo v) => v.id == currentId)) {
+            if (currentId == null || !uniqueVoices.containsKey(currentId)) {
+              if (voices.isEmpty) return const Text("无可用声线", style: TextStyle(color: Colors.red));
               final defaultVoice = voices.firstWhere(
                 (VoiceInfo v) => v.name.contains("Mei-Jia") || v.name.contains("Li-mu"),
                 orElse: () => voices.first,
